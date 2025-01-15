@@ -3,7 +3,7 @@ import logo from "../../assets/logo.png"
 
 const Footer = () => {
   return (
-    <div className="bg-gray-700 " >
+    <div className="bg-gray-900 " >
       <footer className="w-full  container mx-auto   p-3">
         <div className="flex flex-row flex-wrap text-white items-center justify-center gap-y-6 gap-x-12 text-center md:justify-between">
           <img
@@ -55,8 +55,8 @@ const Footer = () => {
           </ul>
         </div>
         <hr className="my-8 border-blue-gray-50" />
-        <Typography color="blue-gray" className="text-center font-normal">
-          &copy; 2023 Material Tailwind
+        <Typography  className="text-teal-300 text-center font-normal">
+          &copy; 2025 Adoptly.LTD
         </Typography>
       </footer>
     </div>

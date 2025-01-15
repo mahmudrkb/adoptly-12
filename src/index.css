@@ -2,16 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.yellow{
-    color: #f2c3a6;
-}
-.bg-yellow{
-    background-color: #f2c3a6;
-}
-
-.bg-green{
-    background-color: #55c6b6;
-}
-.green{
-    color:#55c6b6 ;
+.roboto-mono {
+    font-family: "Roboto Mono", serif; 
+ 
 }

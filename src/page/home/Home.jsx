@@ -1,10 +1,11 @@
-
+import Banner from "./Banner";
+import CallToAction from "./CallToAction";
 
 const Home = () => {
   return (
-    <div className=" h-screen">
-      
-     
+    <div className=" ">
+      <Banner></Banner>
+      <CallToAction></CallToAction>
     </div>
   );
 };
