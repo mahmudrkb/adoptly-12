@@ -8,7 +8,7 @@ const Contact = () => {
       <div id="contact" className=" container mx-auto p-3 py-20">
         <div className=" ">
           <div className=" ">
-            <div className="text-center md:flex lg:text-left">
+            <div className="text-center gap-6 md:flex justify-between lg:text-left">
              <div className="">
              <h1 className="text-4xl font-bold">
                 Get in <span className="text-teal-300">Touch</span>
