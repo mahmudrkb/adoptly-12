@@ -17,8 +17,8 @@ const Question = () => {
           <h2 className="text-pretty mb-10 text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl">
          FAQ
         </h2>
-     <div className="flex justify-between ">
-     <div className="max-w-xl">
+     <div className=" flex flex-col-reverse md:flex-row ">
+     <div className="max-w-xl  ">
       
       
         <div>
