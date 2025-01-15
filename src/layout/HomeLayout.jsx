@@ -1,17 +1,23 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import TopNavbar from "../page/home/TopNavbar";
+import MenuNavbar from "../page/home/MenuNavbar";
+import Footer from "../page/home/Footer";
+
+
 
 const HomeLayout = () => {
   return (
-    <div className="container mx-auto  p-10 ">
+    <div className=" ">
       <header> 
-        <TopNavbar></TopNavbar>
+      <MenuNavbar></MenuNavbar>
+        
+      
+      
       </header>
       <main>
         <Outlet></Outlet>
       </main>
-      <footer>this is footer</footer>
+      <footer> <Footer></Footer> </footer>
     </div>
   );
 };
