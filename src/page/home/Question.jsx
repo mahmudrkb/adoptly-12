@@ -13,11 +13,11 @@ const Question = () => {
   const handleOpen = (value) => setOpen(open === value ? 0 : value);
 
   return (
-    <div className="container mx-auto p-3 py-10">
+    <div id="faq" className="container mx-auto p-3 py-10">
           <h2 className="text-pretty mb-10 text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl">
          FAQ
         </h2>
-     <div className=" flex flex-col-reverse md:flex-row ">
+     <div className=" flex flex-col-reverse lg:flex-row ">
      <div className="max-w-xl  ">
       
       

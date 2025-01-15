@@ -29,21 +29,21 @@ const MenuNavbar = () => {
     <>
       <li
         className=" bg-teal-300  text-white transition duration-300
-                           hover:bg-orange-100 hover:text-gray-700
+                           hover:bg-orange-100 hover:text-gray-800
                         rounded-md px-3 py-2 text-sm font-medium"
       >
         <Link to={"/"}>Home</Link>
       </li>
       <li
         className=" bg-teal-300 text-white transition duration-300
-                           hover:bg-orange-100 hover:text-gray-700
+                           hover:bg-orange-100 hover:text-gray-800
                         rounded-md px-3 py-2 text-sm font-medium"
       >
         <Link to={"/listing"}>Pet Listing</Link>
       </li>
       <li
         className=" bg-teal-300 text-white transition duration-300
-                           hover:bg-orange-100 hover:text-gray-700
+                           hover:bg-orange-100 hover:text-gray-800
                         rounded-md px-3 py-2 text-sm font-medium"
       >
         <Link to={"/campaigns"}>Donation Campaigns</Link>

@@ -42,7 +42,7 @@ const CallToAction = () => {
               <Button
                 onClick={() => scrollToSection("contact")}
                 variant="text"
-                className="   transition duration-300 flex items-center gap-2
+                className="    border-orange-100 border  transition duration-300 flex items-center gap-2
                            hover:bg-orange-100 hover:text-gray-700 "
               >
                 Contact Us
@@ -80,7 +80,7 @@ const CallToAction = () => {
               <Button 
               onClick={() => scrollToSection("contact")}
                 variant="text"
-                className="  transition duration-300 flex items-center gap-2
+                className="  border-orange-100 border transition duration-300 flex items-center gap-2
                            hover:bg-orange-100 hover:text-gray-700 "
               >
                 Contact Us
