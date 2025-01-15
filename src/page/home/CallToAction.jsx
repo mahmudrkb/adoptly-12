@@ -16,7 +16,7 @@ const CallToAction = () => {
   return (
     <div className="">
       <div className="container mx-auto py-20 p-3">
-        <div className="max-w-2xl ">
+        <div className=" ">
           <Card className=" bg-teal-300 border-2 border-orange-100  md:flex-row">
             <CardHeader
               shadow={false}
@@ -65,7 +65,7 @@ const CallToAction = () => {
           </Card>
         </div>
         <div className=" mt-10 flex  md:justify-end  ">
-          <Card className=" bg-teal-300 border-2  max-w-2xl border-orange-100  flex-col-reverse md:flex-row">
+          <Card className=" bg-teal-300 border-2   border-orange-100  flex-col-reverse md:flex-row">
             <CardBody>
               <Typography variant="h4" color="blue-gray" className="mb-2">
                 Bring joy to their lives and find unconditional love in yours.
