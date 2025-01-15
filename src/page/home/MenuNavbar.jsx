@@ -123,25 +123,36 @@ const MenuNavbar = () => {
                 </div>
                 <MenuItems
                   transition
-                  className="absolute right-0 z-10 p-3   mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-xl ring-1 ring-black/5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in "
+                  className="absolute text-center right-0 z-10 p-3   mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-xl ring-1 ring-black/5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in "
                 >
                   <MenuItem>
-                    <a
-                      href="#"
+                    <Link
+                     
                       className="block rounded-md my-2 px-4 py-2 text-sm bg-teal-300  text-white transition duration-300
                            hover:bg-orange-100 hover:text-gray-700"
                     >
-                      Your Profile
-                    </a>
+                     Dashboard
+                    </Link>
                   </MenuItem>
                   <MenuItem>
-                    <a
-                      href="#"
+                    <Link
+                    to={"/login"}
+                      
                       className="block rounded-md my-2 px-4 py-2 text-sm bg-teal-300  text-white transition duration-300
                            hover:bg-orange-100 hover:text-gray-700"
                     >
-                      Settings
-                    </a>
+                     LOGIN
+                    </Link>
+                  </MenuItem>
+                  <MenuItem>
+                    <Link
+                    to={"/register"}
+                      
+                      className="block rounded-md my-2 px-4 py-2 text-sm bg-teal-300  text-white transition duration-300
+                           hover:bg-orange-100 hover:text-gray-700"
+                    >SIGNUP
+                    
+                    </Link>
                   </MenuItem>
                   <MenuItem>
                     <a
@@ -149,7 +160,8 @@ const MenuNavbar = () => {
                       className="block rounded-md px-4 my-2 py-2 text-sm  bg-teal-300  text-white transition duration-300
                            hover:bg-orange-100 hover:text-gray-700"
                     >
-                      Sign out
+                      LOG OUT
+                     
                     </a>
                   </MenuItem>
                 </MenuItems>
