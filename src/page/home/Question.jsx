@@ -5,7 +5,7 @@ import {
   AccordionBody,
 } from "@material-tailwind/react";
 import Lottie from "lottie-react";
-import faq from "../../assets/faq.json"
+import faq from "../../assets/json/faq.json"
 
 const Question = () => {
   const [open, setOpen] = React.useState(1);

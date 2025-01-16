@@ -40,12 +40,12 @@ const About = () => {
   return (
     <div id="about">
       <div className=" container mx-auto py-10   p-3 ">
-        <div className=" grid grid-cols-1 lg:grid-cols-2 gap-10 ">
+        <div className=" lg:flex   gap-10 ">
           <div className="">
             <h2 className="text-pretty text-3xl font-semibold  text-gray-900 sm:text-4xl">
               Meet our leadership
             </h2>
-            <p className="mt-6  text-gray-600">
+            <p className="mt-6 max-w-md text-gray-600">
               At  ADOPTLY, our mission is to connect loving homes
               with pets in need. We work closely with shelters and rescue
               organizations to ensure every pet receives the care and attention

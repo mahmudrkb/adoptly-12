@@ -9,28 +9,37 @@ import {
 } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
-// const navigation = [
-
-//   { name: "Home", href: "/", current: false },
-//   { name: "Projects", Link:"/navbar", current: false },
-//   { name: "Calendar", href: "#", current: false },
-//   { name: "Dashboard", href: "#", current: true },
-// ];
-
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 import logo from "../../assets/logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const MenuNavbar = () => {
+  const { user, logOutUser } = useAuth();
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    logOutUser().then(() => {
+      Swal.fire({
+        position: "top-center",
+        icon: "success",
+        title: "LogOut Successful",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      navigate("/");
+    });
+  };
+
   const NavLinks = (
     <>
       <li
         className=" bg-teal-300  text-white transition duration-300
-                           hover:bg-orange-100 hover:text-gray-800
-                        rounded-md px-3 py-2 text-sm font-medium"
+          hover:bg-orange-100 hover:text-gray-800
+          rounded-md px-3 py-2 text-sm font-medium"
       >
         <Link to={"/"}>Home</Link>
       </li>
@@ -48,8 +57,10 @@ const MenuNavbar = () => {
       >
         <Link to={"/campaigns"}>Donation Campaigns</Link>
       </li>
+      <li className="text-black">{user?.email}</li>
     </>
   );
+  console.log(user?.email);
   return (
     <div className=" shrink-0 shadow-md">
       <Disclosure as="nav" className="">
@@ -127,42 +138,38 @@ const MenuNavbar = () => {
                 >
                   <MenuItem>
                     <Link
-                     
                       className="block rounded-md my-2 px-4 py-2 text-sm bg-teal-300  text-white transition duration-300
                            hover:bg-orange-100 hover:text-gray-700"
                     >
-                     Dashboard
+                      Dashboard
                     </Link>
                   </MenuItem>
                   <MenuItem>
                     <Link
-                    to={"/login"}
-                      
+                      to={"/login"}
                       className="block rounded-md my-2 px-4 py-2 text-sm bg-teal-300  text-white transition duration-300
                            hover:bg-orange-100 hover:text-gray-700"
                     >
-                     LOGIN
+                      LOGIN
                     </Link>
                   </MenuItem>
                   <MenuItem>
                     <Link
-                    to={"/register"}
-                      
+                      to={"/register"}
                       className="block rounded-md my-2 px-4 py-2 text-sm bg-teal-300  text-white transition duration-300
                            hover:bg-orange-100 hover:text-gray-700"
-                    >SIGNUP
-                    
+                    >
+                      SIGNUP
                     </Link>
                   </MenuItem>
                   <MenuItem>
-                    <a
-                      href="#"
-                      className="block rounded-md px-4 my-2 py-2 text-sm  bg-teal-300  text-white transition duration-300
+                    <button
+                      onClick={handleLogout}
+                      className="w-full rounded-md px-4 my-2 py-2 text-sm  bg-teal-300  text-white transition duration-300
                            hover:bg-orange-100 hover:text-gray-700"
                     >
                       LOG OUT
-                     
-                    </a>
+                    </button>
                   </MenuItem>
                 </MenuItems>
               </Menu>
