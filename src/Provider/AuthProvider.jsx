@@ -9,6 +9,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 const githubProvider = new GithubAuthProvider();
 
@@ -46,13 +47,13 @@ const AuthProvider = ({ children }) => {
     return signInWithPopup(auth, githubProvider);
   };
 
-  //   const updateUser = (name, photo) => {
-  //     setLoading(true);
-  //     return updateProfile(auth.currentUser, {
-  //       displayName: name,
-  //       photoURL: photo,
-  //     });
-  //   };
+    const  updateUserProfile = (name, photo) => {
+      setLoading(true);
+      return updateProfile(auth.currentUser, {
+        displayName: name,
+        photoURL: photo,
+      });
+    };
 
   const info = {
     user,
@@ -63,6 +64,7 @@ const AuthProvider = ({ children }) => {
     logOutUser,
     googleSignIn,
     githubSignin,
+    updateUserProfile,
   };
 
   useEffect(() => {
