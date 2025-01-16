@@ -5,18 +5,18 @@ import login from "../../assets/json/login.json";
 import Lottie from "lottie-react";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
-import google from "../../assets/img/search.png"
-import github from "../../assets/img/github.png"
+import google from "../../assets/img/search.png";
+import github from "../../assets/img/github.png";
 
 const Login = () => {
-  const { signinUser, googleSignIn } = useAuth();
-  const navigate=useNavigate()
+  const { signinUser, googleSignIn, githubSignin } = useAuth();
+  const navigate = useNavigate();
   const handleSignin = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email,password)
+    console.log(email, password);
 
     signinUser(email, password)
       .then((result) => {
@@ -26,37 +26,40 @@ const Login = () => {
           icon: "success",
           title: "Login Successful",
           showConfirmButton: false,
-          timer: 1500
+          timer: 1500,
         });
-        navigate("/")
-        
+        navigate("/");
       })
       .catch((error) => {
         console.log(error.massage);
       });
-
-    
-
-
   };
 
-  const handleGoogleLogin=()=>{
-    googleSignIn()
-    .then(()=>{
+  const handleGoogleLogin = () => {
+    googleSignIn().then(() => {
       Swal.fire({
         position: "top-center",
         icon: "success",
         title: "Login Successful",
         showConfirmButton: false,
-        timer: 1500
+        timer: 1500,
       });
-      navigate("/")
+      navigate("/");
+    });
+  };
 
-    })
-
-  }
-
-  
+  const handleGithubLogin = () => {
+    githubSignin().then(() => {
+      Swal.fire({
+        position: "top-center",
+        icon: "success",
+        title: "Login Successful",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      navigate("/");
+    });
+  };
 
   return (
     <div className="container mx-auto p-3 my-5 ">
@@ -145,20 +148,23 @@ const Login = () => {
               </Link>
             </p>
 
-
             <div className="mt-7 flex gap-3 items-center ">
-              <button onClick={handleGoogleLogin}
-              className="flex items-center gap-3 w-full justify-center rounded-md bg-teal-300 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-orange-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-300">
+              <button
+                onClick={handleGoogleLogin}
+                className="flex items-center gap-3 w-full justify-center rounded-md bg-teal-300 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-orange-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-300"
+              >
                 <img className="size-4" src={google} alt="" />
                 <p>Google</p>
               </button>
-             
-              <button className="flex items-center gap-3 w-full justify-center rounded-md bg-teal-300 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-orange-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-300">
+
+              <button
+                onClick={handleGithubLogin}
+                className="flex items-center gap-3 w-full justify-center rounded-md bg-teal-300 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-orange-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-300"
+              >
                 <img className="size-4" src={github} alt="" />
                 <p>Github</p>
               </button>
-               </div>
-
+            </div>
           </div>
         </div>
       </div>

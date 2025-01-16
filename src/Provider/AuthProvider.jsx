@@ -3,13 +3,14 @@ import { app } from "../Firebase/firebase.confiq";
 import {
   createUserWithEmailAndPassword,
   getAuth,
+  GithubAuthProvider,
   GoogleAuthProvider,
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
 } from "firebase/auth";
-
+const githubProvider = new GithubAuthProvider();
 
 const googleProvider = new GoogleAuthProvider();
 
@@ -30,18 +31,20 @@ const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-     const logOutUser = () => {
-      setLoading(true);
-      return signOut(auth);
-    };
+  const logOutUser = () => {
+    setLoading(true);
+    return signOut(auth);
+  };
 
+  const googleSignIn = () => {
+    setLoading(true);
+    return signInWithPopup(auth, googleProvider);
+  };
 
-    const googleSignIn = () => {
-      setLoading(true);
-      return signInWithPopup(auth, googleProvider);
-    };
-
- 
+  const githubSignin = () => {
+    setLoading(true);
+    return signInWithPopup(auth, githubProvider);
+  };
 
   //   const updateUser = (name, photo) => {
   //     setLoading(true);
@@ -59,6 +62,7 @@ const AuthProvider = ({ children }) => {
     signinUser,
     logOutUser,
     googleSignIn,
+    githubSignin,
   };
 
   useEffect(() => {
