@@ -15,7 +15,7 @@ const CallToAction = () => {
   };
   return (
     <div className="">
-      <div className="container  mx-auto py-20 p-3">
+      <div className="container  mx-auto py-10 lg:pt-10 p-3">
         <div className="  ">
           <Card className=" bg-teal-300 border-2 border-orange-100  md:flex-row">
             <CardHeader

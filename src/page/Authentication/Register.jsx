@@ -9,7 +9,8 @@ import google from "../../assets/img/search.png";
 import github from "../../assets/img/github.png";
 
 const Register = () => {
-  const { createUser, setUser, googleSignIn, githubSignin, updateUserProfile } = useAuth();
+  const { createUser, setUser, googleSignIn, githubSignin, updateUserProfile } =
+    useAuth();
   const navigate = useNavigate();
 
   const handleSignin = (e) => {
@@ -36,33 +37,53 @@ const Register = () => {
         navigate("/");
       })
       .catch((error) => {
-        console.log(error.message);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: `${error.message} Try Again`,
+        });
       });
   };
   const handleGoogleLogin = () => {
-    googleSignIn().then(() => {
-      Swal.fire({
-        position: "top-center",
-        icon: "success",
-        title: "Login Successful",
-        showConfirmButton: false,
-        timer: 1500,
+    googleSignIn()
+      .then(() => {
+        Swal.fire({
+          position: "top-center",
+          icon: "success",
+          title: "Login Successful",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate("/");
+      })
+      .catch((error) => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: `${error.message} Try Again`,
+        });
       });
-      navigate("/");
-    });
   };
 
   const handleGithubLogin = () => {
-    githubSignin().then(() => {
-      Swal.fire({
-        position: "top-center",
-        icon: "success",
-        title: "Login Successful",
-        showConfirmButton: false,
-        timer: 1500,
+    githubSignin()
+      .then(() => {
+        Swal.fire({
+          position: "top-center",
+          icon: "success",
+          title: "Login Successful",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate("/");
+      })
+      .catch((error) => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: `${error.message} Try Again`,
+        });
       });
-      navigate("/");
-    });
   };
 
   return (

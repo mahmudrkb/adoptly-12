@@ -31,34 +31,54 @@ const Login = () => {
         navigate("/");
       })
       .catch((error) => {
-        console.log(error.massage);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: `${error.message} Try Again`,
+        });
       });
   };
 
   const handleGoogleLogin = () => {
-    googleSignIn().then(() => {
-      Swal.fire({
-        position: "top-center",
-        icon: "success",
-        title: "Login Successful",
-        showConfirmButton: false,
-        timer: 1500,
+    googleSignIn()
+      .then(() => {
+        Swal.fire({
+          position: "top-center",
+          icon: "success",
+          title: "Login Successful",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate("/");
+      })
+      .catch((error) => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: `${error.message} Try Again`,
+        });
       });
-      navigate("/");
-    });
   };
 
   const handleGithubLogin = () => {
-    githubSignin().then(() => {
-      Swal.fire({
-        position: "top-center",
-        icon: "success",
-        title: "Login Successful",
-        showConfirmButton: false,
-        timer: 1500,
+    githubSignin()
+      .then(() => {
+        Swal.fire({
+          position: "top-center",
+          icon: "success",
+          title: "Login Successful",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate("/");
+      })
+      .catch((error) => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: `${error.message} Try Again`,
+        });
       });
-      navigate("/");
-    });
   };
 
   return (
