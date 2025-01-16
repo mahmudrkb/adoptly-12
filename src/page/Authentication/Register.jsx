@@ -5,9 +5,12 @@ import signup from "../../assets/json/signup.json";
 import Lottie from "lottie-react";
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
+import google from "../../assets/img/search.png"
+import github from "../../assets/img/github.png"
+
 
 const Register = () => {
-  const { createUser, setUser } = useAuth();
+  const { createUser, setUser, googleSignIn } = useAuth();
   const navigate = useNavigate();
 
   const handleSignin = (e) => {
@@ -35,6 +38,22 @@ const Register = () => {
         console.log(error.message);
       });
   };
+    const handleGoogleLogin=()=>{
+      googleSignIn()
+      .then(()=>{
+        Swal.fire({
+          position: "top-center",
+          icon: "success",
+          title: "Login Successful",
+          showConfirmButton: false,
+          timer: 1500
+        });
+        navigate("/")
+  
+      })
+  
+    }
+  
 
   return (
     <div className="container mx-auto p-3 my-5 ">
@@ -158,6 +177,18 @@ const Register = () => {
                 SIGNUP
               </Link>
             </p>
+            <div className="mt-7 flex gap-3 items-center ">
+              <button
+              onClick={handleGoogleLogin} className="flex items-center gap-3 w-full justify-center rounded-md bg-teal-300 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-orange-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-300">
+                <img className="size-4" src={google} alt="" />
+                <p>Google</p>
+              </button>
+
+              <button className="flex items-center gap-3 w-full justify-center rounded-md bg-teal-300 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-orange-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-300">
+                <img className="size-4" src={github} alt="" />
+                <p>Github</p>
+              </button>
+            </div>
           </div>
         </div>
       </div>

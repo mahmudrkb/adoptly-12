@@ -3,10 +3,15 @@ import { app } from "../Firebase/firebase.confiq";
 import {
   createUserWithEmailAndPassword,
   getAuth,
+  GoogleAuthProvider,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
 } from "firebase/auth";
+
+
+const googleProvider = new GoogleAuthProvider();
 
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
@@ -31,10 +36,10 @@ const AuthProvider = ({ children }) => {
     };
 
 
-  //   const googleSignIn = () => {
-  //     setLoading(true);
-  //     return signInWithPopup(auth, googleProvider);
-  //   };
+    const googleSignIn = () => {
+      setLoading(true);
+      return signInWithPopup(auth, googleProvider);
+    };
 
  
 
@@ -53,6 +58,7 @@ const AuthProvider = ({ children }) => {
     createUser,
     signinUser,
     logOutUser,
+    googleSignIn,
   };
 
   useEffect(() => {
