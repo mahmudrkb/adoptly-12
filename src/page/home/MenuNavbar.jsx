@@ -14,10 +14,10 @@ function classNames(...classes) {
 }
 
 import logo from "../../assets/logo.png";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
-import { FaRegCircleUser, FaUser } from "react-icons/fa6";
+import { FaRegCircleUser } from "react-icons/fa6";
 
 const MenuNavbar = () => {
   const { user, logOutUser } = useAuth();
@@ -37,33 +37,55 @@ const MenuNavbar = () => {
 
   const NavLinks = (
     <>
-      <li
-        className=" bg-teal-300  text-white transition duration-300
-          hover:bg-orange-100 hover:text-gray-800
+      <NavLink to={"/"}>
+        <li
+          className=" bg-teal-300  text-white transition duration-300
+           hover:bg-teal-800
           rounded-md px-3 py-2 text-sm font-medium"
-      >
-        <Link to={"/"}>Home</Link>
+        >
+          Home
+        </li>
+      </NavLink>
+      <li className="text-sm font-medium">
+        <NavLink
+          className="px-3 py-2 bg-teal-300  text-white transition duration-300
+           hover:bg-teal-800  rounded-md"
+          to={"/listing"}
+        >
+          Pet Listing
+        </NavLink>
       </li>
       <li
-        className=" bg-teal-300 text-white transition duration-300
-                           hover:bg-orange-100 hover:text-gray-800
-                        rounded-md px-3 py-2 text-sm font-medium"
+        className="
+           text-sm font-medium"
       >
-        <Link to={"/listing"}>Pet Listing</Link>
+        <NavLink
+          className="px-3 py-2 bg-teal-300  text-white transition duration-300
+           hover:bg-teal-800  rounded-md"
+          to={"/campaigns"}
+        >
+          Donation Campaigns
+        </NavLink>
       </li>
+      <li className="text-black">{user?.displayName}</li>
+
       <li
-        className=" bg-teal-300 text-white transition duration-300
-                           hover:bg-orange-100 hover:text-gray-800
-                        rounded-md px-3 py-2 text-sm font-medium"
+        className="
+           text-sm font-medium"
       >
-        <Link to={"/campaigns"}>Donation Campaigns</Link>
+        <NavLink
+          className="px-3 py-2 bg-teal-300  text-white transition duration-300
+           hover:bg-teal-800  rounded-md"
+          to={"/dashboard"}
+        >
+         Dashboard
+        </NavLink>
       </li>
-      <li className="text-black">{user?.email}</li>
     </>
   );
 
   return (
-    <div className=" shrink-0 shadow-md">
+    <div className="  text-white top-0 fixed w-full bg-opacity-80 bg-teal-700 z-10 shrink-0 shadow-md">
       <Disclosure as="nav" className="">
         <div className=" container mx-auto py-3   ">
           <div className="relative flex h-10 items-center justify-between">
@@ -84,7 +106,7 @@ const MenuNavbar = () => {
             </div>
             <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
               <div className="flex shrink-0 items-center">
-                <img alt="Your Company" src={logo} className="h-10 w-auto" />
+             <Link to="/" >   <img alt="Your Company" src={logo} className="h-10 w-auto" /></Link>
                 <h4 className="font-semibold">ADOPTLY</h4>
               </div>
               <div className="hidden  items-center sm:ml-6 sm:block">
