@@ -36,7 +36,7 @@ const PetDetails = () => {
     _id,
   } = pet;
   return (
-    <div className="bg-blue-gray-50">
+    <div className="bg-gray-50">
       <div className=" mt-16   py-12 container mx-auto p-3 flex justify-center">
         <Card className="w-full bg-white  max-w-4xl ">
           <CardHeader
@@ -64,9 +64,9 @@ const PetDetails = () => {
             <Typography color="gray" className=" mt-4 mb-8 font-normal">
               {longDescription}
             </Typography>
-            <Link>
+           
               <Modal></Modal>
-            </Link>
+           
            
           </CardBody>
         </Card>
