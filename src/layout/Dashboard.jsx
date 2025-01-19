@@ -81,7 +81,7 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to={"/dashboard/add-pet"}  className=" gap-4 items-center flex rounded-md my-2 px-4 py-2 text-sm bg-teal-300  text-white transition duration-300
+                <NavLink to={"/dashboard/my-pet"}  className=" gap-4 items-center flex rounded-md my-2 px-4 py-2 text-sm bg-teal-300  text-white transition duration-300
                    hover:bg-orange-100 hover:text-gray-700">
               <FaList />
                  My Added Pets
