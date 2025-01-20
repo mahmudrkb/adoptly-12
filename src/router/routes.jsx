@@ -9,6 +9,7 @@ import Dashboard from "../layout/Dashboard";
 import AddPet from "../page/Dashboard/AddPet";
 import PetDetails from "../page/PetDetails";
 import MyPets from './../page/Dashboard/MyPets';
+import UpdatePet from "../page/Dashboard/UpdatePet";
 
 const router = createBrowserRouter([
   {
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/my-pet",
         element: <MyPets></MyPets>,
+      },
+      {
+        path: "/dashboard/update-pet/:id",
+        element:<UpdatePet></UpdatePet>,
       },
 
     ],

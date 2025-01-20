@@ -20,6 +20,7 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "./../../hooks/useAuth";
 import { format } from "date-fns";
+import { Link } from "react-router-dom";
 
 const MyPets = () => {
   const { user } = useAuth();
@@ -34,7 +35,6 @@ const MyPets = () => {
     },
   });
 
- 
   // console.log("this is all my added pets", pets);
 
   // const formattedDate = format(date, "MMMM dd, yyyy");
@@ -178,9 +178,8 @@ const MyPets = () => {
                           color="blue-gray"
                           className="font-normal"
                         >
-                          {pet.date && format(new Date(pet.date),  "MMMM dd, yyyy hh:mm")}
-
-
+                          {pet.date &&
+                            format(new Date(pet.date), "MMMM dd, yyyy hh:mm")}
                         </Typography>
                       </td>
                       <td className={classes}>
@@ -190,9 +189,11 @@ const MyPets = () => {
                           </IconButton>
                         </Tooltip>
                         <Tooltip content="Edit Pets">
-                          <IconButton variant="text">
-                            <PencilIcon className="h-4 text-green-600  w-4" />
-                          </IconButton>
+                          <Link to={`/dashboard/update-pet/${pet._id}`} >
+                            <IconButton variant="text">
+                              <PencilIcon className="h-4 text-green-600  w-4" />
+                            </IconButton>
+                          </Link>
                         </Tooltip>
 
                         <Tooltip content="Delete">
