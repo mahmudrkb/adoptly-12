@@ -18,39 +18,26 @@ import {
 import { MdAddTask, MdDeleteOutline } from "react-icons/md";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
-import useAuth from './../../hooks/useAuth';
-
-const TABLE_ROWS = [
-  {
-    img: "https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-3.jpg",
-    name: "John Michael",
-    email: "john@creative-tim.com",
-    job: "Manager",
-    org: "Organization",
-    online: true,
-    date: "23/04/18",
-  },
-];
-
-
-
+import useAuth from "./../../hooks/useAuth";
+import { format } from "date-fns";
 
 const MyPets = () => {
+  const { user } = useAuth();
 
-  
-const {user}=useAuth()
+  const axiosPublic = useAxiosPublic();
 
-const axiosPublic = useAxiosPublic();
+  const { data: pets = [], refetch } = useQuery({
+    queryKey: ["pets"],
+    queryFn: async () => {
+      const res = await axiosPublic.get(`/addedPets/${user.email}`);
+      return res.data;
+    },
+  });
 
-const { data: pets = [], refetch } = useQuery({
-  queryKey: ["pets"],
-  queryFn: async () => {
-    const res = await axiosPublic.get(`/addedPets/${user.email}`);
-    return res.data;
-  },
-});
+ 
+  // console.log("this is all my added pets", pets);
 
-console.log("this is all my added pets", pets);
+  // const formattedDate = format(date, "MMMM dd, yyyy");
 
   return (
     <div className="container mx-auto my-10">
@@ -64,7 +51,7 @@ console.log("this is all my added pets", pets);
             <div className=" flex items-center justify-between gap-8">
               <div>
                 <Typography variant="h5" color="blue-gray">
-                  All Pets list
+                  My Pets List ({pets.length})
                 </Typography>
                 <Typography color="gray" className="mt-1 font-normal">
                   See information about all pets
@@ -132,91 +119,91 @@ console.log("this is all my added pets", pets);
                 </tr>
               </thead>
               <tbody>
-                {TABLE_ROWS?.map(
-                  ({ img, name, email, job, org, online, date }, index) => {
-                    const isLast = index === TABLE_ROWS.length - 1;
-                    const classes = isLast
-                      ? "p-4"
-                      : "p-4 border-b border-blue-gray-50";
+                {pets?.map((pet, index) => {
+                  const isLast = index === pets.length - 1;
+                  const classes = isLast
+                    ? "p-4"
+                    : "p-4 border-b border-blue-gray-50";
 
-                    return (
-                      <tr key={name}>
-                        <td className={classes}>
-                          <Typography
-                            variant="small"
-                            color="blue-gray"
-                            className="font-normal"
-                          >
-                            {index + 1}
-                          </Typography>
-                        </td>
-                        <td className={classes}>
-                          <div className="flex items-center gap-3">
-                            <Avatar src={img} alt={name} size="sm" />
-                            <div className="flex flex-col">
-                              <Typography
-                                variant="small"
-                                color="blue-gray"
-                                className="font-normal"
-                              >
-                                {name}
-                              </Typography>
-                            </div>
-                          </div>
-                        </td>
-                        <td className={classes}>
+                  return (
+                    <tr key={index}>
+                      <td className={classes}>
+                        <Typography
+                          variant="small"
+                          color="blue-gray"
+                          className="font-normal"
+                        >
+                          {index + 1}
+                        </Typography>
+                      </td>
+                      <td className={classes}>
+                        <div className="flex items-center gap-3">
+                          <Avatar src={pet.image} alt={pet.name} size="sm" />
                           <div className="flex flex-col">
                             <Typography
                               variant="small"
                               color="blue-gray"
                               className="font-normal"
                             >
-                              {job}
+                              {pet.name}
                             </Typography>
                           </div>
-                        </td>
-                        <td className={classes}>
-                          <div className="w-max">
-                            <Chip
-                              variant="ghost"
-                              size="sm"
-                              value={online ? "online" : "offline"}
-                              color={online ? "green" : "blue-gray"}
-                            />
-                          </div>
-                        </td>
-
-                        <td className={classes}>
+                        </div>
+                      </td>
+                      <td className={classes}>
+                        <div className="flex flex-col">
                           <Typography
                             variant="small"
                             color="blue-gray"
                             className="font-normal"
                           >
-                            {date}
+                            {pet.category}
                           </Typography>
-                        </td>
-                        <td className={classes}>
-                          <Tooltip content="Adopted ">
-                            <IconButton variant="text">
-                              <MdAddTask className="h-4 w-4" />
-                            </IconButton>
-                          </Tooltip>
-                          <Tooltip content="Edit Pets">
-                            <IconButton variant="text">
-                              <PencilIcon className="h-4 text-green-600  w-4" />
-                            </IconButton>
-                          </Tooltip>
+                        </div>
+                      </td>
+                      <td className={classes}>
+                        <div className="w-max">
+                          <Chip
+                            variant="ghost"
+                            size="sm"
+                            value={pet.adopted ? "Adopted" : "Not Adopted"}
+                            color={pet.adopted ? "green" : "blue-gray"}
+                          />
+                        </div>
+                      </td>
 
-                          <Tooltip content="Delete">
-                            <IconButton variant="text">
-                              <MdDeleteOutline className="h-4 text-red-600 w-4" />
-                            </IconButton>
-                          </Tooltip>
-                        </td>
-                      </tr>
-                    );
-                  }
-                )}
+                      <td className={classes}>
+                        <Typography
+                          variant="small"
+                          color="blue-gray"
+                          className="font-normal"
+                        >
+                          {pet.date && format(new Date(pet.date),  "MMMM dd, yyyy hh:mm")}
+
+
+                        </Typography>
+                      </td>
+                      <td className={classes}>
+                        <Tooltip content="Adopted ">
+                          <IconButton variant="text">
+                            <MdAddTask className="h-4 w-4" />
+                          </IconButton>
+                        </Tooltip>
+                        <Tooltip content="Edit Pets">
+                          <IconButton variant="text">
+                            <PencilIcon className="h-4 text-green-600  w-4" />
+                          </IconButton>
+                        </Tooltip>
+
+                        <Tooltip content="Delete">
+                          <IconButton variant="text">
+                            <MdDeleteOutline className="h-4 text-red-600 w-4" />
+                          </IconButton>
+                        </Tooltip>
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </CardBody>

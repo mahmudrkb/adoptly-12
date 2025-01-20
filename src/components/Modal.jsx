@@ -19,7 +19,7 @@ import Swal from "sweetalert2";
 
 const Modal = () => {
   const { user } = useAuth();
-  const [errors, setError] = useState("");
+
 
   const [open, setOpen] = useState(false);
 
@@ -35,7 +35,7 @@ const Modal = () => {
     },
   });
 
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit,formState:{errors} } = useForm();
   const onSubmit = (data) => {
     Swal.fire({
       position: "top-center",
@@ -46,7 +46,7 @@ const Modal = () => {
     });
     handleOpen()
 
-    console.log(data);
+    // console.log(data);
   };
 
 
