@@ -5,38 +5,20 @@ import { PencilIcon, UserPlusIcon } from "@heroicons/react/24/solid";
 import {
   Card,
   CardHeader,
-  Input,
   Typography,
   Button,
   CardBody,
   Chip,
   CardFooter,
-  Tabs,
-  TabsHeader,
-  Tab,
   Avatar,
   IconButton,
   Tooltip,
 } from "@material-tailwind/react";
-import { FaDeleteLeft } from "react-icons/fa6";
+
 import { MdAddTask, MdDeleteOutline } from "react-icons/md";
-
-const TABS = [
-  {
-    label: "All",
-    value: "all",
-  },
-  {
-    label: "Monitored",
-    value: "monitored",
-  },
-  {
-    label: "Unmonitored",
-    value: "unmonitored",
-  },
-];
-
-const TABLE_HEAD = ["Member", "Function", "Status", "Employed", ""];
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import { useQuery } from "@tanstack/react-query";
+import useAuth from './../../hooks/useAuth';
 
 const TABLE_ROWS = [
   {
@@ -48,19 +30,28 @@ const TABLE_ROWS = [
     online: true,
     date: "23/04/18",
   },
-
-  {
-    img: "https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-5.jpg",
-    name: "Richard Gran",
-    email: "richard@creative-tim.com",
-    job: "Manager",
-    org: "Executive",
-    online: false,
-    date: "04/10/21",
-  },
 ];
 
+
+
+
 const MyPets = () => {
+
+  
+const {user}=useAuth()
+
+const axiosPublic = useAxiosPublic();
+
+const { data: pets = [], refetch } = useQuery({
+  queryKey: ["pets"],
+  queryFn: async () => {
+    const res = await axiosPublic.get(`/addedPets/${user.email}`);
+    return res.data;
+  },
+});
+
+console.log("this is all my added pets", pets);
+
   return (
     <div className="container mx-auto my-10">
       <SectionsTitles
@@ -90,37 +81,47 @@ const MyPets = () => {
                       variant="small"
                       color="blue-gray"
                       className="font-normal leading-none opacity-70"
-                    >#</Typography>
+                    >
+                      #
+                    </Typography>
                   </th>
                   <th className="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4">
                     <Typography
                       variant="small"
                       color="blue-gray"
                       className="font-normal leading-none opacity-70"
-                    >Name</Typography>
+                    >
+                      Name
+                    </Typography>
                   </th>
                   <th className="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4">
                     <Typography
                       variant="small"
                       color="blue-gray"
                       className="font-normal leading-none opacity-70"
-                    >Category</Typography>
+                    >
+                      Category
+                    </Typography>
                   </th>
                   <th className="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4">
                     <Typography
                       variant="small"
                       color="blue-gray"
                       className="font-normal leading-none opacity-70"
-                    >Status</Typography>
+                    >
+                      Status
+                    </Typography>
                   </th>
                   <th className="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4">
                     <Typography
                       variant="small"
                       color="blue-gray"
                       className="font-normal leading-none opacity-70"
-                    >Date</Typography>
+                    >
+                      Date
+                    </Typography>
                   </th>
-                
+
                   <th className="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4">
                     <Typography
                       variant="small"
@@ -131,7 +132,7 @@ const MyPets = () => {
                 </tr>
               </thead>
               <tbody>
-                {TABLE_ROWS.map(
+                {TABLE_ROWS?.map(
                   ({ img, name, email, job, org, online, date }, index) => {
                     const isLast = index === TABLE_ROWS.length - 1;
                     const classes = isLast
@@ -140,13 +141,13 @@ const MyPets = () => {
 
                     return (
                       <tr key={name}>
-                       <td className={classes}>
+                        <td className={classes}>
                           <Typography
                             variant="small"
                             color="blue-gray"
                             className="font-normal"
                           >
-                            {index+1}
+                            {index + 1}
                           </Typography>
                         </td>
                         <td className={classes}>
@@ -160,7 +161,6 @@ const MyPets = () => {
                               >
                                 {name}
                               </Typography>
-                             
                             </div>
                           </div>
                         </td>
@@ -173,7 +173,6 @@ const MyPets = () => {
                             >
                               {job}
                             </Typography>
-                            
                           </div>
                         </td>
                         <td className={classes}>
@@ -186,7 +185,7 @@ const MyPets = () => {
                             />
                           </div>
                         </td>
-                      
+
                         <td className={classes}>
                           <Typography
                             variant="small"
@@ -197,9 +196,9 @@ const MyPets = () => {
                           </Typography>
                         </td>
                         <td className={classes}>
-                        <Tooltip content="Adopted ">
+                          <Tooltip content="Adopted ">
                             <IconButton variant="text">
-                            <MdAddTask  className="h-4 w-4" />
+                              <MdAddTask className="h-4 w-4" />
                             </IconButton>
                           </Tooltip>
                           <Tooltip content="Edit Pets">
@@ -208,7 +207,6 @@ const MyPets = () => {
                             </IconButton>
                           </Tooltip>
 
-                        
                           <Tooltip content="Delete">
                             <IconButton variant="text">
                               <MdDeleteOutline className="h-4 text-red-600 w-4" />
