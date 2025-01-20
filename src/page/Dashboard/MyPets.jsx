@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import SectionsTitles from "./../shared/SectionTitles";
 
 import { PencilIcon, UserPlusIcon } from "@heroicons/react/24/solid";
@@ -20,7 +20,7 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "./../../hooks/useAuth";
 import { format } from "date-fns";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const MyPets = () => {
@@ -69,6 +69,21 @@ const MyPets = () => {
       });
   };
 
+  // const [isdisabled,setDisabled]=useState(false)
+
+  const handleUpdateStatus = (id, status) => {
+    const data = {
+      adopted: status,
+    };
+    axiosPublic.patch(`/setAdopted/${id}`, data).then((res) => {
+      Swal.fire({
+        title: "Adopted Successfully!",
+        icon: "success",
+      });
+      refetch();
+      // setDisabled(true)
+    });
+  };
   // console.log("this is all my added pets", pets);
 
   // const formattedDate = format(date, "MMMM dd, yyyy");
@@ -218,9 +233,13 @@ const MyPets = () => {
                       </td>
                       <td className={classes}>
                         <Tooltip content="Adopted ">
-                          <IconButton variant="text">
-                            <MdAddTask className="h-4 w-4" />
-                          </IconButton>
+                          <button
+                            onClick={() => handleUpdateStatus(pet._id, true)}
+                          >
+                            <IconButton variant="text">
+                              <MdAddTask className="h-4 w-4" />
+                            </IconButton>
+                          </button>
                         </Tooltip>
                         <Tooltip content="Edit Pets">
                           <Link to={`/dashboard/update-pet/${pet._id}`}>
