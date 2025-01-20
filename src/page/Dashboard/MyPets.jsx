@@ -1,6 +1,6 @@
 import React from "react";
 import SectionsTitles from "./../shared/SectionTitles";
-import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+
 import { PencilIcon, UserPlusIcon } from "@heroicons/react/24/solid";
 import {
   Card,
@@ -21,6 +21,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "./../../hooks/useAuth";
 import { format } from "date-fns";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const MyPets = () => {
   const { user } = useAuth();
@@ -34,6 +35,39 @@ const MyPets = () => {
       return res.data;
     },
   });
+
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    })
+      .then((result) => {
+        if (result.isConfirmed) {
+          axiosPublic.delete(`/delete-pet/${id}`).then((res) => {
+            if (res.data.deletedCount > 0) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success",
+              });
+            }
+            refetch();
+          });
+        }
+      })
+      .catch((err) => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: `${err.message} Try Again`,
+        });
+      });
+  };
 
   // console.log("this is all my added pets", pets);
 
@@ -189,7 +223,7 @@ const MyPets = () => {
                           </IconButton>
                         </Tooltip>
                         <Tooltip content="Edit Pets">
-                          <Link to={`/dashboard/update-pet/${pet._id}`} >
+                          <Link to={`/dashboard/update-pet/${pet._id}`}>
                             <IconButton variant="text">
                               <PencilIcon className="h-4 text-green-600  w-4" />
                             </IconButton>
@@ -198,7 +232,9 @@ const MyPets = () => {
 
                         <Tooltip content="Delete">
                           <IconButton variant="text">
-                            <MdDeleteOutline className="h-4 text-red-600 w-4" />
+                            <button onClick={() => handleDelete(pet._id)}>
+                              <MdDeleteOutline className="h-4 text-red-600 w-4" />
+                            </button>
                           </IconButton>
                         </Tooltip>
                       </td>
