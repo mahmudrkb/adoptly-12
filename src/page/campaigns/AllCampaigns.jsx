@@ -76,7 +76,7 @@ const AllCampaigns = () => {
                 </Typography>
               </CardBody>
               <CardFooter className="pt-0">
-               <Link to={`/`}>
+               <Link to={`/detailsCam/${donation._id}`}>
                <Button 
                   className="hover:bg-orange-100 hover:text-gray-700"
                   color="teal"

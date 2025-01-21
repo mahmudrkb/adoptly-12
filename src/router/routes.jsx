@@ -14,6 +14,7 @@ import AddDonation from "../page/Dashboard/Donation/AddDonation";
 import MyCampaigns from "../page/Dashboard/Donation/MyCampaigns";
 import UpdateDonation from "../page/Dashboard/Donation/UpdateDonation";
 import AllCampaigns from "../page/campaigns/AllCampaigns";
+import DetailsCam from "../page/campaigns/DetailsCam";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,11 @@ const router = createBrowserRouter([
       {
         path:"/allCampaigns",
         element:<AllCampaigns></AllCampaigns>
+      },
+      {
+        path:"/detailsCam/:id",
+        element:<DetailsCam></DetailsCam>
+
       }
     ],
   },
