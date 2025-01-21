@@ -3,6 +3,8 @@ import { useForm } from "react-hook-form";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useAuth from "../../../hooks/useAuth";
 import SectionsTitles from "../../shared/SectionTitles";
+import { useParams } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 
 // TODO
 // import.meta.env.VITE_IMAGE_HOSTING_API_KEY
@@ -11,16 +13,25 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_ke
 
 // console.log("this is code",image_hosting_key)
 
-const AddDonation = () => {
+const UpdateDonation = () => {
   const tomorrowDate = new Date();
   tomorrowDate.setDate(tomorrowDate.getDate() + 1);
   const formattedTomorrowDate = tomorrowDate.toISOString().split("T")[0];
+
+  const { id } = useParams();
+  const { data: camData = [], refetch } = useQuery({
+    queryKey: ["camData"],
+    queryFn: async () => {
+      const res = await axiosPublic.get(`/donation-cam/${id}`);
+      return res.data;
+    },
+  });
+//   console.log(camData);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
   } = useForm();
   const { user } = useAuth();
   const axiosPublic = useAxiosPublic();
@@ -34,8 +45,8 @@ const AddDonation = () => {
     });
     // console.log(res.data);
     if (res.data.success) {
-      const donation = {
-        name:data.name,
+      const updateCampaigns = {
+        name: data.name,
         maxAmount: data.maxAmount,
         lastDate: data.lastDate,
         shortDescription: data.shortDescription,
@@ -44,29 +55,38 @@ const AddDonation = () => {
         donOwnerEmail: user.email,
         startDate: new Date().toISOString(),
       };
-      //   console.log(donation);
-
-      const addDonation = await axiosPublic.post("/add-donation", donation);
-
-      // console.log(addDonation.data);
-
-      if (addDonation.data.insertedId) {
+      //   console.log(updateCampaigns);
+  const updateCam = await axiosPublic.patch(`/updateCampaigns/${id}`,updateCampaigns );
+      console.log(updateCam.data);
+      if (updateCam.data.modifiedCount > 0) {
         Swal.fire({
           position: "top-center",
           icon: "success",
-          title: "Donation added successfully",
+          title: "Campaign Updated successfully",
           showConfirmButton: false,
           timer: 1500,
         });
-        reset();
+        refetch();
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong!",
+        });
       }
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Something went wrong!",
+      });
     }
   };
   return (
     <div className=" container mx-auto my-10">
       <SectionsTitles
-        heading={"Donation Campaign"}
-        subheading={"Add new donation campaign"}
+        heading={"Update Campaign"}
+        subheading={"Update Campaign"}
       ></SectionsTitles>
       <div className="p-7 bg-blue-gray-50 shrink-md rounded-md shadow-md sm:mx-auto sm:w-full sm:max-w-3xl">
         <form
@@ -81,20 +101,10 @@ const AddDonation = () => {
             </label>
             <div className="mt-2">
               <input
-                {...register("name", {
-                  required: "Donation Campaign name is required",
-                  minLength: {
-                    value: 3,
-                    message: "Name must be at least 3 characters",
-                  },
-                })}
+                defaultValue={camData.name}
+                {...register("name")}
                 className="w-full border-2 rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-teal-300 sm:text-sm/6"
               />
-              {errors.name && (
-                <div className="  text-red-500 text-sm">
-                  {errors.name.message}
-                </div>
-              )}
             </div>
           </div>
           <div className="flex gap-5 ">
@@ -104,9 +114,9 @@ const AddDonation = () => {
               </label>
               <div className="mt-2">
                 <input
+                  defaultValue={camData.maxAmount}
                   type="number"
                   {...register("maxAmount", {
-                    required: " Donation  amount  is required",
                     min: { value: 0, message: "Amount cannot be negative" },
                     max: {
                       value: 10000,
@@ -130,9 +140,8 @@ const AddDonation = () => {
                 <input
                   type="date"
                   min={formattedTomorrowDate}
-                  defaultValue={formattedTomorrowDate}
+                  defaultValue={camData.lastDate}
                   {...register("lastDate", {
-                    required: "Last date of donation  is required",
                     min: {
                       value: formattedTomorrowDate,
                       message: "Please select a valid date.",
@@ -155,8 +164,8 @@ const AddDonation = () => {
             </label>
             <div className="mt-2">
               <input
+              defaultValue={camData.shortDescription}
                 {...register("shortDescription", {
-                  required: "Short description is required",
                   minLength: {
                     value: 10,
                     message: "Description must be at least 10 characters",
@@ -174,8 +183,8 @@ const AddDonation = () => {
           <div class="">
             <div class="relative w-full min-w-[200px]">
               <textarea
+              defaultValue={camData.longDescription}
                 {...register("longDescription", {
-                  required: "Detailed description is required",
                   minLength: {
                     value: 20,
                     message: "Description must be at least 20 characters",
@@ -203,13 +212,9 @@ const AddDonation = () => {
               <input
                 type="file"
                 accept="image/*"
-                {...register("image", { required: "Pet image is required" })}
+                {...register("image", )}
               />
-              {errors.image && (
-                <div className="text-red-500 text-sm">
-                  {errors.image.message}
-                </div>
-              )}
+           
             </div>
           </div>
 
@@ -218,7 +223,7 @@ const AddDonation = () => {
             className="flex w-full justify-center rounded-md bg-teal-300 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-orange-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-300"
           >
             {" "}
-            Add Donation Campaign{" "}
+            Update Donation Campaign{" "}
           </button>
         </form>
       </div>
@@ -226,4 +231,4 @@ const AddDonation = () => {
   );
 };
 
-export default AddDonation;
+export default UpdateDonation;

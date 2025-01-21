@@ -99,7 +99,7 @@ const MyPets = () => {
           <CardHeader floated={false} shadow={false} className="rounded-none">
             <div className=" flex items-center justify-between gap-8">
               <div>
-                <Typography variant="h5" color="blue-gray">
+                <Typography variant="h5">
                   My Pets List ({pets.length})
                 </Typography>
                 <Typography color="gray" className="mt-1 font-normal">
@@ -111,58 +111,52 @@ const MyPets = () => {
           <CardBody className=" px-0">
             <table className=" w-full min-w-max table-auto text-left">
               <thead>
-                <tr>
-                  <th className="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4">
+                <tr className=" bg-teal-300 text-white">
+                  <th className="border-y border-gray-100 p-4">
                     <Typography
                       variant="small"
-                      color="blue-gray"
-                      className="font-normal leading-none opacity-70"
+                      className="font-normal leading-none "
                     >
                       #
                     </Typography>
                   </th>
-                  <th className="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4">
+                  <th className="border-y border-blue-gray-100  p-4">
                     <Typography
                       variant="small"
-                      color="blue-gray"
-                      className="font-normal leading-none opacity-70"
+                      className="font-normal leading-none "
                     >
                       Name
                     </Typography>
                   </th>
-                  <th className="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4">
+                  <th className="border-y border-blue-gray-100  p-4">
                     <Typography
                       variant="small"
-                      color="blue-gray"
-                      className="font-normal leading-none opacity-70"
+                      className="font-normal leading-none "
                     >
                       Category
                     </Typography>
                   </th>
-                  <th className="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4">
+                  <th className="border-y border-blue-gray-100  p-4">
                     <Typography
                       variant="small"
-                      color="blue-gray"
-                      className="font-normal leading-none opacity-70"
+                      className="font-normal leading-none "
                     >
                       Status
                     </Typography>
                   </th>
-                  <th className="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4">
+                  <th className="border-y border-blue-gray-100  p-4">
                     <Typography
                       variant="small"
-                      color="blue-gray"
-                      className="font-normal leading-none opacity-70"
+                      className="font-normal leading-none "
                     >
                       Date
                     </Typography>
                   </th>
 
-                  <th className="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4">
+                  <th className="border-y border-blue-gray-100  p-4">
                     <Typography
                       variant="small"
-                      color="blue-gray"
-                      className="font-normal leading-none opacity-70"
+                      className="font-normal leading-none "
                     ></Typography>
                   </th>
                 </tr>
@@ -177,11 +171,7 @@ const MyPets = () => {
                   return (
                     <tr key={index}>
                       <td className={classes}>
-                        <Typography
-                          variant="small"
-                          color="blue-gray"
-                          className="font-normal"
-                        >
+                        <Typography variant="small" className="font-normal">
                           {index + 1}
                         </Typography>
                       </td>
@@ -189,11 +179,7 @@ const MyPets = () => {
                         <div className="flex items-center gap-3">
                           <Avatar src={pet.image} alt={pet.name} size="sm" />
                           <div className="flex flex-col">
-                            <Typography
-                              variant="small"
-                              color="blue-gray"
-                              className="font-normal"
-                            >
+                            <Typography variant="small" className="font-normal">
                               {pet.name}
                             </Typography>
                           </div>
@@ -201,11 +187,7 @@ const MyPets = () => {
                       </td>
                       <td className={classes}>
                         <div className="flex flex-col">
-                          <Typography
-                            variant="small"
-                            color="blue-gray"
-                            className="font-normal"
-                          >
+                          <Typography variant="small" className="font-normal">
                             {pet.category}
                           </Typography>
                         </div>
@@ -222,11 +204,7 @@ const MyPets = () => {
                       </td>
 
                       <td className={classes}>
-                        <Typography
-                          variant="small"
-                          color="blue-gray"
-                          className="font-normal"
-                        >
+                        <Typography variant="small" className="font-normal">
                           {pet.date &&
                             format(new Date(pet.date), "MMMM dd, yyyy hh:mm")}
                         </Typography>
@@ -264,11 +242,7 @@ const MyPets = () => {
             </table>
           </CardBody>
           <CardFooter className="flex items-center justify-between border-t border-blue-gray-50 p-4">
-            <Typography
-              variant="small"
-              color="blue-gray"
-              className="font-normal"
-            >
+            <Typography variant="small" className="font-normal">
               Page 1 of 10
             </Typography>
             <div className="flex gap-2">
