@@ -26,7 +26,7 @@ const UpdateDonation = () => {
       return res.data;
     },
   });
-//   console.log(camData);
+  //   console.log(camData);
 
   const {
     register,
@@ -56,7 +56,10 @@ const UpdateDonation = () => {
         startDate: new Date().toISOString(),
       };
       //   console.log(updateCampaigns);
-  const updateCam = await axiosPublic.patch(`/updateCampaigns/${id}`,updateCampaigns );
+      const updateCam = await axiosPublic.patch(
+        `/updateCampaigns/${id}`,
+        updateCampaigns
+      );
       console.log(updateCam.data);
       if (updateCam.data.modifiedCount > 0) {
         Swal.fire({
@@ -164,7 +167,7 @@ const UpdateDonation = () => {
             </label>
             <div className="mt-2">
               <input
-              defaultValue={camData.shortDescription}
+                defaultValue={camData.shortDescription}
                 {...register("shortDescription", {
                   minLength: {
                     value: 10,
@@ -183,7 +186,7 @@ const UpdateDonation = () => {
           <div class="">
             <div class="relative w-full min-w-[200px]">
               <textarea
-              defaultValue={camData.longDescription}
+                defaultValue={camData.longDescription}
                 {...register("longDescription", {
                   minLength: {
                     value: 20,
@@ -198,7 +201,7 @@ const UpdateDonation = () => {
                   {errors.longDescription.message}
                 </div>
               )}
-              <label class="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full focus:outline-teal-300 select-none text-[11px] font-normal leading-tight text-blue-gray-400 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 text-sm peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:border-gray-900 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:border-gray-900 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500 text-sm">
+              <label class="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full focus:outline-teal-300 select-none text-[11px] font-normal leading-tight text-blue-gray-400 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 text-sm peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:border-gray-900 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:border-gray-900 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500 ">
                 Long Description
               </label>
             </div>
@@ -209,12 +212,7 @@ const UpdateDonation = () => {
               Image{" "}
             </label>
             <div className="mt-2">
-              <input
-                type="file"
-                accept="image/*"
-                {...register("image", )}
-              />
-           
+              <input type="file" accept="image/*" {...register("image")} />
             </div>
           </div>
 

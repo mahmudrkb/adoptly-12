@@ -62,7 +62,7 @@ const MenuNavbar = () => {
         <NavLink
           className="px-3 py-2 bg-teal-300  text-white transition duration-300
            hover:bg-teal-800  rounded-md"
-          to={"/campaigns"}
+          to={"/allCampaigns"}
         >
           Donation Campaigns
         </NavLink>

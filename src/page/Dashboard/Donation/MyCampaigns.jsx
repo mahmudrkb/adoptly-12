@@ -26,6 +26,7 @@ import SectionsTitles from "../../shared/SectionTitles";
 import { Progress } from "@material-tailwind/react";
 import { FaRegCirclePause } from "react-icons/fa6";
 import { IoPlayForwardCircleOutline } from "react-icons/io5";
+import DonatorModal from "./DonatorModal";
 
 const MyCampaigns = () => {
   const { user } = useAuth();
@@ -39,6 +40,10 @@ const MyCampaigns = () => {
       return res.data;
     },
   });
+
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => setOpen(!open);
 
   //   const handleDelete = (id) => {
   //     Swal.fire({
@@ -98,7 +103,7 @@ const MyCampaigns = () => {
         heading={"My Campaigns"}
         subheading={"This is all my Donation Campaigns"}
       ></SectionsTitles>
-      <div>
+      <div className="overflow-x-auto">
         <Card className="h-full w-full  overflow-x-scroll">
           <CardHeader floated={false} shadow={false} className="rounded-none">
             <div className=" flex items-center justify-between gap-8">
@@ -150,7 +155,9 @@ const MyCampaigns = () => {
                     <Typography
                       variant="small"
                       className="font-normal text-center leading-none "
-                    >Action </Typography>
+                    >
+                      Action{" "}
+                    </Typography>
                   </th>
                 </tr>
               </thead>
@@ -186,9 +193,9 @@ const MyCampaigns = () => {
                         <div className="text-teal-300">
                           <Progress
                             color="teal"
-                            value={50}
+                            value={19}
                             maxValue={donation.maxAmount}
-                            label="Completed"
+                            label=" "
                           />
                         </div>
                       </td>
@@ -239,9 +246,7 @@ const MyCampaigns = () => {
 
                         <Tooltip content="Donation History">
                           <IconButton variant="text">
-                            <button>
-                              <MdPreview className="h-6 text-teal-600 w-6" />
-                            </button>
+                            <DonatorModal></DonatorModal>
                           </IconButton>
                         </Tooltip>
                       </td>
