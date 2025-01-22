@@ -7,11 +7,14 @@ import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
 import google from "../../assets/img/search.png";
 import github from "../../assets/img/github.png";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const Register = () => {
   const { createUser, setUser, googleSignIn, githubSignin, updateUserProfile } =
     useAuth();
   const navigate = useNavigate();
+
+  const axiosPublic = useAxiosPublic();
 
   const handleSignin = (e) => {
     e.preventDefault();
@@ -21,6 +24,16 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
 
+    const addUser = axiosPublic.post("/add-user", {
+      name,
+      email,
+      password,
+      photo,
+      role:"user"
+      
+    });
+
+   
     createUser(email, password)
       .then((result) => {
         updateUserProfile(name, photo);

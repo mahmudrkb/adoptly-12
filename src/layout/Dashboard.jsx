@@ -1,5 +1,5 @@
 import React from "react";
-import { FaHome, FaList } from "react-icons/fa";
+import { FaHome, FaList, FaListAlt } from "react-icons/fa";
 import {
   FaBorderAll,
   FaCalendar,
@@ -8,13 +8,18 @@ import {
   FaCodePullRequest,
   FaListCheck,
   FaStar,
+  FaUser,
+  FaUtensils,
 } from "react-icons/fa6";
 import { CiViewList } from "react-icons/ci";
-import { IoAddCircleOutline, IoCreateOutline, IoMailSharp } from "react-icons/io5";
+import {
+  IoAddCircleOutline,
+  IoCreateOutline,
+  IoMailSharp,
+} from "react-icons/io5";
 
 import { Link, NavLink, Outlet } from "react-router-dom";
 import logo from "../assets/logo.png";
-
 
 const Dashboard = () => {
   return (
@@ -31,88 +36,116 @@ const Dashboard = () => {
               <h4 className="font-semibold">ADOPTLY</h4>
             </div>
             <ul className=" ">
-              {/*             
-                  <li>
-                    <NavLink to={"/dashboard/adminHome"}>
-                      {" "}
-                      <FaHome></FaHome> Admin Home
-                    </NavLink>
-                  </li>
+              <li>
+                <NavLink
+                  to={"/dashboard/adminHome"}
+                  className=" gap-4 items-center flex rounded-md my-2 px-4 py-2 text-sm bg-teal-300  text-white transition duration-300
+                   hover:bg-orange-100 hover:text-gray-700"
+                >
+                  {" "}
+                  <FaHome></FaHome>Admin Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to={"/dashboard/allUser"}
+                  className=" gap-4 items-center flex rounded-md my-2 px-4 py-2 text-sm bg-teal-300  text-white transition duration-300
+                   hover:bg-orange-100 hover:text-gray-700"
+                >
+                  {" "}
+                  <FaUser></FaUser> All User
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to={"/dashboard/allPets"}
+                  className=" gap-4 items-center flex rounded-md my-2 px-4 py-2 text-sm bg-teal-300  text-white transition duration-300
+                   hover:bg-orange-100 hover:text-gray-700"
+                >
+                  {" "}
+                  <FaListAlt></FaListAlt> All Pets
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to={"/dashboard/adminHome"}
+                  className=" gap-4 items-center flex rounded-md my-2 px-4 py-2 text-sm bg-teal-300  text-white transition duration-300
+                   hover:bg-orange-100 hover:text-gray-700"
+                >
+                  {" "} <CiViewList />
+                  All Donations
+                </NavLink>
+              </li>
 
-                  <li>
-                    <NavLink to={"/dashboard/addItems"}>
-                      <FaUtensils></FaUtensils>
-                      Add Item
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink to={"/dashboard/manageItems"}>
-                      <FaList></FaList>
-                      Manage Items
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink to={"/dashboard/manageBookings"}>
-                      <FaBook></FaBook>
-                      Manage Bookings
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink to={"/dashboard/allUsers"}>
-                      <FaUsers></FaUsers>
-                      All Users
-                    </NavLink>
-                  </li>
-                */}
 
-         
+
 
               <li>
-                <NavLink   className=" gap-4 items-center flex rounded-md my-2 px-4 py-2 text-sm bg-teal-300  text-white transition duration-300
-                   hover:bg-orange-100 hover:text-gray-700" to={"/dashboard/UserHome"}>
+                <NavLink
+                  className=" gap-4 items-center flex rounded-md my-2 px-4 py-2 text-sm bg-teal-300  text-white transition duration-300
+                   hover:bg-orange-100 hover:text-gray-700"
+                  to={"/dashboard/UserHome"}
+                >
                   {" "}
                   <FaHome></FaHome> User Home
                 </NavLink>
               </li>
               <li>
-                <NavLink to={"/dashboard/add-pet"}  className=" active:bg-orange-100 gap-4 items-center flex rounded-md my-2 px-4 py-2 text-sm bg-teal-300  text-white transition duration-300
-                   hover:bg-orange-100 hover:text-gray-700">
-                  <IoAddCircleOutline />  Add a Pet
+                <NavLink
+                  to={"/dashboard/add-pet"}
+                  className=" active:bg-orange-100 gap-4 items-center flex rounded-md my-2 px-4 py-2 text-sm bg-teal-300  text-white transition duration-300
+                   hover:bg-orange-100 hover:text-gray-700"
+                >
+                  <IoAddCircleOutline /> Add a Pet
                 </NavLink>
               </li>
               <li>
-                <NavLink to={"/dashboard/my-pet"}  className=" gap-4 items-center flex rounded-md my-2 px-4 py-2 text-sm bg-teal-300  text-white transition duration-300
-                   hover:bg-orange-100 hover:text-gray-700">
-              <FaList />
-                 My Added Pets
+                <NavLink
+                  to={"/dashboard/my-pet"}
+                  className=" gap-4 items-center flex rounded-md my-2 px-4 py-2 text-sm bg-teal-300  text-white transition duration-300
+                   hover:bg-orange-100 hover:text-gray-700"
+                >
+                  <FaList />
+                  My Added Pets
                 </NavLink>
               </li>
               <li>
-                <NavLink to={"/dashboard/adoptionRequest"}  className=" gap-4 items-center flex rounded-md my-2 px-4 py-2 text-sm bg-teal-300  text-white transition duration-300
-                   hover:bg-orange-100 hover:text-gray-700">
-               <FaCodePullRequest />
-
-                 Adoption Request 
+                <NavLink
+                  to={"/dashboard/adoptionRequest"}
+                  className=" gap-4 items-center flex rounded-md my-2 px-4 py-2 text-sm bg-teal-300  text-white transition duration-300
+                   hover:bg-orange-100 hover:text-gray-700"
+                >
+                  <FaCodePullRequest />
+                  Adoption Request
                 </NavLink>
               </li>
               <li>
-                <NavLink to={"/dashboard/add-donation"}  className=" gap-4 items-center flex rounded-md my-2 px-4 py-2 text-sm bg-teal-300  text-white transition duration-300
-                   hover:bg-orange-100 hover:text-gray-700">
-                 <IoCreateOutline />
-                Create Donation Campaign
+                <NavLink
+                  to={"/dashboard/add-donation"}
+                  className=" gap-4 items-center flex rounded-md my-2 px-4 py-2 text-sm bg-teal-300  text-white transition duration-300
+                   hover:bg-orange-100 hover:text-gray-700"
+                >
+                  <IoCreateOutline />
+                  Create Donation Campaign
                 </NavLink>
               </li>
               <li>
-                <NavLink to={"/dashboard/my-campaigns"}  className=" gap-4 items-center flex rounded-md my-2 px-4 py-2 text-sm bg-teal-300  text-white transition duration-300
-                   hover:bg-orange-100 hover:text-gray-700">
+                <NavLink
+                  to={"/dashboard/my-campaigns"}
+                  className=" gap-4 items-center flex rounded-md my-2 px-4 py-2 text-sm bg-teal-300  text-white transition duration-300
+                   hover:bg-orange-100 hover:text-gray-700"
+                >
                   <CiViewList />
-                My Donation Campaigns
+                  My Donation Campaigns
                 </NavLink>
               </li>
               <li>
-                <NavLink to={"/dashboard/paymentsHistory"}  className=" gap-4 items-center flex rounded-md my-2 px-4 py-2 text-sm bg-teal-300  text-white transition duration-300
-                   hover:bg-orange-100 hover:text-gray-700">
-               <FaListCheck />
+                <NavLink
+                  to={"/dashboard/paymentsHistory"}
+                  className=" gap-4 items-center flex rounded-md my-2 px-4 py-2 text-sm bg-teal-300  text-white transition duration-300
+                   hover:bg-orange-100 hover:text-gray-700"
+                >
+                  <FaListCheck />
                   My Donations
                 </NavLink>
               </li>
@@ -121,36 +154,42 @@ const Dashboard = () => {
               <div>--------------------------------</div>
 
               <li>
-                <NavLink to="/"  className=" gap-4 items-center flex rounded-md my-2 px-4 py-2 text-sm bg-teal-300  text-white transition duration-300
-                   hover:bg-orange-100 hover:text-gray-700">
+                <NavLink
+                  to="/"
+                  className=" gap-4 items-center flex rounded-md my-2 px-4 py-2 text-sm bg-teal-300  text-white transition duration-300
+                   hover:bg-orange-100 hover:text-gray-700"
+                >
                   <FaHome></FaHome> Home
                 </NavLink>
               </li>
 
               <li>
-                <NavLink to="/listing"  className=" gap-4 items-center flex rounded-md my-2 px-4 py-2 text-sm bg-teal-300  text-white transition duration-300
-                   hover:bg-orange-100 hover:text-gray-700">
+                <NavLink
+                  to="/listing"
+                  className=" gap-4 items-center flex rounded-md my-2 px-4 py-2 text-sm bg-teal-300  text-white transition duration-300
+                   hover:bg-orange-100 hover:text-gray-700"
+                >
                   {" "}
                   <FaListCheck />
-                Pet Listing
+                  Pet Listing
                 </NavLink>
               </li>
 
               <li>
-                <NavLink to="/allCampaigns"  className=" gap-4 items-center flex rounded-md my-2 px-4 py-2 text-sm bg-teal-300  text-white transition duration-300
-                   hover:bg-orange-100 hover:text-gray-700">
+                <NavLink
+                  to="/allCampaigns"
+                  className=" gap-4 items-center flex rounded-md my-2 px-4 py-2 text-sm bg-teal-300  text-white transition duration-300
+                   hover:bg-orange-100 hover:text-gray-700"
+                >
                   {" "}
                   <FaList />
-                 Donation Campaigns
+                  Donation Campaigns
                 </NavLink>
               </li>
-
-            
             </ul>
           </div>
 
           <div className="flex-1">
-            
             <Outlet></Outlet>
           </div>
         </div>

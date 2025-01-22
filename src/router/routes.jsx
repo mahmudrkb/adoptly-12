@@ -17,6 +17,8 @@ import AllCampaigns from "../page/campaigns/AllCampaigns";
 import DetailsCam from "../page/campaigns/DetailsCam";
 import AdoptionRequest from "../page/Dashboard/AdoptionRequest";
 import PrivateRoute from "./PrivateRoute";
+import AllUser from "../page/Dashboard/admin/AllUser";
+import AllPets from "../page/Dashboard/admin/AllPets";
 
 const router = createBrowserRouter([
   {
@@ -59,6 +61,22 @@ const router = createBrowserRouter([
     path: "/dashboard",
     element: <Dashboard></Dashboard>,
     children: [
+      {
+        path: "/dashboard/allUser",
+        element: (
+          <PrivateRoute>
+            <AllUser></AllUser>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/dashboard/allPets",
+        element: (
+          <PrivateRoute>
+            <AllPets></AllPets>
+          </PrivateRoute>
+        ),
+      },
       {
         path: "/dashboard/add-pet",
         element: (
