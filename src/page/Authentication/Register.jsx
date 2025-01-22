@@ -32,7 +32,7 @@ const Register = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-        console.log(result.user);
+        // console.log(result.user);
         setUser(result.user);
         navigate("/");
       })

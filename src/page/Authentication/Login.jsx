@@ -1,5 +1,5 @@
 import { FaArrowLeft } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import login from "../../assets/json/login.json";
 import Lottie from "lottie-react";
@@ -11,12 +11,14 @@ import github from "../../assets/img/github.png";
 const Login = () => {
   const { signinUser, googleSignIn, githubSignin } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location?.state || "/";
   const handleSignin = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
+    // console.log(email, password);
 
     signinUser(email, password)
       .then((result) => {
@@ -28,7 +30,7 @@ const Login = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-        navigate("/");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         Swal.fire({

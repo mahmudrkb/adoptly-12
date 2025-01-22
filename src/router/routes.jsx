@@ -8,13 +8,15 @@ import Listing from "../page/Listing";
 import Dashboard from "../layout/Dashboard";
 import AddPet from "../page/Dashboard/AddPet";
 import PetDetails from "../page/PetDetails";
-import MyPets from './../page/Dashboard/MyPets';
+import MyPets from "./../page/Dashboard/MyPets";
 import UpdatePet from "../page/Dashboard/UpdatePet";
 import AddDonation from "../page/Dashboard/Donation/AddDonation";
 import MyCampaigns from "../page/Dashboard/Donation/MyCampaigns";
 import UpdateDonation from "../page/Dashboard/Donation/UpdateDonation";
 import AllCampaigns from "../page/campaigns/AllCampaigns";
 import DetailsCam from "../page/campaigns/DetailsCam";
+import AdoptionRequest from "../page/Dashboard/AdoptionRequest";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -30,21 +32,19 @@ const router = createBrowserRouter([
         path: "/listing",
         element: <Listing></Listing>,
       },
-      
-      {
-        path:"/petDetails/:id",
-        element:<PetDetails></PetDetails>
 
+      {
+        path: "/petDetails/:id",
+        element: <PetDetails></PetDetails>,
       },
       {
-        path:"/allCampaigns",
-        element:<AllCampaigns></AllCampaigns>
+        path: "/allCampaigns",
+        element: <AllCampaigns></AllCampaigns>,
       },
       {
-        path:"/detailsCam/:id",
-        element:<DetailsCam></DetailsCam>
-
-      }
+        path: "/detailsCam/:id",
+        element: <DetailsCam></DetailsCam>,
+      },
     ],
   },
   {
@@ -61,29 +61,63 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/dashboard/add-pet",
-        element: <AddPet></AddPet>,
+        element: (
+          <PrivateRoute>
+            {" "}
+            <AddPet></AddPet>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/dashboard/my-pet",
-        element: <MyPets></MyPets>,
+        element: (
+          <PrivateRoute>
+            {" "}
+            <MyPets></MyPets>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/dashboard/update-pet/:id",
-        element:<UpdatePet></UpdatePet>,
+        element: (
+          <PrivateRoute>
+            {" "}
+            <UpdatePet></UpdatePet>
+          </PrivateRoute>
+        ),
       },
       {
-        path:"/dashboard/add-donation",
-        element:<AddDonation></AddDonation>,
+        path: "/dashboard/add-donation",
+        element: (
+          <PrivateRoute>
+            <AddDonation></AddDonation>
+          </PrivateRoute>
+        ),
       },
       {
-        path:"/dashboard/my-campaigns",
-        element:<MyCampaigns></MyCampaigns>,
+        path: "/dashboard/my-campaigns",
+        element: (
+          <PrivateRoute>
+            <MyCampaigns></MyCampaigns>
+          </PrivateRoute>
+        ),
       },
       {
-        path:"/dashboard/update-donation/:id",
-        element:<UpdateDonation></UpdateDonation>,
+        path: "/dashboard/update-donation/:id",
+        element: (
+          <PrivateRoute>
+            <UpdateDonation></UpdateDonation>
+          </PrivateRoute>
+        ),
       },
-
+      {
+        path: "/dashboard/adoptionRequest",
+        element: (
+          <PrivateRoute>
+            <AdoptionRequest></AdoptionRequest>
+          </PrivateRoute>
+        ),
+      },
     ],
   },
 ]);

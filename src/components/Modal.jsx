@@ -7,8 +7,6 @@ import {
   DialogFooter,
   Card,
   CardBody,
-  Input,
-  Typography,
 } from "@material-tailwind/react";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import { useParams } from "react-router-dom";
@@ -19,14 +17,11 @@ import Swal from "sweetalert2";
 
 const Modal = () => {
   const { user } = useAuth();
-
-
   const [open, setOpen] = useState(false);
-
   const handleOpen = () => setOpen(!open);
-
   const axiosPublic = useAxiosPublic();
   const { id } = useParams();
+
   const { data: pet = {} } = useQuery({
     queryKey: ["pet"],
     queryFn: async () => {
@@ -35,21 +30,38 @@ const Modal = () => {
     },
   });
 
-  const { register, handleSubmit,formState:{errors} } = useForm();
-  const onSubmit = (data) => {
-    Swal.fire({
-      position: "top-center",
-      icon: "success",
-      title: "Adopted Successfully",
-      showConfirmButton: false,
-      timer: 1500
-    });
-    handleOpen()
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = async (data) => {
+    const adoption = {
+      owner:pet.ownerEmail,
+      id: pet._id,
+      name: user.displayName,
+      email: user.email,
+      phone: data.phone,
+      location: data.location,
+      status: "pending",
+    };
+    // console.log(adoption);
 
-    // console.log(data);
+    const addAdoption = await axiosPublic.post("/addAdoption", adoption);
+
+    // console.log(addAdoption.data);
+
+    if (addAdoption.data.insertedId) {
+      Swal.fire({
+        position: "top-center",
+        icon: "success",
+        title: "Adopted Successfully",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      handleOpen();
+    }
   };
-
-
 
   return (
     <div>
@@ -112,9 +124,17 @@ const Modal = () => {
                           id="phone"
                           placeholder="Phone Number"
                           name="phone"
-                          type="number"
+                          type="text"
                           {...register("phone", {
                             required: "Phone number is required",
+                            // pattern: {
+                            //   value: /^[0-9]+$/,
+                            //   message: "Phone number must contain only digits",
+                            // },
+                            minLength: {
+                              value: 11,
+                              message: "Phone number must be at least 11 digits long",
+                            },
                           })}
                           className="border-2 w-full bg-white p-1 pl-3 rounded-md inputField"
                         />
@@ -154,7 +174,7 @@ const Modal = () => {
                           <span>Cancel</span>
                         </Button>
                         <Button
-                        type="submit"
+                          type="submit"
                           className="border-green-600 border"
                           variant="text"
                           color="green"
