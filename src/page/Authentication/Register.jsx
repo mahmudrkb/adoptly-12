@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
 import google from "../../assets/img/search.png";
 import github from "../../assets/img/github.png";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
+import useAxiosPublic from "./../../hooks/useAxiosPublic";
 
 const Register = () => {
   const { createUser, setUser, googleSignIn, githubSignin, updateUserProfile } =
@@ -27,13 +27,10 @@ const Register = () => {
     const addUser = axiosPublic.post("/add-user", {
       name,
       email,
-      password,
       photo,
-      role:"user"
-      
+      role: "user",
     });
 
-   
     createUser(email, password)
       .then((result) => {
         updateUserProfile(name, photo);
@@ -59,7 +56,17 @@ const Register = () => {
   };
   const handleGoogleLogin = () => {
     googleSignIn()
-      .then(() => {
+      .then((result) => {
+        const userInfo = {
+          name: result.user?.displayName,
+          email: result.user?.email,
+          photo: result.user?.photoURL,
+          role: "user",
+        };
+        axiosPublic.post("/add-user", userInfo).then((result) => {
+          // console.log(result.data, "user added");
+          navigate("/");
+        });
         Swal.fire({
           position: "top-center",
           icon: "success",

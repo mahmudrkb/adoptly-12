@@ -19,6 +19,7 @@ import AdoptionRequest from "../page/Dashboard/AdoptionRequest";
 import PrivateRoute from "./PrivateRoute";
 import AllUser from "../page/Dashboard/admin/AllUser";
 import AllPets from "../page/Dashboard/admin/AllPets";
+import AdminRoute from "./AdminRoute";
 
 const router = createBrowserRouter([
   {
@@ -64,17 +65,22 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/allUser",
         element: (
-          <PrivateRoute>
-            <AllUser></AllUser>
-          </PrivateRoute>
+          <AdminRoute>
+            {" "}
+            <PrivateRoute>
+              <AllUser></AllUser>
+            </PrivateRoute>
+          </AdminRoute>
         ),
       },
       {
         path: "/dashboard/allPets",
         element: (
-          <PrivateRoute>
-            <AllPets></AllPets>
-          </PrivateRoute>
+          <AdminRoute>
+            <PrivateRoute>
+              <AllPets></AllPets>
+            </PrivateRoute>
+          </AdminRoute>
         ),
       },
       {

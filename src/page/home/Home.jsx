@@ -7,7 +7,7 @@ import Question from "./Question";
 
 const Home = () => {
   return (
-    <div className=" ">
+    <div className="  ">
       <Banner></Banner>
       <Categories></Categories>
       <CallToAction></CallToAction>

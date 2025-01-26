@@ -3,16 +3,13 @@ import {
   CardHeader,
   CardBody,
   Typography,
- 
 } from "@material-tailwind/react";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import { Link, useParams } from "react-router-dom";
 import Modal from "../components/Modal";
 
-
 const PetDetails = () => {
- 
   const axiosPublic = useAxiosPublic();
   const { id } = useParams();
 
@@ -23,7 +20,7 @@ const PetDetails = () => {
       return res.data;
     },
   });
-//   console.log(pet);
+  //   console.log(pet);
 
   const {
     image,
@@ -64,10 +61,8 @@ const PetDetails = () => {
             <Typography color="gray" className=" mt-4 mb-8 font-normal">
               {longDescription}
             </Typography>
-           
-              <Modal></Modal>
-           
-           
+
+            <Modal></Modal>
           </CardBody>
         </Card>
       </div>

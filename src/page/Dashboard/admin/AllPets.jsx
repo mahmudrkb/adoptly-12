@@ -1,4 +1,4 @@
-import { PencilIcon,  } from "@heroicons/react/24/solid";
+import { PencilIcon } from "@heroicons/react/24/solid";
 import {
   Card,
   CardHeader,
@@ -10,7 +10,6 @@ import {
   Avatar,
   IconButton,
   Tooltip,
-  
 } from "@material-tailwind/react";
 
 import { MdAddTask, MdDeleteOutline } from "react-icons/md";
@@ -18,23 +17,26 @@ import { useQuery } from "@tanstack/react-query";
 
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
-import useAxiosPublic from "../../../hooks/useAxiosPublic";
+
 import useAuth from "../../../hooks/useAuth";
 import SectionsTitles from "../../shared/SectionTitles";
 import { format } from "date-fns";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const AllPets = () => {
   const { user } = useAuth();
 
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
 
   const { data: pets = [], refetch } = useQuery({
     queryKey: ["pets"],
     queryFn: async () => {
-      const res = await axiosPublic.get("/allPets");
+      const res = await axiosSecure.get("/allPets");
       return res.data;
     },
+
   });
+  console.log(pets)
 
   const handleDelete = (id) => {
     Swal.fire({
@@ -48,7 +50,7 @@ const AllPets = () => {
     })
       .then((result) => {
         if (result.isConfirmed) {
-          axiosPublic.delete(`/delete-pet/${id}`).then((res) => {
+          axiosSecure.delete(`/delete-pet/${id}`).then((res) => {
             if (res.data.deletedCount > 0) {
               Swal.fire({
                 title: "Deleted!",
@@ -75,7 +77,7 @@ const AllPets = () => {
     const data = {
       adopted: status,
     };
-    axiosPublic.patch(`/setAdopted/${id}`, data).then((res) => {
+    axiosSecure.patch(`/setAdopted/${id}`, data).then((res) => {
       Swal.fire({
         title: "Adopted Successfully!",
         icon: "success",

@@ -78,7 +78,7 @@ const MenuNavbar = () => {
            hover:bg-teal-800  rounded-md"
           to={"/dashboard"}
         >
-         Dashboard
+          Dashboard
         </NavLink>
       </li>
     </>
@@ -86,7 +86,7 @@ const MenuNavbar = () => {
 
   return (
     <div className="  text-white top-0 fixed w-full bg-opacity-80 bg-teal-700 z-10 shrink-0 shadow-md">
-      <Disclosure as="nav" className="">
+      <Disclosure as="nav" className=" ">
         <div className=" container mx-auto py-3   ">
           <div className="relative flex h-10 items-center justify-between">
             <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -106,7 +106,10 @@ const MenuNavbar = () => {
             </div>
             <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
               <div className="flex shrink-0 items-center">
-             <Link to="/" >   <img alt="Your Company" src={logo} className="h-10 w-auto" /></Link>
+                <Link to="/">
+                  {" "}
+                  <img alt="Your Company" src={logo} className="h-10 w-auto" />
+                </Link>
                 <h4 className="font-semibold">ADOPTLY</h4>
               </div>
               <div className="hidden  items-center sm:ml-6 sm:block">
@@ -143,7 +146,7 @@ const MenuNavbar = () => {
               </button>
 
               {/* Profile dropdown */}
-              <Menu as="div" className="relative ml-3">
+              <Menu as="div" className="relative ml-3 ">
                 <div>
                   <MenuButton className="relative flex rounded-full  text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                     <span className="absolute -inset-1.5" />

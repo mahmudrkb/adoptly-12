@@ -37,7 +37,7 @@ const Modal = () => {
   } = useForm();
   const onSubmit = async (data) => {
     const adoption = {
-      owner:pet.ownerEmail,
+      owner: pet.ownerEmail,
       id: pet._id,
       name: user.displayName,
       email: user.email,
@@ -133,7 +133,8 @@ const Modal = () => {
                             // },
                             minLength: {
                               value: 11,
-                              message: "Phone number must be at least 11 digits long",
+                              message:
+                                "Phone number must be at least 11 digits long",
                             },
                           })}
                           className="border-2 w-full bg-white p-1 pl-3 rounded-md inputField"

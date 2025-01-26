@@ -6,18 +6,18 @@ import {
   Avatar,
 } from "@material-tailwind/react";
 
-import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import SectionsTitles from "../../shared/SectionTitles";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 
 const AllUser = () => {
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
 
   const { data: users = [], refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await axiosPublic.get("/allUsers");
+      const res = await axiosSecure.get("/allUsers");
       return res.data;
     },
   });
@@ -25,8 +25,7 @@ const AllUser = () => {
   const handleAdoption = (e, id) => {
     const data = { role: e.target.value };
 
-    
-    axiosPublic.patch(`/userRoll/${id}`, data).then((res) => {
+    axiosSecure.patch(`/userRoll/${id}`, data).then((res) => {
       console.log(res.data);
       if (res.data.modifiedCount > 0) {
         Swal.fire({
@@ -96,7 +95,7 @@ const AllUser = () => {
                         className="font-normal leading-none "
                       >
                         {" "}
-                        action{" "}
+                        Action{" "}
                       </Typography>
                     </th>
                   </tr>
@@ -144,11 +143,11 @@ const AllUser = () => {
                             {" "}
                             <select
                               name="status"
-                              defaultValue={user.roll || "User"}
+                              defaultValue={user.role}
                               onChange={(e) => handleAdoption(e, user._id)}
                               className="block  border-2 h-9 w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-teal-300 sm:text-sm/6"
                             >
-                              <option disabled>Roll</option>
+                             
                               <option>User</option>
                               <option>Admin</option>
                             </select>

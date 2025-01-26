@@ -35,7 +35,7 @@ const AddDonation = () => {
     // console.log(res.data);
     if (res.data.success) {
       const donation = {
-        name:data.name,
+        name: data.name,
         maxAmount: data.maxAmount,
         lastDate: data.lastDate,
         shortDescription: data.shortDescription,

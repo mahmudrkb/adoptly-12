@@ -61,28 +61,28 @@ const AllCampaigns = () => {
                       Goal
                       <p>$ {donation.maxAmount}</p>{" "}
                     </div>
-                    
+
                     <div className="text-orange-500">
                       Raised
                       <p>$ 100</p>{" "}
                     </div>
-                    
-                    
-                    <div className="text-red-500" >
+
+                    <div className="text-red-500">
                       To Go
-                      <p>$ {donation.maxAmount- 100}</p>{" "}
+                      <p>$ {donation.maxAmount - 100}</p>{" "}
                     </div>
                   </div>
                 </Typography>
               </CardBody>
               <CardFooter className="pt-0">
-               <Link to={`/detailsCam/${donation._id}`}>
-               <Button 
-                  className="hover:bg-orange-100 hover:text-gray-700"
-                  color="teal"
-                >
-                  Read More
-                </Button></Link>
+                <Link to={`/detailsCam/${donation._id}`}>
+                  <Button
+                    className="hover:bg-orange-100 hover:text-gray-700"
+                    color="teal"
+                  >
+                    Read More
+                  </Button>
+                </Link>
               </CardFooter>
             </Card>
           ))}

@@ -12,7 +12,7 @@ import ModalCam from "./ModalCam";
 
 const DetailsCam = () => {
   const axiosPublic = useAxiosPublic();
-  const {id} = useParams();
+  const { id } = useParams();
 
   const { data: detailsCam = [], refetch } = useQuery({
     queryKey: ["detailsCam"],
@@ -21,9 +21,17 @@ const DetailsCam = () => {
       const res = await axiosPublic.get(`/donation-cam/${id}`);
       return res.data;
     },
-  })
-//   console.log(detailsCam)
-const {image,name,longDescription, lastDate, maxAmount,startDate, shortDescription}=detailsCam
+  });
+  //   console.log(detailsCam)
+  const {
+    image,
+    name,
+    longDescription,
+    lastDate,
+    maxAmount,
+    startDate,
+    shortDescription,
+  } = detailsCam;
 
   return (
     <div>
@@ -45,23 +53,24 @@ const {image,name,longDescription, lastDate, maxAmount,startDate, shortDescripti
               {name}
             </Typography>
             <Typography variant="h4" color="blue-gray" className="mb-2">
-             {shortDescription}
+              {shortDescription}
             </Typography>
             <Typography color="gray" className="mb-8 font-normal">
-             {longDescription}
+              {longDescription}
             </Typography>
             <Typography color="gray" className="mb-8 font-normal">
-            <div className=" flex items-center justify-between"
-            >
-               <div> Goal: <span className="text-green-600"> $ {maxAmount}</span></div>
-               <div>End Date : <span className="text-red-600">{lastDate}</span></div>
-            </div>
+              <div className=" flex items-center justify-between">
+                <div>
+                  {" "}
+                  Goal: <span className="text-green-600"> $ {maxAmount}</span>
+                </div>
+                <div>
+                  End Date : <span className="text-red-600">{lastDate}</span>
+                </div>
+              </div>
             </Typography>
 
             <ModalCam></ModalCam>
-            
-             
-         
           </CardBody>
         </Card>
       </div>
