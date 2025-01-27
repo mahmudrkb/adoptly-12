@@ -9,7 +9,14 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useParams } from "react-router-dom";
 import ModalCam from "./ModalCam";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
 
+
+const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_PK);
+
+
+console.log(import.meta.env.VITE_PAYMENT_PK ,"this is promise")
 const DetailsCam = () => {
   const axiosPublic = useAxiosPublic();
   const { id } = useParams();
@@ -29,7 +36,7 @@ const DetailsCam = () => {
     longDescription,
     lastDate,
     maxAmount,
-    startDate,
+ 
     shortDescription,
   } = detailsCam;
 
@@ -70,7 +77,10 @@ const DetailsCam = () => {
               </div>
             </Typography>
 
-            <ModalCam></ModalCam>
+            <Elements stripe={stripePromise}>
+              {" "}
+              <ModalCam></ModalCam>
+            </Elements>
           </CardBody>
         </Card>
       </div>

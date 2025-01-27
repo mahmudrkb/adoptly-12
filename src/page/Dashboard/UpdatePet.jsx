@@ -8,7 +8,7 @@ import { useQuery } from "@tanstack/react-query";
 
 // TODO
 // import.meta.env.VITE_IMAGE_HOSTING_API_KEY
-const image_hosting_key = "53d64bb35b76ff50d1d05ce2b4ff01bb";
+const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_API_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 // console.log("this is code",image_hosting_key)

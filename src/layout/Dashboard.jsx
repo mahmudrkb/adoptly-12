@@ -74,7 +74,7 @@ const Dashboard = () => {
                   </li>
                   <li>
                     <NavLink
-                      to={"/dashboard/adminHome"}
+                      to={"/dashboard/allDonation"}
                       className=" gap-4 items-center flex rounded-md my-2 px-4 py-2 text-sm bg-teal-300  text-white transition duration-300
      hover:bg-orange-100 hover:text-gray-700"
                     >

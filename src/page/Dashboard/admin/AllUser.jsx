@@ -38,7 +38,7 @@ const AllUser = () => {
     });
   };
 
-  console.log(users);
+  // console.log(users);
   return (
     <div>
       <div className="container mx-auto my-10">

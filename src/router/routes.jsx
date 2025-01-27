@@ -20,6 +20,8 @@ import PrivateRoute from "./PrivateRoute";
 import AllUser from "../page/Dashboard/admin/AllUser";
 import AllPets from "../page/Dashboard/admin/AllPets";
 import AdminRoute from "./AdminRoute";
+import AllDonations from "../page/Dashboard/admin/AllDonations";
+import MyDonation from "../page/Dashboard/Donation/MyDonation";
 
 const router = createBrowserRouter([
   {
@@ -81,6 +83,24 @@ const router = createBrowserRouter([
               <AllPets></AllPets>
             </PrivateRoute>
           </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/allDonation",
+        element: (
+          <AdminRoute>
+            <PrivateRoute>
+              <AllDonations></AllDonations>
+            </PrivateRoute>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/paymentsHistory",
+        element: (
+          <PrivateRoute>
+           <MyDonation></MyDonation>
+          </PrivateRoute>
         ),
       },
       {

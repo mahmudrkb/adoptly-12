@@ -2,38 +2,36 @@ import React from "react";
 import SectionsTitles from "../../shared/SectionTitles";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
-import { PencilIcon } from "@heroicons/react/24/solid";
+
 import {
   Card,
   CardHeader,
   Typography,
-  Button,
   CardBody,
-  Chip,
-  CardFooter,
   Avatar,
-  IconButton,
-  Tooltip,
 } from "@material-tailwind/react";
 import { format } from "date-fns";
-const AllDonations = () => {
+import useAuth from "../../../hooks/useAuth";
+const MyDonation = () => {
+  const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
 
-  const { data: allPayments = [], refetch } = useQuery({
-    queryKey: ["allPayments"],
+  const { data: payments = [], refetch } = useQuery({
+    queryKey: ["payments"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/allPayments");
+      const res = await axiosSecure.get(`/allPayments/${user.email}`);
       return res.data;
     },
   });
-  console.log(allPayments);
+
+  console.log(payments, "this is my payments");
 
   return (
     <div>
       <div className="container mx-auto my-10">
         <SectionsTitles
-          heading={"All Donations"}
-          subheading={"This is all Donations "}
+          heading={"My Donations"}
+          subheading={"This is my Donations "}
         ></SectionsTitles>
         <div>
           <Card className="h-full w-full overflow-x-scroll">
@@ -41,7 +39,7 @@ const AllDonations = () => {
               <div className=" flex items-center justify-between gap-8">
                 <div>
                   <Typography variant="h5">
-                    My Users List ({allPayments.length})
+                    My Payment List ({payments.length})
                   </Typography>
                   <Typography color="gray" className="mt-1 font-normal">
                     See information about all Payments
@@ -66,15 +64,7 @@ const AllDonations = () => {
                         variant="small"
                         className="font-normal leading-none "
                       >
-                        Pet Name
-                      </Typography>
-                    </th>
-                    <th className="border-y border-blue-gray-100  p-4">
-                      <Typography
-                        variant="small"
-                        className="font-normal leading-none "
-                      >
-                        Donar Name
+                        Name
                       </Typography>
                     </th>
                     <th className="border-y border-blue-gray-100  p-4">
@@ -107,8 +97,8 @@ const AllDonations = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {allPayments?.map((payment, index) => {
-                    const isLast = index === allPayments?.length - 1;
+                  {payments?.map((payment, index) => {
+                    const isLast = index === payments?.length - 1;
                     const classes = isLast
                       ? "p-4"
                       : "p-4 border-b border-blue-gray-50";
@@ -121,11 +111,7 @@ const AllDonations = () => {
                         </td>
                         <td className={classes}>
                           <div className="flex items-center gap-3">
-                            <Avatar
-                              src={payment.petImage}
-                              alt={payment.petName}
-                              size="sm"
-                            />
+                            <Avatar src={payment.petImage} alt={payment.petName} size="sm" />
                             <div className="flex flex-col">
                               <Typography
                                 variant="small"
@@ -137,13 +123,6 @@ const AllDonations = () => {
                           </div>
                         </td>
 
-                        <td className={classes}>
-                          <div className="flex flex-col">
-                            <Typography variant="small" className="font-normal">
-                              {payment.name}
-                            </Typography>
-                          </div>
-                        </td>
                         <td className={classes}>
                           <div className="flex flex-col">
                             <Typography variant="small" className="font-normal">
@@ -183,4 +162,4 @@ const AllDonations = () => {
   );
 };
 
-export default AllDonations;
+export default MyDonation;
