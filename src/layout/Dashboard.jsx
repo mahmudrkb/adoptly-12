@@ -24,7 +24,7 @@ import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
   const [isAdmin] = useAdmin();
-  console.log(isAdmin)
+  // console.log(isAdmin)
   return (
     <div className="  ">
       <div className=" max-w-screen-xl mx-auto ">
@@ -92,7 +92,7 @@ const Dashboard = () => {
                     <NavLink
                       className=" gap-4 items-center flex rounded-md my-2 px-4 py-2 text-sm bg-teal-300  text-white transition duration-300
    hover:bg-orange-100 hover:text-gray-700"
-                      to={"/dashboard/UserHome"}
+                      to={"/dashboard/userHome"}
                     >
                       {" "}
                       <FaHome></FaHome> User Home

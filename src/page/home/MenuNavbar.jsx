@@ -18,9 +18,12 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { FaRegCircleUser } from "react-icons/fa6";
+import useAdmin from "../../hooks/useAdmin";
 
 const MenuNavbar = () => {
   const { user, logOutUser } = useAuth();
+  const [isAdmin] = useAdmin();
+
   const navigate = useNavigate();
   const handleLogout = () => {
     logOutUser().then(() => {
@@ -37,18 +40,21 @@ const MenuNavbar = () => {
 
   const NavLinks = (
     <>
-      <NavLink to={"/"}>
-        <li
-          className=" bg-teal-300  text-white transition duration-300
+      <li>
+        {" "}
+        <NavLink
+          to={"/"}
+          className="  bg-teal-300  text-white transition duration-300
            hover:bg-teal-800
           rounded-md px-3 py-2 text-sm font-medium"
         >
           Home
-        </li>
-      </NavLink>
+        </NavLink>
+      </li>
+
       <li className="text-sm font-medium">
         <NavLink
-          className="px-3 py-2 bg-teal-300  text-white transition duration-300
+          className="px-3  py-2 bg-teal-300  text-white transition duration-300
            hover:bg-teal-800  rounded-md"
           to={"/listing"}
         >
@@ -67,9 +73,8 @@ const MenuNavbar = () => {
           Donation Campaigns
         </NavLink>
       </li>
-      <li className="text-black">{user?.displayName}</li>
 
-      <li
+      {/* <li
         className="
            text-sm font-medium"
       >
@@ -80,31 +85,31 @@ const MenuNavbar = () => {
         >
           Dashboard
         </NavLink>
-      </li>
+      </li> */}
     </>
   );
 
   return (
-    <div className="  text-white top-0 fixed w-full bg-opacity-80 bg-teal-700 z-10 shrink-0 shadow-md">
-      <Disclosure as="nav" className=" ">
+    <div className="  text-white top-0 fixed w-full bg-opacity-80 md:bg-teal-700 z-10 shrink-0 shadow-md">
+      <Disclosure as="nav" className="">
         <div className=" container mx-auto py-3   ">
           <div className="relative flex h-10 items-center justify-between">
             <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
               {/* Mobile menu button*/}
-              <DisclosureButton className="group relative b inline-flex items-center justify-center rounded-md p-1 text-teal-300 hover:bg-teal-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+              <DisclosureButton className="group relative b inline-flex items-center justify-center rounded-md p-1 text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                 <span className="absolute -inset-0.5" />
                 <span className="sr-only">Open main menu</span>
                 <Bars3Icon
                   aria-hidden="true"
-                  className="block size-6 group-data-[open]:hidden"
+                  className="block   size-6 group-data-[open]:hidden"
                 />
                 <XMarkIcon
                   aria-hidden="true"
-                  className="hidden size-6 group-data-[open]:block"
+                  className="hidden  size-6 group-data-[open]:block"
                 />
               </DisclosureButton>
             </div>
-            <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+            <div className="flex bg-teal-700 py-3 flex-1 items-center justify-center sm:items-stretch sm:justify-start">
               <div className="flex shrink-0 items-center">
                 <Link to="/">
                   {" "}
@@ -112,9 +117,9 @@ const MenuNavbar = () => {
                 </Link>
                 <h4 className="font-semibold">ADOPTLY</h4>
               </div>
-              <div className="hidden  items-center sm:ml-6 sm:block">
-                <div className="flex  space-x-4">
-                  <ul className="flex items-center gap-5  justify-center">
+              <div className="hidden   items-center sm:ml-6 sm:block">
+                <div className="flex   space-x-4">
+                  <ul className="flex   items-center gap-5  justify-center">
                     {NavLinks}
                   </ul>
                   {/* {navigation.map((item) => (
@@ -166,17 +171,26 @@ const MenuNavbar = () => {
                   transition
                   className="absolute text-center right-0 z-10 p-3   mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-xl ring-1 ring-black/5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in "
                 >
-                  {user?.email ? (
-                    <MenuItem>
-                      <Link
-                        className="block rounded-md my-2 px-4 py-2 text-sm bg-teal-300  text-white transition duration-300
-                         hover:bg-orange-100 hover:text-gray-700"
-                      >
-                        DASHBOARD
-                      </Link>
-                    </MenuItem>
-                  ) : (
-                    <MenuItem>
+                  <MenuItem>
+                    {user?.email ? (
+                      isAdmin ? (
+                        <Link
+                          to={"/dashboard/adminHome"}
+                          className="block rounded-md my-2 px-4 py-2 text-sm bg-teal-300  text-white transition duration-300
+                       hover:bg-orange-100 hover:text-gray-700"
+                        >
+                          DASHBOARD
+                        </Link>
+                      ) : (
+                        <Link
+                          to={"/dashboard/userHome"}
+                          className="block rounded-md my-2 px-4 py-2 text-sm bg-teal-300  text-white transition duration-300
+                     hover:bg-orange-100 hover:text-gray-700"
+                        >
+                          DASHBOARD
+                        </Link>
+                      )
+                    ) : (
                       <Link
                         to={"/register"}
                         className="block rounded-md my-2 px-4 py-2 text-sm bg-teal-300  text-white transition duration-300
@@ -184,8 +198,9 @@ const MenuNavbar = () => {
                       >
                         SIGN UP
                       </Link>
-                    </MenuItem>
-                  )}
+                    )}
+                  </MenuItem>
+                  
                   {user?.email ? (
                     <MenuItem>
                       <button
@@ -213,9 +228,9 @@ const MenuNavbar = () => {
           </div>
         </div>
 
-        <DisclosurePanel className="sm:hidden -mt-2">
-          <div className="space-y-3 ml-3  ring-1 ring-black/5 rounded-md p-3 shadow-xl  max-w-48 px-2 pb-3 pt-2">
-            <ul className="  space-y-2">{NavLinks}</ul>
+        <DisclosurePanel className="sm:hidden pt-2 -mt-2 ">
+          <div className="space-y-3 ml-3 bg-white ring-1 ring-black/5 rounded-md p-3 shadow-xl  max-w-48 px-2 pb-3 pt-2">
+            <ul className="  space-y-3">{NavLinks}</ul>
           </div>
         </DisclosurePanel>
       </Disclosure>
