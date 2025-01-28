@@ -4,7 +4,7 @@ import { MdEmail, MdLocationPin } from "react-icons/md";
 
 const Contact = () => {
   return (
-    <div className="bg-gray-100 ">
+    <div className="bg-gray-100 dark:bg-blue-gray-900 dark:text-white  ">
       <div id="contact" className=" container mx-auto p-3 py-20">
         <div className=" ">
           <div className=" ">
@@ -25,7 +25,7 @@ const Contact = () => {
                   <div
                     data-aos="flip-down"
                     data-aos-duration="500"
-                    className=" bg-white  rounded-md shrink-0 hover:shadow-2xl text-center  p-3 "
+                    className=" bg-white dark:bg-blue-gray-800  rounded-md shrink-0 hover:shadow-2xl text-center  p-3 "
                   >
                     <FaPhone className="text-4xl text-teal-300 mx-auto mb-3 " />
                     <p>01741715265</p>
@@ -36,7 +36,7 @@ const Contact = () => {
                   <div
                     data-aos="flip-up"
                     data-aos-duration="500"
-                    className=" bg-white rounded-md shrink-0 hover:shadow-2xl text-center  p-3 "
+                    className=" bg-white dark:bg-blue-gray-800 rounded-md shrink-0 hover:shadow-2xl text-center  p-3 "
                   >
                     <MdEmail className="text-4xl text-teal-300 mx-auto mb-3 " />{" "}
                     <p>rakib65rkb@gmail.com</p>
@@ -47,7 +47,7 @@ const Contact = () => {
                   <div
                     data-aos="flip-down"
                     data-aos-duration="1000"
-                    className=" bg-white flex items-center mb-5 rounded-md shrink-0 hover:shadow-2xl text-center  p-3 "
+                    className=" bg-white dark:bg-blue-gray-800 flex items-center mb-5 rounded-md shrink-0 hover:shadow-2xl text-center  p-3 "
                   >
                     {/* <FaWhatsapp className="text-4xl text-teal-300 mx-auto mb-3 " /> */}
                     <img
@@ -64,7 +64,7 @@ const Contact = () => {
                   <div
                     data-aos="flip-up"
                     data-aos-duration="1000"
-                    className=" bg-white   rounded-md shrink-0 hover:shadow-2xl text-center  p-3 "
+                    className=" bg-white dark:bg-blue-gray-800   rounded-md shrink-0 hover:shadow-2xl text-center  p-3 "
                   >
                     <MdLocationPin className="text-4xl mt-1  text-teal-300 mx-auto  " />{" "}
                     <p className="">Dhaka, Bangladesh</p>

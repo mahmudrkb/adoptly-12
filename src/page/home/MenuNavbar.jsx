@@ -19,6 +19,8 @@ import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { FaRegCircleUser } from "react-icons/fa6";
 import useAdmin from "../../hooks/useAdmin";
+import { IoMoon, IoSunny } from "react-icons/io5";
+import React from "react";
 
 const MenuNavbar = () => {
   const { user, logOutUser } = useAuth();
@@ -37,6 +39,13 @@ const MenuNavbar = () => {
       navigate("/");
     });
   };
+   //tailwind config add darkMode: 'class',
+   const [dark, setDark] = React.useState(false);
+
+   const darkModeHandler = () => {
+     setDark(!dark);
+     document.body.classList.toggle("dark");
+   };
 
   const NavLinks = (
     <>
@@ -90,11 +99,11 @@ const MenuNavbar = () => {
   );
 
   return (
-    <div className="  text-white top-0 fixed w-full bg-opacity-80 md:bg-teal-700 z-10 shrink-0 shadow-md">
+    <div className="  text-white top-0 fixed w-full bg-opacity-80 md:bg-teal-700 md:dark:bg-blue-gray-900  z-10 shrink-0 shadow-md">
       <Disclosure as="nav" className="">
         <div className=" container mx-auto py-3   ">
-          <div className="relative flex h-10 items-center justify-between">
-            <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
+          <div className="relative h-10 flex  items-center justify-between">
+            <div className="absolute inset-y-0 left-0 flex items-center  sm:hidden">
               {/* Mobile menu button*/}
               <DisclosureButton className="group relative b inline-flex items-center justify-center rounded-md p-1 text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                 <span className="absolute -inset-0.5" />
@@ -109,7 +118,7 @@ const MenuNavbar = () => {
                 />
               </DisclosureButton>
             </div>
-            <div className="flex bg-teal-700 py-3 flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+            <div className="flex dark:bg-blue-gray-900 bg-teal-700 py-3 flex-1 items-center  justify-center sm:items-stretch sm:justify-start">
               <div className="flex shrink-0 items-center">
                 <Link to="/">
                   {" "}
@@ -118,7 +127,7 @@ const MenuNavbar = () => {
                 <h4 className="font-semibold">ADOPTLY</h4>
               </div>
               <div className="hidden   items-center sm:ml-6 sm:block">
-                <div className="flex   space-x-4">
+                <div className="flex mt-2    space-x-4">
                   <ul className="flex   items-center gap-5  justify-center">
                     {NavLinks}
                   </ul>
@@ -141,14 +150,9 @@ const MenuNavbar = () => {
               </div>
             </div>
             <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-              <button
-                type="button"
-                className="relative rounded-full  p-1 text-gray-800 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-              >
-                <span className="absolute -inset-1.5" />
-                <span className="sr-only">View notifications</span>
-                <BellIcon aria-hidden="true" className="size-6" />
-              </button>
+            <button className="text-3xl mx-5" onClick={darkModeHandler}>
+              {dark ? <IoSunny /> : <IoMoon />}
+            </button>
 
               {/* Profile dropdown */}
               <Menu as="div" className="relative ml-3 ">
@@ -169,7 +173,7 @@ const MenuNavbar = () => {
                 </div>
                 <MenuItems
                   transition
-                  className="absolute text-center right-0 z-10 p-3   mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-xl ring-1 ring-black/5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in "
+                  className="absolute text-center right-0 z-10 p-3   mt-2 w-48 origin-top-right rounded-md dark:bg-blue-gray-900 bg-white py-1 shadow-xl ring-1 ring-black/5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in "
                 >
                   <MenuItem>
                     {user?.email ? (
@@ -229,7 +233,7 @@ const MenuNavbar = () => {
         </div>
 
         <DisclosurePanel className="sm:hidden pt-2 -mt-2 ">
-          <div className="space-y-3 ml-3 bg-white ring-1 ring-black/5 rounded-md p-3 shadow-xl  max-w-48 px-2 pb-3 pt-2">
+          <div className="space-y-3 ml-3 dark:bg-blue-gray-900 bg-white ring-1 ring-black/5 rounded-md p-3 shadow-xl  max-w-48 px-2 pb-3 pt-2">
             <ul className="  space-y-3">{NavLinks}</ul>
           </div>
         </DisclosurePanel>

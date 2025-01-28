@@ -33,9 +33,9 @@ const PetDetails = () => {
     _id,
   } = pet;
   return (
-    <div className="bg-gray-50">
+    <div className="bg-gray-50  dark:bg-blue-gray-900">
       <div className=" mt-16   py-12 container mx-auto p-3 flex justify-center">
-        <Card className="w-full bg-white  max-w-4xl ">
+        <Card className="w-full bg-white dark:bg-blue-gray-800  max-w-4xl ">
           <CardHeader
             shadow={false}
             floated={false}
@@ -48,17 +48,17 @@ const PetDetails = () => {
             />
           </CardHeader>
           <CardBody>
-            <Typography variant="h6" color="gray" className="mb-4 uppercase">
+            <Typography variant="h6" color="gray" className="dark:text-white mb-4 uppercase">
               {category}
             </Typography>
-            <Typography variant="h4" color="blue-gray" className="mb-2">
+            <Typography variant="h4" color="blue-gray  " className="mb-2 dark:text-white">
               <div className="flex justify-between">
                 {" "}
                 <h1>{name} </h1> <h2>{age} Year </h2>
               </div>
             </Typography>
-            <address>{location}</address>
-            <Typography color="gray" className=" mt-4 mb-8 font-normal">
+            <address className="dark:text-white" >{location}</address>
+            <Typography color="gray" className="dark:text-white  mt-4 mb-8 font-normal">
               {longDescription}
             </Typography>
 

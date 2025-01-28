@@ -29,21 +29,21 @@ const AllDonations = () => {
   console.log(allPayments);
 
   return (
-    <div>
+    <div >
       <div className="container mx-auto my-10">
         <SectionsTitles
           heading={"All Donations"}
           subheading={"This is all Donations "}
         ></SectionsTitles>
         <div>
-          <Card className="h-full w-full overflow-x-scroll">
+          <Card className="h-full w-full dark:text-white dark:bg-blue-gray-800 p-3 overflow-x-scroll">
             <CardHeader floated={false} shadow={false} className="rounded-none">
-              <div className=" flex items-center justify-between gap-8">
+              <div className=" flex items-center dark:text-white dark:bg-blue-gray-800 justify-between gap-8">
                 <div>
                   <Typography variant="h5">
-                    My Users List ({allPayments.length})
+                    All Donations List ({allPayments.length})
                   </Typography>
-                  <Typography color="gray" className="mt-1 font-normal">
+                  <Typography color="gray" className="mt-1 dark:text-gray-300 font-normal">
                     See information about all Payments
                   </Typography>
                 </div>

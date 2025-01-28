@@ -17,7 +17,7 @@ const Listing = () => {
   console.log("this is all pets", pets);
 
   return (
-    <div className="mt-16 ">
+    <div className="pt-16 dark:bg-blue-gray-900 ">
       <div className='h-screen  bg-fixed   bg-center bg-[url("https://i.ibb.co.com/hBbGgfV/Untitled-Project.jpg")] bg-cover  '>
         <div className=" flex items-center justify-center   bg-gray-900 bg-opacity-60  h-screen roboto-mono ">
           <div className="text-center space-y-3 text-white">
@@ -70,7 +70,7 @@ const Listing = () => {
         </div>
       </div>
       {/* all pets  */}
-      <div className="container mx-auto p-3 my-10">
+      <div className="container mx-auto p-3 py-10">
         <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {pets.map((pet, index) => (
             <PetCard key={index} pet={pet}></PetCard>

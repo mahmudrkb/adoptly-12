@@ -96,21 +96,21 @@ const AllPets = () => {
         heading={"All Pets"}
         subheading={"This is all  pets"}
       ></SectionsTitles>
-      <div>
-        <Card className="h-full w-full overflow-x-scroll">
+      <div >
+        <Card className="h-full w-full dark:bg-blue-gray-800 p-3 overflow-x-scroll">
           <CardHeader floated={false} shadow={false} className="rounded-none">
-            <div className=" flex items-center justify-between gap-8">
+            <div className=" flex items-center dark:bg-blue-gray-800 dark:text-white justify-between gap-8">
               <div>
                 <Typography variant="h5">
                   All Pets List ({pets.length})
                 </Typography>
-                <Typography color="gray" className="mt-1 font-normal">
+                <Typography color="gray" className="mt-1 font-normal dark:text-gray-300">
                   See information about all pets
                 </Typography>
               </div>
             </div>
           </CardHeader>
-          <CardBody className=" px-0">
+          <CardBody className=" dark:text-white px-0">
             <table className=" w-full min-w-max table-auto text-left">
               <thead>
                 <tr className=" bg-teal-300 text-white">
@@ -195,7 +195,7 @@ const AllPets = () => {
                         </div>
                       </td>
                       <td className={classes}>
-                        <div className="w-max">
+                        <div className="w-max dark:bg-blue-gray-500 rounded-md">
                           <Chip
                             variant="ghost"
                             size="sm"

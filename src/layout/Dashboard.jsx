@@ -26,11 +26,11 @@ const Dashboard = () => {
   const [isAdmin] = useAdmin();
   // console.log(isAdmin)
   return (
-    <div className="  ">
+    <div className="dark:bg-blue-gray-900  ">
       <div className=" max-w-screen-xl mx-auto ">
         <div></div>
         <div className="flex gap-10">
-          <div className="bg-teal-300 text-white max-w-fit p-5">
+          <div className="bg-teal-300 min-h-screen text-white max-w-fit p-5">
             <div className="flex shrink-0 mb-7 items-center">
               <Link to="/">
                 {" "}

@@ -7,7 +7,7 @@ const Footer = () => {
     document.getElementById(id).scrollIntoView({ behavior: "smooth" });
   };
   return (
-    <div className="bg-gray-900 ">
+    <div className="bg-teal-700 dark:bg-blue-gray-900 ">
       <footer className="w-full py-10 container mx-auto   p-3">
         <div className=" text-white md:flex justify-between gap-10 ">
           <div className="max-w-md ">

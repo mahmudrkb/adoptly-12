@@ -14,11 +14,11 @@ const AdminHome = () => {
     },
   });
 
-  console.log(stats);
+//   console.log(stats);
 
   return (
-    <div className="mt-5">
-      <div className="text-3xl">
+    <div className="pt-10 dark:bg-blue-gray-900 ">
+      <div className="text-3xl lg:text-5xl dark:text-white">
         {" "}
         Hi! Welcome
         <span className="">
@@ -28,7 +28,7 @@ const AdminHome = () => {
       </div>
       {/* all data show this part  */}
       <div>
-        <div className="bg-white py-24 sm:py-32">
+        <div className="bg-white dark:bg-blue-gray-900 py-24 sm:py-32">
           <div className="mx-auto max-w-7xl ">
             <dl className=" grid grid-cols-1 gap-4 gap-y-16 text-center lg:grid-cols-3">
               <div className="mx-auto  py-3 bg-orange-300 w-full rounded-md   flex max-w-xs flex-col gap-y-4">

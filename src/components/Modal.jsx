@@ -74,9 +74,9 @@ const Modal = () => {
       </Button>
 
       <Dialog open={open} handler={handleOpen}>
-        <div className="grid grid-cols-1 lg:grid-cols-2">
+        <div className="grid grid-cols-1 dark:bg-blue-gray-900 dark:text-white lg:grid-cols-2">
           {/* Pet Image */}
-          <div className="flex items-center">
+          <div className="flex  items-center">
             <img
               className="mx-auto h-56 w-56 lg:w-full lg:h-full object-contain"
               src={pet.image}
@@ -85,13 +85,13 @@ const Modal = () => {
           </div>
 
           {/* Form */}
-          <div className="pt-4">
-            <DialogHeader className="justify-center">
+          <div className="pt-4 ">
+            <DialogHeader className="justify-center dark:text-white">
               <h1>{pet.name}</h1>
             </DialogHeader>
 
-            <DialogBody>
-              <Card className="max-w-96 bg-gray-50">
+            <DialogBody >
+              <Card className="max-w-96 dark:bg-blue-gray-800  bg-gray-50">
                 <CardBody>
                   <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="space-y-4 w-full">

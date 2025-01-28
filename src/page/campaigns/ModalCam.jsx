@@ -131,7 +131,7 @@ const ModalCam = () => {
   console.log(price, "this is  total price ");
 
   return (
-    <div>
+    <div className="">
       <Button
         onClick={handleOpen}
         className="flex bg-teal-300 hover:bg-orange-50 hover:text-gray-700 items-center gap-2"
@@ -157,15 +157,15 @@ const ModalCam = () => {
         size="xs"
         open={open}
         handler={handleOpen}
-        className="bg-transparent shadow-none"
+        className="bg-transparent  shadow-none"
       >
-        <Card className="mx-auto w-full max-w-[24rem]">
+        <Card className="mx-auto dark:bg-blue-gray-700  w-full max-w-[24rem]">
           <CardBody className="flex flex-col gap-4">
-            <Typography variant="h4" color="blue-gray">
+            <Typography className="dark:text-white" variant="h4" color="blue-gray">
               Payment
             </Typography>
             <Typography
-              className=" font-normal"
+              className=" font-normal dark:text-gray-300"
               variant="paragraph"
               color="gray"
             >
@@ -174,8 +174,8 @@ const ModalCam = () => {
           </CardBody>
 
           <form onSubmit={handlePayments}>
-            <CardBody className="flex flex-col gap-4">
-              <Input
+            <CardBody className="flex flex-col  gap-4">
+              <Input className="dark:text-white"
                 onChange={(e) => {
                   setTotalPrice(e.target.value);
                 }}
@@ -186,12 +186,13 @@ const ModalCam = () => {
               />
 
               <CardElement
+              className="dark:text-white"
                 options={{
                   style: {
                     base: {
                       fontSize: "16px",
 
-                      color: "#424770",
+                      color: "#aab7c4",
                       "::placeholder": {
                         color: "#aab7c4",
                       },

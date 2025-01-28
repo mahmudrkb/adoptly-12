@@ -36,14 +36,13 @@ const DetailsCam = () => {
     longDescription,
     lastDate,
     maxAmount,
- 
     shortDescription,
   } = detailsCam;
 
   return (
-    <div>
-      <div className="container mx-auto mt-16 p-3 my-10">
-        <Card className="w-full max-w-5xl mx-auto bg-gray-50 mt-10 flex-row">
+    <div className="dark:bg-blue-gray-900 dark:text-white">
+      <div className="container mx-auto mt-10 p-3 py-10">
+        <Card className="w-full  max-w-5xl mx-auto dark:bg-blue-gray-800 bg-gray-50 mt-10 lg:flex-row">
           <CardHeader
             shadow={false}
             floated={false}
@@ -56,16 +55,16 @@ const DetailsCam = () => {
             />
           </CardHeader>
           <CardBody>
-            <Typography variant="h6" color="gray" className="mb-4 uppercase">
+            <Typography variant="h6" color="gray" className="mb-4 dark:text-gray-300 uppercase">
               {name}
             </Typography>
-            <Typography variant="h4" color="blue-gray" className="mb-2">
+            <Typography variant="h4" color="blue-gray" className="mb-2 dark:text-white">
               {shortDescription}
             </Typography>
-            <Typography color="gray" className="mb-8 font-normal">
+            <Typography color="gray" className="mb-8 font-normal dark:text-gray-400">
               {longDescription}
             </Typography>
-            <Typography color="gray" className="mb-8 font-normal">
+            <Typography color="gray" className="mb-8 font-normal dark:text-white">
               <div className=" flex items-center justify-between">
                 <div>
                   {" "}

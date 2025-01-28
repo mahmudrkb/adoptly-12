@@ -14,7 +14,7 @@ const CallToAction = () => {
     document.getElementById(id).scrollIntoView({ behavior: "smooth" });
   };
   return (
-    <div className="">
+    <div className=" dark:bg-blue-gray-900  ">
       <div className="container  mx-auto py-10 lg:pt-10 p-3">
         <div className="  ">
           <Card className=" bg-teal-300 border-2 border-orange-100  md:flex-row">
@@ -30,10 +30,17 @@ const CallToAction = () => {
               />
             </CardHeader>
             <CardBody>
-              <Typography variant="h4" color="blue-gray" className="mb-2 text-orange-100">
+              <Typography
+                variant="h4"
+                color="blue-gray"
+                className="mb-2 text-orange-100"
+              >
                 Every Pet Deserves a Loving Home
               </Typography>
-              <Typography color="gray" className="mb-8 font-normal text-white leading-normal ">
+              <Typography
+                color="gray"
+                className="mb-8 font-normal text-white leading-normal "
+              >
                 Imagine the wagging tail of a dog or the soft purr of a cat that
                 has found its forever family. By adopting a pet, you’re not just
                 giving them a home you’re giving them a second chance at life
@@ -67,18 +74,18 @@ const CallToAction = () => {
         <div className=" mt-10 flex  md:justify-end  ">
           <Card className=" bg-teal-300 border-2   border-orange-100  flex-col-reverse md:flex-row">
             <CardBody>
-              <Typography variant="h4"className="text-orange-100 mb-2">
+              <Typography variant="h4" className="text-orange-100 mb-2">
                 Bring joy to their lives and find unconditional love in yours.
               </Typography>
-              <Typography  className="mb-8 text-white font-normal leading-normal  ">
+              <Typography className="mb-8 text-white font-normal leading-normal  ">
                 Pets are more than just companions; they become a part of your
                 family. They greet you with enthusiasm, comfort you in tough
                 times, and bring endless laughter and happiness into your life.
                 Every adoption story is unique, and yours could be the next to
                 make a difference.
               </Typography>
-              <Button 
-              onClick={() => scrollToSection("contact")}
+              <Button
+                onClick={() => scrollToSection("contact")}
                 variant="text"
                 className="  border-orange-100 text-white border transition duration-300 flex items-center gap-2
                            hover:bg-orange-100 hover:text-gray-700 "

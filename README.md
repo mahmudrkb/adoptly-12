@@ -2,7 +2,10 @@
    <h1 className="font-bold">
 ADOPTLY </h1>
 
-    <h4><span className="font-semibold">Live Link : https://adoptly-85d31.web.app </span> </h4>
+  
+   <h2>
+   Live Link : https://adoptly-85d31.web.app </h2>  
+ 
 
 </div>
 <div>
@@ -10,7 +13,7 @@ ADOPTLY </h1>
       <ul>
         <li>Connecting People with Pets</li>
         <li>Promoting Pet Adoption</li>
-        <li> Building a Community/li>
+        <li> Building a Community</li>
         <li> Adoption facility</li>
       </ul>
 </div>
@@ -36,7 +39,5 @@ ADOPTLY </h1>
      <li>React-select </li>
      <li>React-modal </li>
      <li>others </li>
-
-    
     </ul>
 </div>

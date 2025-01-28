@@ -5,7 +5,7 @@ const PetCard = ({ pet }) => {
   const { image, name,age,location,shortDescription,longDescription,category, _id } = pet;
   return (
     <div className="">
-      <div class="relative flex flex-col  bg-white  border  shrink-10 shadow-md  border-slate-200 rounded-lg max-w-96">
+      <div class="relative flex flex-col dark:bg-blue-gray-800  bg-white   dark:border-0border  shrink-10 shadow-md  border-slate-200 rounded-lg max-w-96">
         <div class="relative h-56 m-2.5 overflow-hidden text-white rounded-md">
           <img className="w-full h-full object-cover"
             src={image}

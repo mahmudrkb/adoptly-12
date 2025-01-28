@@ -47,14 +47,14 @@ const AllUser = () => {
           subheading={"This is all Users"}
         ></SectionsTitles>
         <div>
-          <Card className="h-full w-full overflow-x-scroll">
+          <Card className="h-full dark:bg-blue-gray-800 p-3 w-full overflow-x-scroll">
             <CardHeader floated={false} shadow={false} className="rounded-none">
-              <div className=" flex items-center justify-between gap-8">
+              <div className=" dark:bg-blue-gray-800 dark:text-white  flex items-center justify-between gap-8">
                 <div>
                   <Typography variant="h5">
                     My Users List ({users.length})
                   </Typography>
-                  <Typography color="gray" className="mt-1 font-normal">
+                  <Typography color="gray" className="mt-1 font-normal dark:text-gray-300 ">
                     See information about all pets
                   </Typography>
                 </div>
@@ -114,7 +114,7 @@ const AllUser = () => {
                           </Typography>
                         </td>
                         <td className={classes}>
-                          <div className="flex items-center gap-3">
+                          <div className="flex items-center gap-3 dark:text-white">
                             <Avatar
                               src={user.photo}
                               alt={user.name}
@@ -132,7 +132,7 @@ const AllUser = () => {
                         </td>
                         <td className={classes}>
                           <div className="flex flex-col">
-                            <Typography variant="small" className="font-normal">
+                            <Typography variant="small" className="font-normal dark:text-white">
                               {user.email}
                             </Typography>
                           </div>
@@ -145,7 +145,7 @@ const AllUser = () => {
                               name="status"
                               defaultValue={user.role}
                               onChange={(e) => handleAdoption(e, user._id)}
-                              className="block  border-2 h-9 w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-teal-300 sm:text-sm/6"
+                              className="block  border-2 h-9 w-full rounded-md dark:bg-blue-gray-900 dark:text-white bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-teal-300 sm:text-sm/6"
                             >
                              
                               <option>User</option>

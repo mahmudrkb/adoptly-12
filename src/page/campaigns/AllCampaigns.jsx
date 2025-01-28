@@ -23,9 +23,9 @@ const AllCampaigns = () => {
   //   console.log(allDonations)
 
   return (
-    <div>
+    <div className="dark:bg-blue-gray-900">
       <div className="mt-16  ">
-        <div className="   ">
+        <div className="  ">
           <div className='h-screen  bg-fixed   bg-center bg-[url("https://i.ibb.co.com/yfYnJxL/360-F-1000821370-0o-Bj-Qg-Dm-OOsbt-HA8-ZDri-X0-BN9-Dc-VWQOi.jpg")] bg-cover  '>
             <div className=" flex items-center justify-center   bg-gray-900 bg-opacity-60  h-screen roboto-mono ">
               <div className="text-center space-y-3 text-white">
@@ -40,10 +40,10 @@ const AllCampaigns = () => {
       </div>
       {/* this is my card */}
 
-      <div className="container mx-auto my-10 p-3">
+      <div className="container  mx-auto py-10 p-3">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 ">
           {allDonations.map((donation, index) => (
-            <Card key={index} className="mt-6 bg-gray-50 max-w-96">
+            <Card key={index} className="mt-6 dark:bg-blue-gray-800 bg-gray-50 max-w-96">
               <CardHeader color="blue-gray" className="relative h-56">
                 <img
                   src={donation.image}
