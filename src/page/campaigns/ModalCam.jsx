@@ -17,7 +17,6 @@ import {
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 
@@ -29,18 +28,18 @@ const ModalCam = () => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen((cur) => !cur);
   const { user } = useAuth();
-  const axiosSecure = useAxiosSecure();
+
   const [totalPrice, setTotalPrice] = useState("");
   const price = totalPrice;
 
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const { id } = useParams();
 
   const { data: detailsCam = [], refetch } = useQuery({
     queryKey: ["detailsCam"],
 
     queryFn: async () => {
-      const res = await axiosPublic.get(`/donation-cam/${id}`);
+      const res = await axiosSecure.get(`/donation-cam/${id}`);
       return res.data;
     },
   });
@@ -128,7 +127,7 @@ const ModalCam = () => {
 
     handleOpen();
   };
-  console.log(price, "this is  total price ");
+  // console.log(price, "this is  total price ");
 
   return (
     <div className="">

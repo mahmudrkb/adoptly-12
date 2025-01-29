@@ -1,10 +1,11 @@
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
-import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
 import SectionsTitles from "../../shared/SectionTitles";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
 
 // TODO
 // import.meta.env.VITE_IMAGE_HOSTING_API_KEY
@@ -15,6 +16,7 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_ke
 
 const UpdateDonation = () => {
   const tomorrowDate = new Date();
+  const navigate=useNavigate()
   tomorrowDate.setDate(tomorrowDate.getDate() + 1);
   const formattedTomorrowDate = tomorrowDate.toISOString().split("T")[0];
 
@@ -22,7 +24,7 @@ const UpdateDonation = () => {
   const { data: camData = [], refetch } = useQuery({
     queryKey: ["camData"],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/donation-cam/${id}`);
+      const res = await axiosSecure.get(`/donation-cam/${id}`);
       return res.data;
     },
   });
@@ -34,49 +36,57 @@ const UpdateDonation = () => {
     formState: { errors },
   } = useForm();
   const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
   const axiosPublic = useAxiosPublic();
   const onSubmit = async (data) => {
-    // console.log(data);
-    const imageFile = { image: data.image[0] };
-    const res = await axiosPublic.post(image_hosting_api, imageFile, {
-      headers: {
-        "content-type": "multipart/form-data",
-      },
-    });
-    // console.log(res.data);
-    if (res.data.success) {
-      const updateCampaigns = {
-        name: data.name,
-        maxAmount: data.maxAmount,
-        lastDate: data.lastDate,
-        shortDescription: data.shortDescription,
-        longDescription: data.longDescription,
-        image: res.data.data.display_url,
-        donOwnerEmail: user.email,
-        startDate: new Date().toISOString(),
-      };
-      //   console.log(updateCampaigns);
-      const updateCam = await axiosPublic.patch(
-        `/updateCampaigns/${id}`,
-        updateCampaigns
-      );
-      console.log(updateCam.data);
-      if (updateCam.data.modifiedCount > 0) {
-        Swal.fire({
-          position: "top-center",
-          icon: "success",
-          title: "Campaign Updated successfully",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-        refetch();
+    let imageUrl = camData.image; // Use existing image by default
+
+    if (data.image.length > 0) {
+      const imageFile = { image: data.image[0] };
+      const res = await axiosSecure.post(image_hosting_api, imageFile, {
+        headers: {
+          "content-type": "multipart/form-data",
+        },
+      });
+
+      if (res.data.success) {
+        imageUrl = res.data.data.display_url;
+        // console.log('work is success')
       } else {
         Swal.fire({
           icon: "error",
           title: "Oops...",
-          text: "Something went wrong!",
+          text: "Image upload failed!",
         });
+        return;
       }
+    }
+
+    const updateCampaigns = {
+      name: data.name,
+      maxAmount: data.maxAmount,
+      lastDate: data.lastDate,
+      shortDescription: data.shortDescription,
+      longDescription: data.longDescription,
+      image: imageUrl, // Use either new or existing image
+      donOwnerEmail: user.email,
+      startDate: new Date().toISOString(),
+    };
+
+    const updateCam = await axiosSecure.patch(
+      `/updateCampaigns/${id}`,
+      updateCampaigns
+    );
+    if (updateCam.data.modifiedCount > 0) {
+      Swal.fire({
+        position: "top-center",
+        icon: "success",
+        title: "Campaign Updated successfully",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      refetch();
+      navigate("/allCampaigns");
     } else {
       Swal.fire({
         icon: "error",
@@ -85,6 +95,55 @@ const UpdateDonation = () => {
       });
     }
   };
+
+  // const imageFile = { image: data.image[0] };
+  // const res = await axiosPublic.post(image_hosting_api, imageFile, {
+  //   headers: {
+  //     "content-type": "multipart/form-data",
+  //   },
+  // });
+  // // console.log(res.data);
+  // if (res.data.success) {
+  //   const updateCampaigns = {
+  //     name: data.name,
+  //     maxAmount: data.maxAmount,
+  //     lastDate: data.lastDate,
+  //     shortDescription: data.shortDescription,
+  //     longDescription: data.longDescription,
+  //     image: res.data.data.display_url,
+  //     donOwnerEmail: user.email,
+  //     startDate: new Date().toISOString(),
+  //   };
+  //   //   console.log(updateCampaigns);
+  //   const updateCam = await axiosSecure.patch(
+  //     `/updateCampaigns/${id}`,
+  //     updateCampaigns
+  //   );
+  //   // console.log(updateCam.data);
+  //   if (updateCam.data.modifiedCount > 0) {
+  //     Swal.fire({
+  //       position: "top-center",
+  //       icon: "success",
+  //       title: "Campaign Updated successfully",
+  //       showConfirmButton: false,
+  //       timer: 1500,
+  //     });
+  //     refetch();
+  //   } else {
+  //     Swal.fire({
+  //       icon: "error",
+  //       title: "Oops...",
+  //       text: "Something went wrong!",
+  //     });
+  //   }
+  // } else {
+  //   Swal.fire({
+  //     icon: "error",
+  //     title: "Oops...",
+  //     text: "Something went wrong!",
+  //   });
+  // }
+
   return (
     <div className=" container mx-auto my-10">
       <SectionsTitles

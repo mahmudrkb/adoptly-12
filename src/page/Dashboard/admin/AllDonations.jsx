@@ -26,7 +26,7 @@ const AllDonations = () => {
       return res.data;
     },
   });
-  console.log(allPayments);
+  // console.log(allPayments);
 
   return (
     <div >

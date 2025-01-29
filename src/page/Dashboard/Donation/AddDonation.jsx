@@ -1,8 +1,9 @@
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
-import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
 import SectionsTitles from "../../shared/SectionTitles";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
 
 // TODO
 // import.meta.env.VITE_IMAGE_HOSTING_API_KEY
@@ -23,6 +24,7 @@ const AddDonation = () => {
     reset,
   } = useForm();
   const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
   const axiosPublic = useAxiosPublic();
   const onSubmit = async (data) => {
     // console.log(data);
@@ -46,7 +48,7 @@ const AddDonation = () => {
       };
       //   console.log(donation);
 
-      const addDonation = await axiosPublic.post("/add-donation", donation);
+      const addDonation = await axiosSecure.post("/add-donation", donation);
 
       // console.log(addDonation.data);
 

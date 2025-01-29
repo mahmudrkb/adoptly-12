@@ -21,7 +21,7 @@ import { format } from "date-fns";
 import { Link, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../../../hooks/useAuth";
-import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import SectionsTitles from "../../shared/SectionTitles";
 import { Progress } from "@material-tailwind/react";
 import { FaRegCirclePause } from "react-icons/fa6";
@@ -31,12 +31,12 @@ import DonatorModal from "./DonatorModal";
 const MyCampaigns = () => {
   const { user } = useAuth();
 
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
 
   const { data: donations = [], refetch } = useQuery({
     queryKey: ["donations"],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/my-donations/${user.email}`);
+      const res = await axiosSecure.get(`/my-donations/${user.email}`);
       return res.data;
     },
   });
@@ -57,7 +57,7 @@ const MyCampaigns = () => {
   //     })
   //       .then((result) => {
   //         if (result.isConfirmed) {
-  //           axiosPublic.delete(`/delete-donation/${id}`).then((res) => {
+  //           axiosSecure.delete(`/delete-donation/${id}`).then((res) => {
   //             if (res.data.deletedCount > 0) {
   //               Swal.fire({
   //                 title: "Deleted!",
@@ -84,7 +84,7 @@ const MyCampaigns = () => {
   //     const data = {
   //       adopted: status,
   //     };
-  //     axiosPublic.patch(`/setAdopted/${id}`, data).then((res) => {
+  //     axiosSecure.patch(`/setAdopted/${id}`, data).then((res) => {
   //       Swal.fire({
   //         title: "Adopted Successfully!",
   //         icon: "success",

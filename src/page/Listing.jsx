@@ -14,7 +14,7 @@ const Listing = () => {
     },
   });
 
-  console.log("this is all pets", pets);
+  // console.log("this is all pets", pets);
 
   return (
     <div className="pt-16 dark:bg-blue-gray-900 ">

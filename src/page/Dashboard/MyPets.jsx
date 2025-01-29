@@ -21,17 +21,18 @@ import useAuth from "./../../hooks/useAuth";
 import { format } from "date-fns";
 import { Link, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
+
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const MyPets = () => {
   const { user } = useAuth();
 
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
 
   const { data: pets = [], refetch } = useQuery({
     queryKey: ["pets"],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/addedPets/${user.email}`);
+      const res = await axiosSecure.get(`/addedPets/${user.email}`);
       return res.data;
     },
   });
@@ -48,7 +49,7 @@ const MyPets = () => {
     })
       .then((result) => {
         if (result.isConfirmed) {
-          axiosPublic.delete(`/delete-pet/${id}`).then((res) => {
+          axiosSecure.delete(`/delete-pet/${id}`).then((res) => {
             if (res.data.deletedCount > 0) {
               Swal.fire({
                 title: "Deleted!",
@@ -75,7 +76,7 @@ const MyPets = () => {
     const data = {
       adopted: status,
     };
-    axiosPublic.patch(`/setAdopted/${id}`, data).then((res) => {
+    axiosSecure.patch(`/setAdopted/${id}`, data).then((res) => {
       Swal.fire({
         title: "Adopted Successfully!",
         icon: "success",

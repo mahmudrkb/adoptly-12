@@ -1,10 +1,10 @@
 import Swal from "sweetalert2";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
 import SectionsTitles from "../shared/SectionTitles";
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 // TODO
 // import.meta.env.VITE_IMAGE_HOSTING_API_KEY
@@ -15,12 +15,13 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_ke
 
 const UpdatePet = () => {
   const { user } = useAuth();
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
+  const navigate=useNavigate()
   const { id } = useParams();
   const { data: petData = [], refetch } = useQuery({
     queryKey: ["petData"],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/pet/${id}`);
+      const res = await axiosSecure.get(`/pet/${id}`);
       return res.data;
     },
   });
@@ -29,52 +30,54 @@ const UpdatePet = () => {
   const { register, handleSubmit } = useForm();
 
   const onSubmit = async (data) => {
-    // console.log(data);
-    const imageFile = { image: data.image[0] };
+    let imageUrl = petData.image; // Use existing image by default
 
-    const res = await axiosPublic.post(image_hosting_api, imageFile, {
-      headers: {
-        "content-type": "multipart/form-data",
-      },
-    });
+    if (data.image.length > 0) {
+      const imageFile = { image: data.image[0] };
+      const res = await axiosSecure.post(image_hosting_api, imageFile, {
+        headers: {
+          "content-type": "multipart/form-data",
+        },
+      });
 
-    // console.log(res.data);
-
-    if (res.data.success) {
-      const pet = {
-        name: data.name,
-        age: data.age,
-        category: data.category,
-        location: data.location,
-        shortDescription: data.shortDescription,
-        longDescription: data.longDescription,
-
-        image: res.data.data.display_url,
-
-        ownerEmail: user.email,
-        adopted: false,
-        date: new Date().toISOString(),
-      };
-
-      // console.log(pet);
-      const addPet = await axiosPublic.patch(`/updatePet/${id}`, pet);
-      // console.log(addPet.data);
-      if (addPet.data.modifiedCount > 0) {
-        Swal.fire({
-          position: "top-center",
-          icon: "success",
-          title: "Pet Updated successfully",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-        refetch();
+      if (res.data.success) {
+        imageUrl = res.data.data.display_url;
+        // console.log('work is success')
       } else {
         Swal.fire({
           icon: "error",
           title: "Oops...",
-          text: "Something went wrong!",
+          text: "Image upload failed!",
         });
+        return;
       }
+    }
+
+    const pet = {
+      name: data.name,
+      age: data.age,
+      category: data.category,
+      location: data.location,
+      shortDescription: data.shortDescription,
+      longDescription: data.longDescription,
+      image: imageUrl, // Use either new or existing image
+      ownerEmail: user.email,
+      adopted: false,
+      date: new Date().toISOString(),
+    };
+
+    const updatePet = await axiosSecure.patch(`/updatePet/${id}`, pet);
+    if (updatePet.data.modifiedCount > 0) {
+      Swal.fire({
+        position: "top-center",
+        icon: "success",
+        title: "Pet Updated successfully",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      refetch();
+      navigate('/listing')
+      
     } else {
       Swal.fire({
         icon: "error",
@@ -83,6 +86,63 @@ const UpdatePet = () => {
       });
     }
   };
+
+  //   const onSubmit = async (data) => {
+  //     let imageUrl=petData.image;
+  //     // console.log(data);
+  // if(data.image.length>){
+
+  // }
+  //     const imageFile = { image: data.image[0] };
+  //     const res = await axiosPublic.post(image_hosting_api, imageFile, {
+  //       headers: {
+  //         "content-type": "multipart/form-data",
+  //       },
+  //     });
+
+  //     // console.log(res.data);
+
+  //     if (res.data.success) {
+  //       const pet = {
+  //         name: data.name,
+  //         age: data.age,
+  //         category: data.category,
+  //         location: data.location,
+  //         shortDescription: data.shortDescription,
+  //         longDescription: data.longDescription,
+  //         image: res.data.data.display_url,
+  //         ownerEmail: user.email,
+  //         adopted: false,
+  //         date: new Date().toISOString(),
+  //       };
+
+  //       // console.log(pet);
+  //       const addPet = await axiosPublic.patch(`/updatePet/${id}`, pet);
+  //       // console.log(addPet.data);
+  //       if (addPet.data.modifiedCount > 0) {
+  //         Swal.fire({
+  //           position: "top-center",
+  //           icon: "success",
+  //           title: "Pet Updated successfully",
+  //           showConfirmButton: false,
+  //           timer: 1500,
+  //         });
+  //         refetch();
+  //       } else {
+  //         Swal.fire({
+  //           icon: "error",
+  //           title: "Oops...",
+  //           text: "Something went wrong!",
+  //         });
+  //       }
+  //     } else {
+  //       Swal.fire({
+  //         icon: "error",
+  //         title: "Oops...",
+  //         text: "Something went wrong!",
+  //       });
+  //     }
+  //   };
   return (
     <div className=" container mx-auto my-10">
       <SectionsTitles
@@ -188,12 +248,12 @@ const UpdatePet = () => {
             </label>
             <div className="mt-2">
               <input
-                //    defaultValue={petData.image.filename}
+               
                 type="file"
                 accept="image/*"
                 {...register("image")}
               />
-              {petData.image}
+             
             </div>
           </div>
 

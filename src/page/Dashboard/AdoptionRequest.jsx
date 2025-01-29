@@ -9,26 +9,26 @@ import {
 } from "@material-tailwind/react";
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../hooks/useAuth";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { MdAddTask, MdDeleteOutline } from "react-icons/md";
 import { Link, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const AdoptionRequest = () => {
   const { user } = useAuth();
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
 
   const { data: adoptionRequest = [], refetch } = useQuery({
     queryKey: ["adoptionRequest"],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/myAdoptions/${user.email}`);
+      const res = await axiosSecure.get(`/myAdoptions/${user.email}`);
       return res.data;
     },
   });
 
   const handleAdoption = (e, id) => {
     const data = { status: e.target.value };
-    axiosPublic.patch(`/setAdoption/${id}`, data).then((res) => {
+    axiosSecure.patch(`/setAdoption/${id}`, data).then((res) => {
       console.log(res.data);
       if (res.data.modifiedCount > 0) {
         Swal.fire({

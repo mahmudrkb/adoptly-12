@@ -6,7 +6,7 @@ import {
   Button,
 } from "@material-tailwind/react";
 import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useParams } from "react-router-dom";
 import ModalCam from "./ModalCam";
 import { loadStripe } from "@stripe/stripe-js";
@@ -18,18 +18,18 @@ const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_PK);
 
 console.log(import.meta.env.VITE_PAYMENT_PK ,"this is promise")
 const DetailsCam = () => {
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const { id } = useParams();
 
   const { data: detailsCam = [], refetch } = useQuery({
     queryKey: ["detailsCam"],
 
     queryFn: async () => {
-      const res = await axiosPublic.get(`/donation-cam/${id}`);
+      const res = await axiosSecure.get(`/donation-cam/${id}`);
       return res.data;
     },
   });
-  //   console.log(detailsCam)
+    console.log(detailsCam)
   const {
     image,
     name,

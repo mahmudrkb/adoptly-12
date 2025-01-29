@@ -36,7 +36,7 @@ const AllPets = () => {
     },
 
   });
-  console.log(pets)
+  // console.log(pets)
 
   const handleDelete = (id) => {
     Swal.fire({

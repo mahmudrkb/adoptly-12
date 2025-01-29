@@ -2,6 +2,7 @@ import Swal from "sweetalert2";
 import SectionsTitles from "../shared/SectionTitles";
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 // TODO
@@ -19,6 +20,7 @@ const AddPet = () => {
     reset,
   } = useForm();
   const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
   const axiosPublic = useAxiosPublic();
   const onSubmit = async (data) => {
     // console.log(data);
@@ -43,7 +45,7 @@ const AddPet = () => {
         date: new Date().toISOString(),
       };
       // console.log(pet);
-      const addPet = await axiosPublic.post("/add-pet", pet);
+      const addPet = await axiosSecure.post("/add-pet", pet);
       // console.log(addPet.data);
       if (addPet.data.insertedId) {
         Swal.fire({

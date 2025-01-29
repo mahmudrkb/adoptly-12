@@ -5,18 +5,18 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "../hooks/useAxiosPublic";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 import { Link, useParams } from "react-router-dom";
 import Modal from "../components/Modal";
 
 const PetDetails = () => {
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const { id } = useParams();
 
   const { data: pet = [], refetch } = useQuery({
     queryKey: ["pet"],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/pet/${id}`);
+      const res = await axiosSecure.get(`/pet/${id}`);
       return res.data;
     },
   });

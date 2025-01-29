@@ -8,7 +8,7 @@ import {
   Card,
   CardBody,
 } from "@material-tailwind/react";
-import useAxiosPublic from "../hooks/useAxiosPublic";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
@@ -19,13 +19,13 @@ const Modal = () => {
   const { user } = useAuth();
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(!open);
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const { id } = useParams();
 
   const { data: pet = {} } = useQuery({
     queryKey: ["pet"],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/pet/${id}`);
+      const res = await axiosSecure.get(`/pet/${id}`);
       return res.data;
     },
   });
@@ -47,7 +47,7 @@ const Modal = () => {
     };
     // console.log(adoption);
 
-    const addAdoption = await axiosPublic.post("/addAdoption", adoption);
+    const addAdoption = await axiosSecure.post("/addAdoption", adoption);
 
     // console.log(addAdoption.data);
 

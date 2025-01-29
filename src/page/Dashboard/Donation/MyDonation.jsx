@@ -24,7 +24,7 @@ const MyDonation = () => {
     },
   });
 
-  console.log(payments, "this is my payments");
+  // console.log(payments, "this is my payments");
 
   return (
     <div>
