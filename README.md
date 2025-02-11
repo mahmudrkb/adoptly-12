@@ -7,7 +7,8 @@ ADOPTLY </h1>
     <h3 className="font-semibold">Server Side</h3>
     <a href="https://github.com/mahmudrkb/adoptly-server-12" target="_blank"
       >Backend Github Link</a
-    >
+    > <br>
+
     <a href="https://adoptly-server.vercel.app" target="_blank">Vercel Link</a> 
 
    <div> 
