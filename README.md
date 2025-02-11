@@ -3,7 +3,12 @@
 ADOPTLY </h1>
 
    <h2>
-   Live Link : https://adoptly-85d31.web.app </h2>  
+   Live Link : https://adoptly-85d31.web.app </h2> 
+    <h4 className="font-semibold">Server Side</h4>
+    <a href="https://github.com/mahmudrkb/adoptly-server-12" target="_blank"
+      >Backend Github Link</a
+    >
+    <a href="https://adoptly-server.vercel.app" target="_blank">Vercel Link</a> 
 
 
 </div>
@@ -200,6 +205,5 @@ ADOPTLY </h1>
           This route shows a history of donations made by the logged-in user. It includes details such as the donation amount, date, and the campaign or cause the donation was made to.
         </li>
       </div>
-
 
 </div>
