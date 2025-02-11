@@ -5,6 +5,11 @@ ADOPTLY </h1>
    <h2>
    Live Link : https://adoptly-85d31.web.app </h2>  
 
+   <div> 
+ <h4 className="font-semibold">Description</h4>
+ <p>Adoply is a modern pet adoption platform that connects pet lovers with animals in need of a home. Users can explore pets based on categories, add pets for adoption, and manage their adoption status seamlessly.</p>
+ </div>
+
 
 </div>
 <div>
@@ -41,10 +46,7 @@ ADOPTLY </h1>
     </ul>
 </div>
 
-<div> 
- <h4 className="font-semibold">Description</h4>
- <p>Adoply is a modern pet adoption platform that connects pet lovers with animals in need of a home. Users can explore pets based on categories, add pets for adoption, and manage their adoption status seamlessly.</p>
- </div>
+
 
 <div>
  <h4 className="font-semibold"> Key Page </h4>
