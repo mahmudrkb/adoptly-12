@@ -131,9 +131,75 @@ ADOPTLY </h1>
           Admin see all donation  and Amount
         </p>
     </div>
+</div>
+<div>
+      <h2>Dashboard User Routes</h2>
+      <div>
+        <h4 className="semi-bold">Add Pets</h4>
+        <li>
+          <h3>Route:</h3>
+          dashboard/add-pet
+        </li>
+        <li>
+          This route allows users to add a new pet to the system. Users can
+          provide details such as the pet's name, breed, age, and any other
+          relevant information. This is typically used by pet owners or shelters
+          to list pets available for adoption.
+        </li>
+      </div>
 
-
-
+  <div>
+        <h4 className="semi-bold">My Added Pets</h4>
+        <li>
+          <h3>Route:</h3>
+          dashboard/my-pet
+        </li>
+        <li>
+          This route displays a list of pets added by the logged-in user. It
+          provides an overview of all the pets they have registered in the
+          system, along with options to edit or remove them.
+        </li>
+      </div>
+      <div>
+        <h4 className="semi-bold">Adoption Request</h4>
+        <li>
+          <h3>Route:</h3>
+          /dashboard/adoptionRequest
+        </li>
+        <li>
+          This route allows users to submit adoption requests for pets listed on the platform. Users can select a pet and provide their contact information or other required details to initiate the adoption process.
+        </li>
+      </div>
+      <div>
+        <h4 className="semi-bold">Create Donation Campaign</h4>
+        <li>
+          <h3>Route:</h3>
+          /dashboard/add-donation
+        </li>
+        <li>
+          This route enables users to create a donation campaign for a specific cause, such as supporting a shelter or funding medical care for pets. Users can set a goal, provide a description, and upload images or videos to promote the campaign.
+        </li>
+      </div>
+      <div>
+        <h4 className="semi-bold">My Donation Campaigns</h4>
+        <li>
+          <h3>Route:</h3>
+          /dashboard/my-campaigns
+        </li>
+        <li>
+          This route displays a list of donation campaigns created by the logged-in user. It provides details such as the campaign's progress, funds raised, and options to edit or manage the campaign.
+        </li>
+      </div>
+      <div>
+        <h4 className="semi-bold">My Donations</h4>
+        <li>
+          <h3>Route:</h3>
+         /dashboard/paymentsHistory
+        </li>
+        <li>
+          This route shows a history of donations made by the logged-in user. It includes details such as the donation amount, date, and the campaign or cause the donation was made to.
+        </li>
+      </div>
 
 
 </div>
