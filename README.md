@@ -4,21 +4,21 @@ ADOPTLY </h1>
 
    <h2>
    Live Link : https://adoptly-85d31.web.app </h2> 
-    <h4 className="font-semibold">Server Side</h4>
+    <h3 className="font-semibold">Server Side</h3>
     <a href="https://github.com/mahmudrkb/adoptly-server-12" target="_blank"
       >Backend Github Link</a
     >
     <a href="https://adoptly-server.vercel.app" target="_blank">Vercel Link</a> 
 
    <div> 
- <h4 className="font-semibold">Description</h4>
+ <h3 className="font-semibold">Description</h3>
  <p>Adoply is a modern pet adoption platform that connects pet lovers with animals in need of a home. Users can explore pets based on categories, add pets for adoption, and manage their adoption status seamlessly.</p>
  </div>
 
 
 </div>
 <div>
-    <h4 className="font-semibold"> Purpose</h4>
+    <h3 className="font-semibold"> Purpose</h3>
       <ul>
         <li>Connecting People with Pets</li>
         <li>Promoting Pet Adoption</li>
@@ -28,7 +28,7 @@ ADOPTLY </h1>
 </div>
 
 <div>
-    <h4 className="font-semibold">Key  Feature</h4>
+    <h3 className="font-semibold">Key  Feature</h3>
     <ul>
     <li> Adoption Request  </li>
     <li> Pay Donation   </li>
@@ -40,7 +40,7 @@ ADOPTLY </h1>
 </div>
 
 <div>
-    <h4 className="font-semibold">NPM Packages</h4>
+    <h3 className="font-semibold">NPM Packages</h3>
     <ul>
      <li> React-icons</li>
      <li>React-hook form </li>
@@ -54,7 +54,7 @@ ADOPTLY </h1>
 
 
 <div>
- <h4 className="font-semibold"> Key Page </h4>
+ <h3 className="font-semibold"> Key Page </h3>
   <h5>1.Home Page:</h5>
   <p>Dynamic statistics  (Pet Adoption, Pet Category, About Us, FAQ, Contact Us )</p>
 
@@ -68,7 +68,7 @@ ADOPTLY </h1>
 
   <div>
 
- <h4 class="font-semibold">Frontend Technologies:</h4>
+ <h3 class="font-semibold">Frontend Technologies:</h3>
   <ul>
     <li><strong>React.js</strong> – For building the user interface efficiently with reusable components.</li>
     <li><strong>React Router</strong> – For seamless navigation between different pages (e.g., Home, Pet Listing, Dashboard).</li>
@@ -84,25 +84,25 @@ ADOPTLY </h1>
   </div>
   
 <div>
-  <h4 class="font-semibold">Authentication</h4>
+  <h3 class="font-semibold">Authentication</h3>
 
-  <h3>Register a User</h3>
+  <h5>Register a User</h5>
   <p><strong>POST /register</strong> - Registers a new user in the system.</p>
 
-  <h3>Login</h3>
+  <h5>Login</h5>
   <p><strong>POST /users</strong> - Authenticates a user and provides a JWT token.</p>
 
-  <h3>Logout</h3>
+  <h5>Logout</h5>
   <p><strong>POST /logout</strong> - Logs out the user and clears the authentication token from cookies.</p>
 
-  <h3>JWT Authentication</h3>
+  <h5>JWT Authentication</h5>
   <p><strong>GET /jwt</strong> - Verifies the JWT token from cookies to authenticate the user.</p>
   </div>
 
   <div>
       <h2>Dashboard Admin Routes</h2>
       <div>
-        <h4 className="semi-bold">Admin Home</h4>
+        <h3 className="semi-bold">Admin Home</h3>
         <ul>
           <li>Show Total User</li>
           <li>Show Total Pets</li>
@@ -111,7 +111,7 @@ ADOPTLY </h1>
       </div>
 
    <div>
-        <h4 className="semi-bold">All User</h4>
+        <h3 className="semi-bold">All User</h3>
         <ul>
           <p>Admin can control all user </p>
           <li>User Role Update</li>
@@ -122,7 +122,7 @@ ADOPTLY </h1>
     </div>
 
   <div>
-        <h4 className="semi-bold">All Pets</h4>
+        <h3 className="semi-bold">All Pets</h3>
         <ul>
           <p>Admin can control all Pets </p>
           <li>Pet adopted  Update</li>
@@ -133,7 +133,7 @@ ADOPTLY </h1>
    </div>
 
   <div>
-        <h4 className="semi-bold">All Donations</h4>
+        <h3 className="semi-bold">All Donations</h3>
         <p>
           Admin see all donation  and Amount
         </p>
@@ -142,9 +142,9 @@ ADOPTLY </h1>
 <div>
       <h2>Dashboard User Routes</h2>
       <div>
-        <h4 className="semi-bold">Add Pets</h4>
+        <h3 className="semi-bold">Add Pets</h3>
         <li>
-          <h3>Route:</h3>
+          <h5>Route:</h5>
           dashboard/add-pet
         </li>
         <li>
@@ -156,9 +156,9 @@ ADOPTLY </h1>
       </div>
 
   <div>
-        <h4 className="semi-bold">My Added Pets</h4>
+        <h3 className="semi-bold">My Added Pets</h3>
         <li>
-          <h3>Route:</h3>
+          <h5>Route:</h5>
           dashboard/my-pet
         </li>
         <li>
@@ -168,9 +168,9 @@ ADOPTLY </h1>
         </li>
       </div>
       <div>
-        <h4 className="semi-bold">Adoption Request</h4>
+        <h3 className="semi-bold">Adoption Request</h3>
         <li>
-          <h3>Route:</h3>
+          <h5>Route:</h5>
           /dashboard/adoptionRequest
         </li>
         <li>
@@ -178,9 +178,9 @@ ADOPTLY </h1>
         </li>
       </div>
       <div>
-        <h4 className="semi-bold">Create Donation Campaign</h4>
+        <h3 className="semi-bold">Create Donation Campaign</h3>
         <li>
-          <h3>Route:</h3>
+          <h5>Route:</h5>
           /dashboard/add-donation
         </li>
         <li>
@@ -188,9 +188,9 @@ ADOPTLY </h1>
         </li>
       </div>
       <div>
-        <h4 className="semi-bold">My Donation Campaigns</h4>
+        <h3 className="semi-bold">My Donation Campaigns</h3>
         <li>
-          <h3>Route:</h3>
+          <h5>Route:</h5>
           /dashboard/my-campaigns
         </li>
         <li>
@@ -198,9 +198,9 @@ ADOPTLY </h1>
         </li>
       </div>
       <div>
-        <h4 className="semi-bold">My Donations</h4>
+        <h3 className="semi-bold">My Donations</h3>
         <li>
-          <h3>Route:</h3>
+          <h5>Route:</h5>
          /dashboard/paymentsHistory
         </li>
         <li>
