@@ -10,6 +10,11 @@ ADOPTLY </h1>
     >
     <a href="https://adoptly-server.vercel.app" target="_blank">Vercel Link</a> 
 
+   <div> 
+ <h4 className="font-semibold">Description</h4>
+ <p>Adoply is a modern pet adoption platform that connects pet lovers with animals in need of a home. Users can explore pets based on categories, add pets for adoption, and manage their adoption status seamlessly.</p>
+ </div>
+
 
 </div>
 <div>
@@ -23,7 +28,7 @@ ADOPTLY </h1>
 </div>
 
 <div>
-    <h4 className="font-semibold">Key Feature</h4>
+    <h4 className="font-semibold">Key  Feature</h4>
     <ul>
     <li> Adoption Request  </li>
     <li> Pay Donation   </li>
@@ -46,10 +51,7 @@ ADOPTLY </h1>
     </ul>
 </div>
 
-<div> 
- <h4 className="font-semibold">Description</h4>
- <p>Adoply is a modern pet adoption platform that connects pet lovers with animals in need of a home. Users can explore pets based on categories, add pets for adoption, and manage their adoption status seamlessly.</p>
- </div>
+
 
 <div>
  <h4 className="font-semibold"> Key Page </h4>
