@@ -7,15 +7,15 @@ ADOPTLY </h1>
     <h3 className="font-semibold">Server Side</h3>
     <a href="https://github.com/mahmudrkb/adoptly-server-12" target="_blank"
       >Backend Github Link</a
-    > <br>
+    > 
+    <br>
 
-    <a href="https://adoptly-server.vercel.app" target="_blank">Vercel Link</a> 
+<a href="https://adoptly-server.vercel.app" target="_blank">Vercel Link</a>
 
    <div> 
  <h3 className="font-semibold">Description</h3>
  <p>Adoply is a modern pet adoption platform that connects pet lovers with animals in need of a home. Users can explore pets based on categories, add pets for adoption, and manage their adoption status seamlessly.</p>
  </div>
-
 
 </div>
 <div>
@@ -51,8 +51,6 @@ ADOPTLY </h1>
      <li>others </li>
     </ul>
 </div>
-
-
 
 <div>
  <h3 className="font-semibold"> Key Page </h3>
