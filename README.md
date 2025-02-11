@@ -144,7 +144,7 @@ ADOPTLY </h1>
       <div>
         <h3 className="semi-bold">Add Pets</h3>
         <li>
-          <h5>Route:</h5>
+          <span className="semi-bold">Route:</span>
           dashboard/add-pet
         </li>
         <li>
@@ -158,7 +158,7 @@ ADOPTLY </h1>
   <div>
         <h3 className="semi-bold">My Added Pets</h3>
         <li>
-          <h5>Route:</h5>
+           <span className="semi-bold">Route:</span>
           dashboard/my-pet
         </li>
         <li>
@@ -170,7 +170,7 @@ ADOPTLY </h1>
       <div>
         <h3 className="semi-bold">Adoption Request</h3>
         <li>
-          <h5>Route:</h5>
+           <span className="semi-bold">Route:</span>
           /dashboard/adoptionRequest
         </li>
         <li>
@@ -180,7 +180,7 @@ ADOPTLY </h1>
       <div>
         <h3 className="semi-bold">Create Donation Campaign</h3>
         <li>
-          <h5>Route:</h5>
+          <span className="semi-bold">Route:</span>
           /dashboard/add-donation
         </li>
         <li>
@@ -190,7 +190,7 @@ ADOPTLY </h1>
       <div>
         <h3 className="semi-bold">My Donation Campaigns</h3>
         <li>
-          <h5>Route:</h5>
+          <span className="semi-bold">Route:</span>
           /dashboard/my-campaigns
         </li>
         <li>
@@ -200,7 +200,7 @@ ADOPTLY </h1>
       <div>
         <h3 className="semi-bold">My Donations</h3>
         <li>
-          <h5>Route:</h5>
+           <span className="semi-bold">Route:</span>
          /dashboard/paymentsHistory
         </li>
         <li>
