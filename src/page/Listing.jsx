@@ -18,8 +18,8 @@ const Listing = () => {
 
   return (
     <div className="pt-16 dark:bg-blue-gray-900 ">
-      <div className='h-screen  bg-fixed   bg-center bg-[url("https://i.ibb.co.com/hBbGgfV/Untitled-Project.jpg")] bg-cover  '>
-        <div className=" flex items-center justify-center   bg-gray-900 bg-opacity-60  h-screen roboto-mono ">
+      <div className='max-h-96  bg-fixed   bg-center bg-[url("https://i.ibb.co.com/hBbGgfV/Untitled-Project.jpg")] bg-cover  '>
+        <div className=" flex items-center justify-center   bg-gray-900 bg-opacity-70  h-96 roboto-mono ">
           <div className="text-center space-y-3 text-white">
             <h1 className="text-6xl  "> Discover Your Companion!</h1>
             <p>

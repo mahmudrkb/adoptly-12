@@ -26,8 +26,8 @@ const AllCampaigns = () => {
     <div className="dark:bg-blue-gray-900">
       <div className="mt-16  ">
         <div className="  ">
-          <div className='h-screen  bg-fixed   bg-center bg-[url("https://i.ibb.co.com/yfYnJxL/360-F-1000821370-0o-Bj-Qg-Dm-OOsbt-HA8-ZDri-X0-BN9-Dc-VWQOi.jpg")] bg-cover  '>
-            <div className=" flex items-center justify-center   bg-gray-900 bg-opacity-60  h-screen roboto-mono ">
+          <div className='max-h-96  bg-fixed   bg-center bg-[url("https://i.ibb.co.com/yfYnJxL/360-F-1000821370-0o-Bj-Qg-Dm-OOsbt-HA8-ZDri-X0-BN9-Dc-VWQOi.jpg")] bg-cover  '>
+            <div className=" flex items-center justify-center h-96  bg-gray-900 bg-opacity-60  roboto-mono ">
               <div className="text-center space-y-3 text-white">
                 <h1 className="text-6xl max-w-2xl  ">
                   {" "}

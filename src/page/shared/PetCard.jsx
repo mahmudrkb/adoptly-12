@@ -12,7 +12,7 @@ const PetCard = ({ pet }) => {
             alt="card-image"
           />
         </div>
-        <div class="p-4">
+        <div class="p-4 ">
          <div className="flex items-center justify-between"> <h6 class="mb-2 text-slate-800 text-xl font-semibold">
            {name}
           </h6>
@@ -24,7 +24,7 @@ const PetCard = ({ pet }) => {
           </address>
           <p class="text-slate-600 mt-3 leading-normal font-light">
         {/* {longDescription.slice(0, 100)} */}
-        {longDescription.substring(0,50)}
+        {longDescription.substring(0,50)}...
           </p>
         </div>
         <div class="px-4 pb-4 pt-0 mt-2">
