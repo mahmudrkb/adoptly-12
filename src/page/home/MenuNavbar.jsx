@@ -39,13 +39,13 @@ const MenuNavbar = () => {
       navigate("/");
     });
   };
-   //tailwind config add darkMode: 'class',
-   const [dark, setDark] = React.useState(false);
+  //tailwind config add darkMode: 'class',
+  const [dark, setDark] = React.useState(false);
 
-   const darkModeHandler = () => {
-     setDark(!dark);
-     document.body.classList.toggle("dark");
-   };
+  const darkModeHandler = () => {
+    setDark(!dark);
+    document.body.classList.toggle("dark");
+  };
 
   const NavLinks = (
     <>
@@ -54,7 +54,7 @@ const MenuNavbar = () => {
         <NavLink
           to={"/"}
           className="  bg-teal-300  text-white transition duration-300
-           hover:bg-teal-800
+           hover:bg-teal-800 
           rounded-md px-3 py-2 text-sm font-medium"
         >
           Home
@@ -83,18 +83,40 @@ const MenuNavbar = () => {
         </NavLink>
       </li>
 
-      {/* <li
+      <li
         className="
            text-sm font-medium"
       >
-        <NavLink
-          className="px-3 py-2 bg-teal-300  text-white transition duration-300
+        {user?.email &&
+          (isAdmin ? (
+            <NavLink
+              to={"/dashboard/adminHome"}
+              className="px-3 py-2 bg-teal-300  text-white transition duration-300
            hover:bg-teal-800  rounded-md"
-          to={"/dashboard"}
-        >
-          Dashboard
-        </NavLink>
-      </li> */}
+            >
+              Dashboard
+            </NavLink>
+          ) : (
+            <NavLink
+              to={"/dashboard/userHome"}
+              className="px-3 py-2 bg-teal-300  text-white transition duration-300
+           hover:bg-teal-800  rounded-md"
+            >
+              Dashboard
+            </NavLink>
+          ))}
+      </li>
+      <li className="text-sm font-medium">
+        {user?.email && (
+          <NavLink
+            className="px-3  py-2 bg-teal-300  text-white transition duration-300
+           hover:bg-teal-800  rounded-md"
+            to={"/profile"}
+          >
+            Profile
+          </NavLink>
+        )}
+      </li>
     </>
   );
 
@@ -150,16 +172,16 @@ const MenuNavbar = () => {
               </div>
             </div>
             <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-            <button className="text-3xl mx-5" onClick={darkModeHandler}>
-              {dark ? <IoSunny /> : <IoMoon />}
-            </button>
+              <button className="text-3xl mx-5" onClick={darkModeHandler}>
+                {dark ? <IoSunny /> : <IoMoon />}
+              </button>
 
               {/* Profile dropdown */}
               <Menu as="div" className="relative ml-3 ">
                 <div>
-                  <MenuButton className="relative flex rounded-full  text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                  <MenuButton className="relative flex rounded-full  text-sm outline-none ring-2 ring-white ring-offset-2 ring-offset-gray-800">
                     <span className="absolute -inset-1.5" />
-                    <span className="sr-only">Open user menu</span>
+                    <span className="sr-only ">Open user menu</span>
                     {user?.email ? (
                       <img
                         alt=""
@@ -177,23 +199,7 @@ const MenuNavbar = () => {
                 >
                   <MenuItem>
                     {user?.email ? (
-                      isAdmin ? (
-                        <Link
-                          to={"/dashboard/adminHome"}
-                          className="block rounded-md my-2 px-4 py-2 text-sm bg-teal-300  text-white transition duration-300
-                       hover:bg-orange-100 hover:text-gray-700"
-                        >
-                          DASHBOARD
-                        </Link>
-                      ) : (
-                        <Link
-                          to={"/dashboard/userHome"}
-                          className="block rounded-md my-2 px-4 py-2 text-sm bg-teal-300  text-white transition duration-300
-                     hover:bg-orange-100 hover:text-gray-700"
-                        >
-                          DASHBOARD
-                        </Link>
-                      )
+                      <></>
                     ) : (
                       <Link
                         to={"/register"}
@@ -204,7 +210,7 @@ const MenuNavbar = () => {
                       </Link>
                     )}
                   </MenuItem>
-                  
+
                   {user?.email ? (
                     <MenuItem>
                       <button

@@ -24,6 +24,7 @@ import AllDonations from "../page/Dashboard/admin/AllDonations";
 import MyDonation from "../page/Dashboard/Donation/MyDonation";
 import UserHome from "../page/Dashboard/Donation/UserHome";
 import AdminHome from "../page/Dashboard/admin/AdminHome";
+import Profile from "../page/shared/Profile";
 
 const router = createBrowserRouter([
   {
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
         path: "/detailsCam/:id",
         element: <DetailsCam></DetailsCam>,
       },
+      {
+        path: "/profile",
+        element:<Profile></Profile>,
+      },
     ],
   },
   {
@@ -62,6 +67,7 @@ const router = createBrowserRouter([
     path: "/register",
     element: <Register></Register>,
   },
+ 
   {
     path: "/dashboard",
     element: <Dashboard></Dashboard>,
