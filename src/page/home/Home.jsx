@@ -3,6 +3,7 @@ import Banner from "./Banner";
 import CallToAction from "./CallToAction";
 import Categories from "./Categories";
 import Contact from "./Contact";
+import DonationCam from "./DonationCam";
 import Question from "./Question";
 import TopPets from "./TopPets";
 
@@ -13,6 +14,7 @@ const Home = () => {
       <Categories></Categories>
       <TopPets></TopPets>
       <CallToAction></CallToAction>
+      <DonationCam></DonationCam>
       <About></About>
       <Question></Question>
       <Contact></Contact>

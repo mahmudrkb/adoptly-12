@@ -2,9 +2,12 @@ import { useQuery } from "@tanstack/react-query";
 
 import PetCard from "./shared/PetCard";
 import useAxiosPublic from "../hooks/useAxiosPublic";
+import { useState } from "react";
 
 const Listing = () => {
   const axiosPublic = useAxiosPublic();
+  const [sort, setSort] = useState("asc");
+  const [sortAge, setSortAge] = useState([]);
 
   const { data: pets = [], refetch } = useQuery({
     queryKey: ["pets"],
@@ -13,6 +16,14 @@ const Listing = () => {
       return res.data;
     },
   });
+  const handleSort = () => {
+    const sortPets = [...pets].sort((a, b) =>
+      sort === "asc" ? a.age - b.age : b.age - a.age
+    );
+    setSortAge(sortPets);
+    setSort(sort === "asc" ? "desc" : "asc");
+  };
+  // console.log(sortAge);
 
   // console.log("this is all pets", pets);
 
@@ -71,10 +82,31 @@ const Listing = () => {
       </div>
       {/* all pets  */}
       <div className="container mx-auto p-3 py-10">
+        <div className="flex justify-between my-3">
+          <h2 className="text-pretty text-3xl font-semibold dark:text-white text-gray-900 sm:text-4xl">
+            All Pets
+          </h2>
+          <button
+            onClick={handleSort}
+            className="    transition duration-300 flex items-center justify-center gap-2
+                           hover:bg-orange-100 hover:text-gray-700 rounded-md bg-teal-300 text-white py-2 px-4 border border-transparent text-center text-sm shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none  active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+            type="button"
+          >
+            Sort By Age ({sort === "asc" ? "High to Low" : "Low to High"}){" "}
+          </button>
+        </div>
         <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {pets.map((pet, index) => (
+          {/* {pets.map((pet, index) => (
             <PetCard key={index} pet={pet}></PetCard>
-          ))}
+          ))} */}
+
+          {sortAge.length > 0
+            ? sortAge.map((pet, index) => (
+                <PetCard key={index} pet={pet}></PetCard>
+              ))
+            : pets.map((pet, index) => (
+                <PetCard key={index} pet={pet}></PetCard>
+              ))}
         </div>
       </div>
     </div>
