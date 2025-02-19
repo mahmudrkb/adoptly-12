@@ -24,7 +24,7 @@ const PetCard = ({ pet }) => {
           </address>
           <p class="text-slate-600 mt-3 leading-normal font-light">
         {/* {longDescription.slice(0, 100)} */}
-        {longDescription.substring(0,50)}...
+        {longDescription?.substring(0, 50)}...
           </p>
         </div>
         <div class="px-4 pb-4 pt-0 mt-2">

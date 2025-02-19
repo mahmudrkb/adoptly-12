@@ -11,14 +11,7 @@ import { PieChart, Pie,  Cell,BarChart, Bar, Rectangle, XAxis, YAxis, CartesianG
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
 
-const data = [
-  {
-    name: 'Page A',
-    uv: 4000,
-    pv: 2400,
-    amt: 2400,
-  },
-]
+
 const AdminHome = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();

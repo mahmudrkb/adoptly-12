@@ -43,7 +43,7 @@ const Dashboard = () => {
       <div className="  mx-auto ">
       
         <div className="flex gap-10">
-          <div className="fixed  left-0  bg-teal-200 min-h-screen text-white w-60 p-5">
+          <div className="fixed  left-0   bg-teal-200 min-h-screen text-white w-60 p-5">
             <div className="flex shrink-0 p-2 shadow-lg mb-7 items-center">
               <Link to="/">
                 {" "}
@@ -181,7 +181,7 @@ const Dashboard = () => {
 
               <li>
                 <NavLink
-                  to="/"
+                  to={"/"}
                   className=" gap-4 items-center flex rounded-md my-2 px-4 py-2 text-sm bg-teal-300  text-white transition duration-300
                    hover:bg-orange-100 hover:text-gray-700"
                 >
@@ -191,7 +191,7 @@ const Dashboard = () => {
 
               <li>
                 <NavLink
-                  to="/listing"
+                  to={"/listing"}
                   className=" gap-4 items-center flex rounded-md my-2 px-4 py-2 text-sm bg-teal-300  text-white transition duration-300
                    hover:bg-orange-100 hover:text-gray-700"
                 >
@@ -203,7 +203,7 @@ const Dashboard = () => {
 
               <li>
                 <NavLink
-                  to="/allCampaigns"
+                  to={"/allCampaigns"}
                   className=" gap-4 items-center flex rounded-md my-2 px-4 py-2 text-sm bg-teal-300  text-white transition duration-300
                    hover:bg-orange-100 hover:text-gray-700"
                 >
@@ -215,7 +215,7 @@ const Dashboard = () => {
               
               <li>
                 <NavLink
-                  to="/dashboard/profile"
+                  to={"/dashboard/profile"}
                   className=" gap-4 items-center flex rounded-md my-2 px-4 py-2 text-sm bg-teal-300  text-white transition duration-300
                    hover:bg-orange-100 hover:text-gray-700"
                 >

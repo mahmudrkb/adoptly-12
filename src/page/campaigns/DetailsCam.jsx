@@ -16,7 +16,7 @@ import { Elements } from "@stripe/react-stripe-js";
 const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_PK);
 
 
-console.log(import.meta.env.VITE_PAYMENT_PK ,"this is promise")
+// console.log(import.meta.env.VITE_PAYMENT_PK ,"this is promise")
 const DetailsCam = () => {
   const axiosSecure = useAxiosSecure();
   const { id } = useParams();
