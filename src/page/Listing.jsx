@@ -23,12 +23,15 @@ const Listing = () => {
     setSortAge(sortPets);
     setSort(sort === "asc" ? "desc" : "asc");
   };
+  const scrollToSection = (id) => {
+    document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+  };
   // console.log(sortAge);
 
   // console.log("this is all pets", pets);
 
   return (
-    <div className="pt-16 dark:bg-blue-gray-900 ">
+    <div  className="pt-16 dark:bg-blue-gray-900 ">
       <div className='max-h-96  bg-fixed   bg-center bg-[url("https://i.ibb.co.com/hBbGgfV/Untitled-Project.jpg")] bg-cover  '>
         <div className=" flex items-center justify-center   bg-gray-900 bg-opacity-70  h-96 roboto-mono ">
           <div className="text-center space-y-3 text-white">
@@ -37,6 +40,10 @@ const Listing = () => {
               Discover adorable pets waiting for a loving home.Adopt, don't
               shop, and bring joy to your life with a furry friend!"
             </p>
+            <button onClick={() => scrollToSection("listing")} 
+            className="border rounded-md px-2 py-1" >
+              See More
+            </button>
 
             {/* <div  className=" flex justify-center items-center gap-x-2 lg:flex">
               <div className=" flex w-full gap-2 md:w-max">
@@ -81,8 +88,8 @@ const Listing = () => {
         </div>
       </div>
       {/* all pets  */}
-      <div className="container mx-auto p-3 py-10">
-        <div className="flex justify-between my-3">
+      <div id="listing" className="container mx-auto p-3  py-10">
+        <div className="flex justify-between pt-5 my-3">
           <h2 className="text-pretty text-3xl font-semibold dark:text-white text-gray-900 sm:text-4xl">
             All Pets
           </h2>
