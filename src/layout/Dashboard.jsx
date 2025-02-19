@@ -1,39 +1,49 @@
 import React from "react";
 import { FaHome, FaList, FaListAlt } from "react-icons/fa";
 import {
-  FaBorderAll,
-  FaCalendar,
-  FaCalendarCheck,
-  FaCartArrowDown,
   FaCodePullRequest,
   FaListCheck,
-  FaStar,
   FaUser,
-  FaUtensils,
 } from "react-icons/fa6";
 import { CiViewList } from "react-icons/ci";
 import {
   IoAddCircleOutline,
   IoCreateOutline,
-  IoMailSharp,
 } from "react-icons/io5";
 import { IoIosLogOut } from "react-icons/io";
 
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 import useAdmin from "../hooks/useAdmin";
 import useAuth from "../hooks/useAuth";
+import Swal from "sweetalert2";
+
+
+
 
 const Dashboard = () => {
   const [isAdmin] = useAdmin();
-  const { user } = useAuth();
+  const { user,logOutUser } = useAuth();
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    logOutUser().then(() => {
+      Swal.fire({
+        position: "top-center",
+        icon: "success",
+        title: "LogOut Successful",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      navigate("/");
+    });
+  };
   // console.log(isAdmin)
   return (
     <div className="dark:bg-blue-gray-900  ">
       <div className="  mx-auto ">
-        <div className="bg-teal-600"></div>
+      
         <div className="flex gap-10">
-          <div className="fixed  left-0 bg-teal-300 min-h-screen text-white max-w-fit p-5">
+          <div className="fixed  left-0  bg-teal-200 min-h-screen text-white w-60 p-5">
             <div className="flex shrink-0 p-2 shadow-lg mb-7 items-center">
               <Link to="/">
                 {" "}
@@ -43,15 +53,7 @@ const Dashboard = () => {
             </div>
             <ul className=" ">
               <li className="text-sm font-medium">
-                {user?.email && (
-                  <NavLink
-                    className="px-3  py-2 bg-teal-300  text-white transition duration-300
-                         hover:bg-teal-800  rounded-md"
-                    to={"/profile"}
-                  >
-                    Profile
-                  </NavLink>
-                )}
+               
               </li>
               {isAdmin ? (
                 <>
@@ -210,12 +212,22 @@ const Dashboard = () => {
                   Donation Campaigns
                 </NavLink>
               </li>
+              
+              <li>
+                <NavLink
+                  to="/dashboard/profile"
+                  className=" gap-4 items-center flex rounded-md my-2 px-4 py-2 text-sm bg-teal-300  text-white transition duration-300
+                   hover:bg-orange-100 hover:text-gray-700"
+                >
+                  <FaUser></FaUser> Profile
+                </NavLink>
+              </li>
             </ul>
           </div>
 
           <div className="flex-1  ">
-            <div className="shadow shark-0 p-2  pl-64   pr-5 ">
-              <div className="pl-3 flex justify-between pt-2 ">
+            <div className="shadow bg-teal-200 fixed z-10  w-full top-0 right-0 left-60 shark-0 p-2  pr-5 ">
+              <div className="pl-3 flex w-10/12 justify-between pt-2 ">
                 <div className="flex items-center gap-5">
                   <img className="w-10 h-10 rounded-full" src={user?.photoURL} alt="" />
                   <div>
@@ -224,11 +236,21 @@ const Dashboard = () => {
                   </div>
                   
                 </div>
-                <button> <IoIosLogOut/> Log Out</button>
                 
+                <button
+                onClick={ handleLogout}
+             
+                  className=" mr-7 gap-3 items-center flex rounded-md my-2 px-4 py-2 text-sm bg-teal-300  text-white transition duration-300
+                   hover:bg-orange-100 hover:text-gray-700"
+                >
+                  {" "}
+                  <IoIosLogOut/>
+                  Log Out
+                </button>
+
               </div>
             </div>
-            <div className="pl-64 pr-5 ">
+            <div className="pl-64 pr-5 mt-24 ">
               {" "}
               <Outlet></Outlet>
             </div>

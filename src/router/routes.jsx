@@ -189,6 +189,14 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      {
+        path: "/dashboard/profile",
+        element: (
+          <PrivateRoute>
+           <Profile></Profile>
+          </PrivateRoute>
+        ),
+      },
     ],
   },
 ]);
