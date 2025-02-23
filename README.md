@@ -19,6 +19,17 @@ ADOPTLY </h1>
 
 </div>
 <div>
+    <h3 className="font-semibold"> Technologies</h3>
+      <ul>
+        <li>Html</li>
+        <li>Css</li>
+        <li>React</li>
+        <li>Node</li>
+        <li>Express</li>
+        <li>MongoDB</li>
+      </ul>
+</div>
+<div>
     <h3 className="font-semibold"> Purpose</h3>
       <ul>
         <li>Connecting People with Pets</li>

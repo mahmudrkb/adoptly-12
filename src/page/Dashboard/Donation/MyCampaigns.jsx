@@ -206,7 +206,7 @@ const MyCampaigns = () => {
                       </td>
 
                       <td className={classes}>
-                        <Tooltip content="Pause ">
+                        {/* <Tooltip content="Pause ">
                           <button
                             onClick={() =>
                               handleUpdateStatus(donation._id, true)
@@ -233,7 +233,7 @@ const MyCampaigns = () => {
                               />
                             </IconButton>
                           </button>
-                        </Tooltip>
+                        </Tooltip> */}
                         <Tooltip content="Edit Pets">
                           <Link
                             to={`/dashboard/update-donation/${donation._id}`}
