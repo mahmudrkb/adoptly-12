@@ -41,9 +41,9 @@ const Dashboard = () => {
     <div className="dark:bg-blue-gray-900  ">
       <div className="  mx-auto ">
         <div className="flex gap-10">
-          <div className=" bg-teal-200 min-h-screen text-white w-60 p-5">
+          <div className=" bg-teal-200 hidden lg:block min-h-screen text-white w-60 p-5">
             <div className="flex justify-between shrink-0 p-2 shadow-lg mb-7 items-center">
-              <div className="flex hidden  items-center gap-2">
+              <div className="lg:flex hidden  items-center gap-2">
                 <Link to="/">
                   {" "}
                   <img alt="Your Company" src={logo} className="h-10 w-auto" />
@@ -412,10 +412,10 @@ const Dashboard = () => {
           </div>
 
           <div className="flex-1">
-            <div className="shadow bg-teal-200 fixed z-10   w-full top-0 right-0 left-60 shark-0 p-2  pr-5 ">
+            <div className="shadow bg-teal-200 fixed z-10   w-full top-0 right-0 lg:left-60 shark-0 p-2  pr-5 ">
               
-              <div className="pl-3  flex w-10/12 items-center justify-between pt-2 ">
-              <div onClick={openDrawer}>
+              <div className=" pl-2 lg:pl-3  flex lg:w-10/12 items-center justify-between pt-2 ">
+              <div onClick={openDrawer} className="lg:hidden">
                 <GiHamburgerMenu className="w-7 h-7" color="white" />
               </div>
                 <div className="flex items-center gap-5">
@@ -424,8 +424,8 @@ const Dashboard = () => {
                     src={user?.photoURL}
                     alt=""
                   />
-                  <div>
-                    <h3 className="font-semibold text-2xl">
+                  <div className="  ">
+                    <h3 className="font-semibold text-xl lg:text-2xl">
                       {user?.displayName}
                     </h3>
                     <h4>{user?.email}</h4>
@@ -434,12 +434,12 @@ const Dashboard = () => {
 
                 <button
                   onClick={handleLogout}
-                  className=" mr-7 gap-3 items-center flex rounded-md my-2 px-4 py-2 text-sm bg-teal-300  text-white transition duration-300
+                  className=" lg:mr-7 gap-3 items-center flex rounded-md my-2 px-4 py-2 text-sm bg-teal-300  text-white transition duration-300
                    hover:bg-orange-100 hover:text-gray-700"
                 >
                   {" "}
                   <IoIosLogOut />
-                  Log Out
+                <p className="hidden lg:block">  Log Out</p>
                 </button>
               </div>
             </div>

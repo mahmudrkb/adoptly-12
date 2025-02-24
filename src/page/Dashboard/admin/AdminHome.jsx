@@ -7,7 +7,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 
 
-import { PieChart, Pie,  Cell,BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend,  } from 'recharts';
+import { PieChart, Pie,  Cell,BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,  } from 'recharts';
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
 
@@ -64,7 +64,7 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
 };
 
   return (
-    <div className="pt-10 dark:bg-blue-gray-900 ">
+    <div className=" pt-3 lg:pt-10 dark:bg-blue-gray-900 ">
       <div className="text-3xl lg:text-5xl dark:text-white">
         {" "}
         Hi! Welcome
@@ -102,10 +102,10 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
         </div>
       </div>
       {/* graph data show */}
-      <div className="flex justify-between mb-10">
+      <div className="lg:flex justify-between mb-10">
 
      <div className="">
-     <PieChart className=" " width={400} height={400}>
+     <PieChart className="" width={400} height={400}>
           <Pie
             data={pieChartData}
             cx="50%"
@@ -126,9 +126,10 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
         
      </div>
      {/* graph  */}
-     <div className="">
-    
+     <div className=" w-full h-[300px] md:h-[400px] lg:h-[500px] ">
+     <ResponsiveContainer width="100%" height="100%">
         <BarChart
+        className=""
           width={600}
           height={400}
           data={allPayments}
@@ -147,6 +148,7 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
           <Bar dataKey="price" fill="#8884d8" activeBar={<Rectangle fill="pink" stroke="blue" />} />
          
         </BarChart>
+        </ResponsiveContainer>
  
 
 
