@@ -4,6 +4,8 @@ ADOPTLY </h1>
 
    <h2>
    Live Link : https://adoptly-85d31.web.app </h2> 
+   <p>Admin Email: rakib@gmail.com</p>
+   <p>Admin password : 123456</p>
     <h3 className="font-semibold">Server Side</h3>
     <a href="https://github.com/mahmudrkb/adoptly-server-12" target="_blank"
       >Backend Github Link</a

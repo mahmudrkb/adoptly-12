@@ -40,8 +40,9 @@ const Dashboard = () => {
   return (
     <div className="dark:bg-blue-gray-900  ">
       <div className="  mx-auto ">
-        <div className="flex gap-10">
-          <div className=" bg-teal-200 hidden lg:block min-h-screen text-white w-60 p-5">
+        <div className="flex h-screen overflow-auto  gap-10">
+         <div className=" sticky top-0 h-screen bg-teal-200 overflow-y-auto">
+         <div className=" sticky    z-0 top-0  hidden lg:block  text-white w-60 p-5">
             <div className="flex justify-between shrink-0 p-2 shadow-lg mb-7 items-center">
               <div className="lg:flex hidden  items-center gap-2">
                 <Link to="/">
@@ -410,6 +411,7 @@ const Dashboard = () => {
                   </li>
                 </ul>
           </div>
+         </div>
 
           <div className="flex-1">
             <div className="shadow bg-teal-200 fixed z-10   w-full top-0 right-0 lg:left-60 shark-0 p-2  pr-5 ">

@@ -2,7 +2,7 @@ import React from "react";
 import useAuth from "../../../hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import { PieChart, Pie,  Cell,BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend,  } from 'recharts';
+import { PieChart, Pie,  Cell,BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,  } from 'recharts';
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 const UserHome = () => {
     const { user } = useAuth();
@@ -51,11 +51,12 @@ const UserHome = () => {
   };
   
   return (
-    <div>
+    <div className="container mx-auto">
       {/* graph data show */}
-      <div className="flex justify-between mb-10">
-        <div className="">
-          <PieChart className=" " width={400} height={400}>
+      <div className="  lg:flex justify-between mb-10">
+        <div className="  ">
+        
+          <PieChart className=" " width={400} height={400}  >
             <Pie
               data={pieChartData}
               cx="50%"
@@ -75,12 +76,14 @@ const UserHome = () => {
             </Pie>
             <Legend></Legend>
           </PieChart>
+       
         </div>
         {/* graph  */}
-        <div className="">
+        <div className=" mt-4 w-full h-[300px] md:h-[400px] lg:h-[500px]">
+        <ResponsiveContainer
+         width="100%" height="100%">
           <BarChart
-            width={600}
-            height={400}
+          
             data={payments}
             margin={{
               top: 5,
@@ -100,6 +103,7 @@ const UserHome = () => {
               activeBar={<Rectangle fill="pink" stroke="blue" />}
             />
           </BarChart>
+          </ResponsiveContainer>
         </div>
       </div>
     </div>

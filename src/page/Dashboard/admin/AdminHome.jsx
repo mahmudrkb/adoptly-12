@@ -65,19 +65,19 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
 
   return (
     <div className=" pt-3 lg:pt-10 dark:bg-blue-gray-900 ">
-      <div className="text-3xl lg:text-5xl dark:text-white">
+      <div className="text-3xl pl-5 lg:text-5xl dark:text-white">
         {" "}
         Hi! Welcome
-        <span className="">
+        <div className="">
           {" "}
           {user?.displayName ? user?.displayName : "Back"}
-        </span>
+        </div>
       </div>
       {/* all data show this part  */}
       <div>
-        <div className="bg-white dark:bg-blue-gray-900 py-16 ">
+        <div className="bg-white dark:bg-blue-gray-900 py-8 lg:py-16 ">
           <div className="mx-auto max-w-7xl ">
-            <dl className=" grid grid-cols-1 gap-4 gap-y-16 text-center lg:grid-cols-3">
+            <dl className=" grid grid-cols-1 gap-4  gap-y-8 lg:gap-y-16 text-center lg:grid-cols-3">
               <div className="mx-auto  py-3 bg-gradient-to-r from-orange-300  to-teal-300  w-full rounded-md   flex max-w-xs flex-col gap-y-4">
            
                 <dt className="text-base/7 text-gray-600 "> Total User</dt>
@@ -106,6 +106,7 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
 
      <div className="">
      <PieChart className="" width={400} height={400}>
+      
           <Pie
             data={pieChartData}
             cx="50%"
@@ -126,12 +127,11 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
         
      </div>
      {/* graph  */}
-     <div className=" w-full h-[300px] md:h-[400px] lg:h-[500px] ">
+     <div className=" mt-4 w-full h-[300px] md:h-[400px] lg:h-[500px] ">
      <ResponsiveContainer width="100%" height="100%">
         <BarChart
         className=""
-          width={600}
-          height={400}
+         
           data={allPayments}
           margin={{
             top: 5,
