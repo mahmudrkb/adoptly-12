@@ -27,14 +27,15 @@ const CallToAction = () => {
               className="m-0 md:w-2/5 shrink-0 md:rounded-r-none"
             >
               <img
-              data-aos
+              data-aos="flip-left"
+            
 
                 src={cat}
                 alt="card-image"
                 className="h-full w-full object-cover"
               />
             </CardHeader>
-            <CardBody>
+            <CardBody data-aos="fade-right"  >
               <Typography
                 variant="h4"
                 color="blue-gray"
@@ -78,7 +79,8 @@ const CallToAction = () => {
         </div>
         <div className=" mt-10 flex  md:justify-end  ">
           <Card className=" bg-teal-300 border-2   border-orange-100  flex-col-reverse md:flex-row">
-            <CardBody>
+            <CardBody  data-aos="fade-right" 
+           >
               <Typography variant="h4" className="text-orange-100 mb-2">
                 Bring joy to their lives and find unconditional love in yours.
               </Typography>
@@ -118,6 +120,8 @@ const CallToAction = () => {
               className="m-0 md:w-2/5 shrink-0 md:rounded-l-none"
             >
               <img
+              data-aos="flip-left"
+              
                 src={dog}
                 alt="card-image"
                 className="h-full w-full object-cover"

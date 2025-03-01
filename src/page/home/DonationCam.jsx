@@ -10,8 +10,11 @@ import {
 } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 import { FaAngleDoubleRight } from "react-icons/fa";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const DonationCam = () => {
+  AOS.init()
   const axiosPublic = useAxiosPublic();
 
   const { data: allDonations = [], refetch } = useQuery({
@@ -32,14 +35,16 @@ const DonationCam = () => {
           </h2>
           <p className="mt-6 max-w-md text-gray-600 dark:text-gray-300"></p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 ">
+        <div data-aos="fade-up" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 ">
           {allDonations.slice(0, 3).map((donation, index) => (
             <Card
               key={index}
               className="mt-6 dark:bg-blue-gray-800 bg-gray-50 max-w-96"
             >
               <CardHeader color="blue-gray" className="relative h-56">
-                <img
+                <img 
+                data-aos="flip-left"
+
                   src={donation.image}
                   alt="card-image"
                   className="h-fill w-full object-cover "
