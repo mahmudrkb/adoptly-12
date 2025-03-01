@@ -44,6 +44,8 @@ const DonationCam = () => {
               <CardHeader color="blue-gray" className="relative h-56">
                 <img 
                 data-aos="flip-left"
+                data-aos-easing="ease-out-cubic"
+                data-aos-duration="1000"
 
                   src={donation.image}
                   alt="card-image"

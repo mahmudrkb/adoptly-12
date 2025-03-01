@@ -41,11 +41,11 @@ const About = () => {
     <div id="about" className="dark:bg-blue-gray-900  ">
       <div className=" container mx-auto py-10   p-3 ">
         <div className=" lg:flex   gap-10 ">
-          <div className="">
+          <div  className="">
             <h2 className="text-pretty text-3xl font-semibold dark:text-white text-gray-900 sm:text-4xl">
               Meet our leadership
             </h2>
-            <p className="mt-6 max-w-md text-gray-600 dark:text-gray-300">
+            <p  data-aos="fade-up" className="mt-6 max-w-md text-gray-600 dark:text-gray-300">
               At ADOPTLY, our mission is to connect loving homes with pets in
               need. We work closely with shelters and rescue organizations to
               ensure every pet receives the care and attention they deserve
@@ -58,12 +58,13 @@ const About = () => {
             </p>
           </div>
           <div>
-            <ul
+            <ul 
+           
               role="list"
               className="grid gap-x-4 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2"
             >
               {people.map((person) => (
-                <li key={person.name}>
+                <li  data-aos="zoom-in-up" key={person.name}>
                   <div className="flex  items-center gap-x-6">
                     <img
                       alt=""

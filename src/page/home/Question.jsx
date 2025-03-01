@@ -19,7 +19,7 @@ const Question = () => {
         FAQ
       </h2>
       <div className=" flex flex-col-reverse  lg:flex-row ">
-        <div className="max-w-xl  ">
+        <div data-aos="fade-right" data-aos-duration="1000" className="max-w-xl  ">
           <div className="dark:text-white ">
             <Accordion open={open === 1}>
               <AccordionHeader onClick={() => handleOpen(1)} className="dark:text-white ">
@@ -70,7 +70,8 @@ const Question = () => {
             </Accordion>
           </div>
         </div>
-        <div>
+        <div data-aos="fade-left" 
+        data-aos-duration="1000" >
           <Lottie className=" " animationData={faq} loop={true} />
         </div>
       </div>

@@ -9,8 +9,12 @@ import {
   Button,
 } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 
 const AllCampaigns = () => {
+  AOS.init()
   const axiosPublic = useAxiosPublic();
 
   const { data: allDonations = [], refetch } = useQuery({
@@ -43,7 +47,7 @@ const AllCampaigns = () => {
       <div className="container  mx-auto py-10 p-3">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 ">
           {allDonations.map((donation, index) => (
-            <Card key={index} className="mt-6 dark:bg-blue-gray-800 bg-gray-50 max-w-96">
+            <Card data-aos="flip-right" key={index} className="mt-6 dark:bg-blue-gray-800 bg-gray-50 max-w-96">
               <CardHeader color="blue-gray" className="relative h-56">
                 <img
                   src={donation.image}
