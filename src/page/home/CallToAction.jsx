@@ -1,5 +1,7 @@
 import cat from "../../assets/img/cat.jpg";
 import dog from "../../assets/img/dog.jpg";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 import {
   Card,
@@ -10,6 +12,7 @@ import {
 } from "@material-tailwind/react";
 
 const CallToAction = () => {
+  AOS.init();
   const scrollToSection = (id) => {
     document.getElementById(id).scrollIntoView({ behavior: "smooth" });
   };
@@ -24,6 +27,8 @@ const CallToAction = () => {
               className="m-0 md:w-2/5 shrink-0 md:rounded-r-none"
             >
               <img
+              data-aos
+
                 src={cat}
                 alt="card-image"
                 className="h-full w-full object-cover"

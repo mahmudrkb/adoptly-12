@@ -1,13 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const PetCard = ({ pet }) => {
+  AOS.init()
   const { image, name,age,location,shortDescription,longDescription,category, _id } = pet;
   return (
-    <div className="">
-      <div class="relative flex flex-col dark:bg-blue-gray-800  bg-white   dark:border-0border  shrink-10 shadow-md  border-slate-200 rounded-lg max-w-96">
+    <div  className="">
+      <div   class="relative flex flex-col dark:bg-blue-gray-800  bg-white   dark:border-0border  shrink-10 shadow-md  border-slate-200 rounded-lg max-w-96">
         <div class="relative h-56 m-2.5 overflow-hidden text-white rounded-md">
-          <img className="w-full h-full object-cover"
+          <img data-aos="fade-up" data-aos-duration="1200"  className="w-full h-full object-cover"
             src={image}
             alt="card-image"
           />

@@ -4,6 +4,7 @@ import PetCard from "../shared/PetCard";
 import { FaAngleDoubleRight, FaArrowLeft } from 'react-icons/fa';
 import { Link } from "react-router-dom";
 
+
 const TopPets = () => {
   const axiosPublic = useAxiosPublic();
 
@@ -15,8 +16,9 @@ const TopPets = () => {
     },
   });
 
+
   return (
-    <div className=" dark:bg-blue-gray-900 ">
+    <div   className=" dark:bg-blue-gray-900 ">
       <div className="container mx-auto p-3 py-10">
         <div className="">
           <h2 className="text-pretty text-3xl font-semibold dark:text-white text-gray-900 sm:text-4xl">
@@ -24,7 +26,7 @@ const TopPets = () => {
           </h2>
           <p className="mt-6 max-w-md text-gray-600 dark:text-gray-300"></p>
         </div>
-        <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div  className="  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {pets.slice(0, 3).map((pet, index) => (
             <PetCard key={index} pet={pet}></PetCard>
           ))}
