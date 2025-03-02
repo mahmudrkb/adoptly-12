@@ -6,10 +6,10 @@ import {
   Card,
   CardHeader,
   Typography,
-  Button,
+
   CardBody,
   Chip,
-  CardFooter,
+ 
   Avatar,
   IconButton,
   Tooltip,
@@ -90,14 +90,14 @@ const MyPets = () => {
   // const formattedDate = format(date, "MMMM dd, yyyy");
 
   return (
-    <div className="container mx-auto my-10">
+    <div className="container mx-auto shadow-none my-10">
       <SectionsTitles
         heading={"My Pets"}
         subheading={"This is all my pets"}
       ></SectionsTitles>
-      <div>
-        <Card className="h-full w-full overflow-x-scroll">
-          <CardHeader floated={false} shadow={false} className="rounded-none">
+      <div className="overflow-x-auto  ">
+        <Card className="h-full w-full  sm:shadow-none  ">
+          <CardHeader floated={false} shadow={false} className="rounded-none ">
             <div className=" flex items-center justify-between gap-8">
               <div>
                 <Typography variant="h5">

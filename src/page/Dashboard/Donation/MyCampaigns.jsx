@@ -98,13 +98,15 @@ const MyCampaigns = () => {
   // const formattedDate = format(date, "MMMM dd, yyyy");
 
   return (
-    <div className="container mx-auto my-10">
-      <SectionsTitles
+   <div>
+     <SectionsTitles
         heading={"My Campaigns"}
         subheading={"This is all my Donation Campaigns"}
       ></SectionsTitles>
-      <div className="overflow-x-auto">
-        <Card className="h-full w-full  overflow-x-scroll">
+     <div className="container mx-auto my-10">
+     
+      <div className="overflow-x-auto ">
+        <Card className="h-full w-full   ">
           <CardHeader floated={false} shadow={false} className="rounded-none">
             <div className=" flex items-center justify-between gap-8">
               <div>
@@ -259,6 +261,7 @@ const MyCampaigns = () => {
         </Card>
       </div>
     </div>
+   </div>
   );
 };
 
