@@ -5,9 +5,9 @@ import Footer from "../page/home/Footer";
 
 const HomeLayout = () => {
   return (
-    <div className=" ">
-      <header>
-        <MenuNavbar></MenuNavbar>
+    <div className="  ">
+      <header className="top-0 sticky z-10" >
+        <MenuNavbar  ></MenuNavbar>
       </header>
       <main>
         <Outlet></Outlet>

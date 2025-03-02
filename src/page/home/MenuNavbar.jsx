@@ -121,13 +121,14 @@ const MenuNavbar = () => {
   );
 
   return (
-    <div className="  text-white top-0 fixed w-full bg-opacity-80 md:bg-teal-700 md:dark:bg-blue-gray-900  z-10 shrink-0 shadow-md">
-      <Disclosure as="nav" className="">
-        <div className=" container mx-auto py-3   ">
+   <div className="  ">
+     <div className="  text-white      bg-teal-700 dark:bg-blue-gray-900    ">
+      <Disclosure as="nav" className= "lg:bg-teal-700 lg:dark:bg-blue-gray-900">
+        <div className=" container mx-auto p-3   ">
           <div className="relative h-10 flex  items-center justify-between">
-            <div className="absolute inset-y-0 left-0 flex items-center  sm:hidden">
+            <div className="absolute inset-y-0 left-0 flex items-center  lg:hidden">
               {/* Mobile menu button*/}
-              <DisclosureButton className="group relative b inline-flex items-center justify-center rounded-md p-1 text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+              <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-1 text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                 <span className="absolute -inset-0.5" />
                 <span className="sr-only">Open main menu</span>
                 <Bars3Icon
@@ -140,7 +141,7 @@ const MenuNavbar = () => {
                 />
               </DisclosureButton>
             </div>
-            <div className="flex dark:bg-blue-gray-900 bg-teal-700 py-3 flex-1 items-center  justify-center sm:items-stretch sm:justify-start">
+            <div className="flex dark:bg-blue-gray-900 bg-teal-700 py-3 flex-1 items-center  justify-center lg:items-stretch lg:justify-start">
               <div className="flex shrink-0 items-center">
                 <Link to="/">
                   {" "}
@@ -148,7 +149,7 @@ const MenuNavbar = () => {
                 </Link>
                 <h4 className="font-semibold">ADOPTLY</h4>
               </div>
-              <div className="hidden   items-center sm:ml-6 sm:block">
+              <div className="hidden   items-center sm:ml-6 lg:block">
                 <div className="flex mt-2    space-x-4">
                   <ul className="flex   items-center gap-5  justify-center">
                     {NavLinks}
@@ -171,7 +172,7 @@ const MenuNavbar = () => {
                 </div>
               </div>
             </div>
-            <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+            <div className="absolute inset-y-0 right-0 flex items-center pr-2 lg:static lg:inset-auto lg:ml-6 sm:pr-0">
               <button className="text-3xl mx-5" onClick={darkModeHandler}>
                 {dark ? <IoSunny /> : <IoMoon />}
               </button>
@@ -238,13 +239,14 @@ const MenuNavbar = () => {
           </div>
         </div>
 
-        <DisclosurePanel className="sm:hidden pt-2 -mt-2 ">
-          <div className="space-y-3 ml-3 dark:bg-blue-gray-900 bg-white ring-1 ring-black/5 rounded-md p-3 shadow-xl  max-w-48 px-2 pb-3 pt-2">
-            <ul className="  space-y-3">{NavLinks}</ul>
+        <DisclosurePanel className="  lg:hidden pt-2 -mt-2 ">
+          <div className="space-y-3 ml-3 dark:bg-blue-gray-900 bg-teal-600 ring-1 ring-black/5 rounded-md p-3 shadow-xl  max-w-48 px-2 pb-3 pt-2">
+            <ul className="  space-y-4">{NavLinks}</ul>
           </div>
         </DisclosurePanel>
       </Disclosure>
     </div>
+   </div>
   );
 };
 

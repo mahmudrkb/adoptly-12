@@ -31,7 +31,7 @@ const Listing = () => {
   // console.log("this is all pets", pets);
 
   return (
-    <div className="pt-16 dark:bg-blue-gray-900 ">
+    <div className=" dark:bg-blue-gray-900 ">
       <div className='max-h-96  bg-fixed   bg-center bg-[url("https://i.ibb.co.com/hBbGgfV/Untitled-Project.jpg")] bg-cover  '>
         <div className=" flex items-center justify-center   bg-gray-900 bg-opacity-70  h-96 roboto-mono ">
           <div className="text-center space-y-3 text-white">

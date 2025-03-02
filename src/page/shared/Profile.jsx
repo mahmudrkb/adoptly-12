@@ -15,7 +15,7 @@ const Profile = () => {
   const { user } = useAuth();
   const [isAdmin] = useAdmin();
   return (
-    <div className="mt-16">
+    <div className="">
       <div className="container mx-auto p-3">
         <section className="container mx-auto px-8 py-10">
           <Card shadow={false} className=" rounded-2xl">
