@@ -65,7 +65,7 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
 
   return (
     <div className=" pt-3 lg:pt-10 dark:bg-blue-gray-900 ">
-      <div className="text-3xl pl-5 lg:text-5xl dark:text-white">
+      <div className="text-3xl  md:pl-5 lg:text-5xl dark:text-white">
         {" "}
         Hi! Welcome
         <div className="">
@@ -75,7 +75,7 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
       </div>
       {/* all data show this part  */}
       <div>
-        <div className="bg-white dark:bg-blue-gray-900 py-8 lg:py-16 ">
+        <div className=" dark:bg-blue-gray-900 py-8 lg:py-16 ">
           <div className="mx-auto max-w-7xl ">
             <dl className=" grid grid-cols-1 gap-4  gap-y-8 lg:gap-y-16 text-center lg:grid-cols-3">
               <div className="mx-auto  py-3 bg-gradient-to-r from-orange-300  to-teal-300  w-full rounded-md   flex max-w-xs flex-col gap-y-4">
@@ -104,8 +104,9 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
       {/* graph data show */}
       <div className="lg:flex justify-between mb-10">
 
-     <div className="">
-     <PieChart className="" width={400} height={400}>
+     <div className=" mt-4 w-full h-[450px] ">
+     <ResponsiveContainer width="100%" height="100%">
+     <PieChart className="" >
       
           <Pie
             data={pieChartData}
@@ -113,7 +114,7 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
             cy="50%"
             labelLine={false}
             label={renderCustomizedLabel}
-            outerRadius={80}
+            outerRadius={130}
             fill="#8884d8"
             dataKey="value"
             
@@ -124,6 +125,7 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
           </Pie>
           <Legend></Legend>
         </PieChart>
+  </ResponsiveContainer>
         
      </div>
      {/* graph  */}

@@ -40,7 +40,7 @@ const Dashboard = () => {
   return (
     <div className="dark:bg-blue-gray-900  ">
       <div className="mx-auto ">
-        <div className="flex h-screen overflow-auto  gap-10">
+        <div className="flex h-screen overflow-auto  lg:gap-10">
          <div className=" sticky top-0 h-screen bg-teal-200 overflow-y-auto">
          <div className=" sticky z-10 top-0  hidden lg:block  text-white w-60 p-5">
             <div className="flex justify-between shrink-0 p-2 shadow-lg mb-7 items-center">
@@ -229,7 +229,7 @@ const Dashboard = () => {
          </div>
 
          <React.Fragment>
-              <Drawer open={open} onClose={closeDrawer} className="p-4 bg-teal-200  w-60 ">
+              <Drawer open={open} onClose={closeDrawer} className="p-4 bg-teal-200 text-white  w-60 ">
               <div className="flex justify-between shrink-0 p-2 shadow-lg mb-7 items-center">
               <div className="flex  items-center gap-2">
                 <Link to="/">
@@ -448,7 +448,7 @@ const Dashboard = () => {
                 </button>
               </div>
             </div>
-            <div className=" pr-5 mt-24 ">
+            <div className=" px-5 mt-24 ">
               {" "}
               <Outlet></Outlet>
             </div>

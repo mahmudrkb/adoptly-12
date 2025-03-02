@@ -52,18 +52,27 @@ const UserHome = () => {
   
   return (
     <div className="container mx-auto">
+       <div className="text-3xl  md:pl-5 lg:text-5xl dark:text-white">
+        {" "}
+        Hi! Welcome
+        <div className="">
+          {" "}
+          {user?.displayName ? user?.displayName : "Back"}
+        </div>
+      </div>
       {/* graph data show */}
       <div className="  lg:flex justify-between mb-10">
-        <div className="  ">
-        
-          <PieChart className=" " width={400} height={400}  >
+        <div className="mt-4 w-full h-[450px]  ">
+         
+             <ResponsiveContainer width="100%" height="100%">
+          <PieChart   >
             <Pie
               data={pieChartData}
               cx="50%"
               cy="50%"
               labelLine={false}
               label={renderCustomizedLabel}
-              outerRadius={80}
+              outerRadius={130}
               fill="#8884d8"
               dataKey="value"
             >
@@ -76,6 +85,7 @@ const UserHome = () => {
             </Pie>
             <Legend></Legend>
           </PieChart>
+          </ResponsiveContainer>
        
         </div>
         {/* graph  */}
