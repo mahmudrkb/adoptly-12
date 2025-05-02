@@ -53,7 +53,7 @@ const DonationCam = () => {
                 />
               </CardHeader>
               <CardBody>
-                <Typography variant="h5" color="blue-gray" className="mb-2">
+                <Typography variant="h5" color="blue-gray" className="mb-2 dark:text-white ">
                   {donation.name}
                 </Typography>
                 <Typography>
