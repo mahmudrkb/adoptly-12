@@ -53,7 +53,7 @@ const Testimonial = () => {
           </div>
 
          <div className="mt-5 ">
-         <Marquee>
+         <Marquee pauseOnHover={true}>
          {review.map((review) => (
             <div className="card mx-2  dark:bg-blue-gray-800 bg-gray-50  space-y-3 rounded-lg p-4 max-w-96 shadow-xl">
               <figure className="object-cover">
