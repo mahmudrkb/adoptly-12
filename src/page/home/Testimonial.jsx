@@ -1,4 +1,5 @@
 import React from "react";
+import Marquee from "react-fast-marquee";
 
 const Testimonial = () => {
   const review = [
@@ -45,15 +46,16 @@ const Testimonial = () => {
   return (
     <section className="bg-gray-200 dark:bg-blue-gray-900 dark:text-white">
       <div className="container mx-auto p-3 py-10">
-        <div className=" gap-3 flex  p-5 ">
-          <div className=" max-w-sm  space-y-2">
+        <div className=" gap-3    p-5 ">
+          <div className=" max-w-3xl  space-y-2">
             <h1 className="text-4xl font-bold ">Testimonial</h1>
             <p>At Adoply, we believe every adoption is the beginning of a beautiful story. Hear from our happy adopters who have welcomed a new furry (or finned!) friend into their homes. Their heartfelt experiences inspire others to choose adoption and give pets a second chance at love and care.</p>
           </div>
 
-         <div className="">
+         <div className="mt-5 ">
+         <Marquee>
          {review.map((review) => (
-            <div className="card   dark:bg-blue-gray-800 bg-gray-50  space-y-3 rounded-lg p-4 max-w-96 shadow-xl">
+            <div className="card mx-2  dark:bg-blue-gray-800 bg-gray-50  space-y-3 rounded-lg p-4 max-w-96 shadow-xl">
               <figure className="object-cover">
                 <img className="rounded-t-xl w-full h-44 object-cover " src={review.petImage} alt="image" />
               </figure>
@@ -76,6 +78,7 @@ const Testimonial = () => {
               </div>
             </div>
           ))}
+          </Marquee>
          </div>
         </div>
       </div>
