@@ -271,5 +271,7 @@ VITE_PAYMENT_PK=pk_test_51QgNUgLtt15Gbg7NNSMgcHvVvIZIsjesRGG1IgyF8f7M79894NAVkHD
   </tbody>
 </table>
 
-<img src="../adoptly-client/public/Screenshot (4).png">
+<!-- <img src="/public/Screenshot (4).png" alt=""> -->
+![Screenshot](public/Screenshot%20(4).png)
 
+![Homepage Screenshot](public/Screenshot%20(4).png)
