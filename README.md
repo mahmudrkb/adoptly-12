@@ -271,3 +271,5 @@ VITE_PAYMENT_PK=pk_test_51QgNUgLtt15Gbg7NNSMgcHvVvIZIsjesRGG1IgyF8f7M79894NAVkHD
   </tbody>
 </table>
 
+<img src="../adoptly-client/public/Screenshot (4).png">
+
