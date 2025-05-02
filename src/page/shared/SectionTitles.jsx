@@ -1,4 +1,5 @@
-import React from 'react';
+
+import { useState,useEffect } from 'react';
 
 const SectionsTitles = ({heading,subheading}) => {
     return (
@@ -14,3 +15,17 @@ const SectionsTitles = ({heading,subheading}) => {
 };
 
 export default SectionsTitles;
+
+
+// const Counter =()=>{
+//    const [count,setCount]=useState(0)
+//    useEffect(()=>{
+//       setInterval(()=>{
+//          setCount(count+1)
+//       },1000)
+//    },[])
+// return( 
+//    <h1>{count}</h1>
+// )
+// }
+// export default Counter
