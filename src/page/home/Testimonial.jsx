@@ -45,10 +45,10 @@ const Testimonial = () => {
   return (
     <section>
       <div className="container mx-auto p-3 py-10">
-        <div className="text-center gap-6 xl:flex justify-between lg:text-left">
-          <div>
+        <div className=" gap-3 flex ">
+          <div className=" max-w-sm space-y-2">
             <h1 className="text-4xl font-bold ">Testimonial</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <p>At Adoply, we believe every adoption is the beginning of a beautiful story. Hear from our happy adopters who have welcomed a new furry (or finned!) friend into their homes. Their heartfelt experiences inspire others to choose adoption and give pets a second chance at love and care.</p>
           </div>
 
          <div>
