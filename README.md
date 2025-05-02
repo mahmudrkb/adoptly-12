@@ -221,3 +221,53 @@ ADOPTLY </h1>
       </div>
 
 </div>
+
+<h2>Setup & Installation</h2>
+<ol>
+  <li>Clone the repository:
+    <pre><code>git clone https://github.com/mahmudrkb/adoptly-12.git
+cd your-project</code></pre>
+  </li>
+  <li>Install dependencies:
+    <pre><code>npm install</code></pre>
+  </li>
+  <li>Add environment variables:<br />
+    Create a <code>.env.local</code> file and add your variables:
+    <pre><code>
+VITE_apiKey=AIzaSyC9mN3IHqcToBgRuHlHd9T7gRp6Q8KHJOY
+VITE_authDomain=adoptly-85d31.firebaseapp.com
+VITE_projectId=adoptly-85d31
+VITE_storageBucket=adoptly-85d31.firebasestorage.app
+VITE_messagingSenderId=21378284345
+VITE_appId=1:21378284345:web:0dbc35dfa6c624a4df46e8
+VITE_IMAGE_HOSTING_API_KEY=53d64bb35b76ff50d1d05ce2b4ff01bb
+VITE_PAYMENT_PK=pk_test_51QgNUgLtt15Gbg7NNSMgcHvVvIZIsjesRGG1IgyF8f7M79894NAVkHDAszdzsP9TCa5Po3s1NJu1q6rMKbvwDfIU00yS05oeY9
+    </code></pre>
+  </li>
+  <li>Run the development server:
+    <pre><code>npm run dev</code></pre>
+  </li>
+  <li>Visit <a href="http://localhost:5000" target="_blank">http://localhost:5000</a> in your browser.</li>
+</ol>
+
+
+
+<h2>Default Credentials (if applicable)</h2>
+<table border="1" cellpadding="8" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Role</th>
+      <th>Email</th>
+      <th>Password</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Admin</td>
+      <td>rakib@gmail.com</td>
+      <td>123456</td>
+    </tr>
+   
+  </tbody>
+</table>
+
